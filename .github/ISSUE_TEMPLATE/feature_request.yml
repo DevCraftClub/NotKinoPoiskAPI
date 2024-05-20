@@ -28,31 +28,26 @@ body:
             value: "Моя хотелка!"
         validations:
             required: true
-    -   type: dropdown
-        id: dle-version
+    -   type: input
+        id: plugin-version
         attributes:
-            label: Версия DLE
-            description: На какую версию DLE расчитывать?
-            options:
-                - "16.x (Default)"
-                - "15.x"
-                - "14.x"
-                - "13.x"
-                - "< 13.x"
+            label: Версия библиотеки
+            description: Какой версией библиотеки пользуешься? Стоит обычно в менеджере плагинов
         validations:
             required: true
     -   type: dropdown
-        id: php-version
+        id: python-version
         attributes:
-            label: Версия PHP
-            description: На какой версии PHP работает сайт?
+            label: Версия Python
+            description: На какой версии python работает скрипт?
             options:
-                - "8.x (Default)"
-                - "7.x"
-                - "5.x"
+                - "3.11 (Default)"
+                - "3.10"
+                - "3.9"
+                - "3.8"
+                - "3.7"
         validations:
             required: true
-
     -   type: textarea
         id: "screenshots"
         attributes:

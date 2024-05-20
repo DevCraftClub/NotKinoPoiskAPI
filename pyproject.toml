@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "notkinopoiskapi"
+version = "1.0.0"
+description = "Неофициальная библиотека для Kinopoisk API Unofficial"
+authors = ["Maxim Harder <dev@devcraft.club>"]
+license = "GPL-3.0-or-later"
+readme = "readme.md"
+homepage = "https://github.com/DevCraftClub/NotKinoPoiskAPI"
+repository = "https://github.com/DevCraftClub/NotKinoPoiskAPI"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+paprika = "^1.3.0"
+requests = "^2.31.0"
+python-decouple = "^3.8"
