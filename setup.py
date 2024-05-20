@@ -13,7 +13,8 @@ setup(
     packages=["notkionpoiskapi"],
     install_requires=[
         "requests",
-        "python-decouple"
+        "python-decouple",
+		"paprika"
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

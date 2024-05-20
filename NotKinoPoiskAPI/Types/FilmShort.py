@@ -25,7 +25,7 @@ class FilmShort:
 		:param rating: описание рейтинга
 		:param general: основное состав
 		:param description: описание роли в съёмках
-		:param professionKey:
+		:param professionKey: ключ роли в съёмках
 		"""
 		self.filmId = filmId
 		self.nameRu = nameRu
