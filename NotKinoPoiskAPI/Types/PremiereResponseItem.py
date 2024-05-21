@@ -1,23 +1,23 @@
 from typing import Optional, Union
 
-from paprika import NonNull, data
+from dataclasses import dataclass, field
 
 from NotKinoPoiskAPI.Types.Country import Country
 from NotKinoPoiskAPI.Types.Genre import Genre
 
 
-@data
+@dataclass
 class PremiereResponseItem:
-	kinopoiskId: NonNull[int]
+	kinopoiskId: int
 	nameRu: Optional[str]
 	nameEn: Optional[str]
-	year: NonNull[int]
-	posterUrl: NonNull[str]
-	posterUrlPreview: NonNull[str]
-	countries: list[Country] = []
-	genres: list[Genre] = []
+	year: int
+	posterUrl: str
+	posterUrlPreview: str
 	duration: Optional[int]
-	premiereRu: NonNull[str]
+	premiereRu: str
+	countries: list[Country] = field(default_factory=list)
+	genres: list[Genre] = field(default_factory=list)
 
 	def add_country(self, country: Union[Country, list[Country]]):
 		if isinstance(country, list):

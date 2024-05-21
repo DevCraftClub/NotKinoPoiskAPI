@@ -1,10 +1,10 @@
-from paprika import NonNull, data
+from dataclasses import dataclass
 
 from NotKinoPoiskAPI.Enums.VideoResponseItemSite import VideoResponseItemSite
 
 
-@data
+@dataclass
 class VideoResponseItem:
-	url: NonNull[str]
-	name: NonNull[str]
-	site: NonNull[VideoResponseItemSite]
+	url: str
+	name: str
+	site: VideoResponseItemSite

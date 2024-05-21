@@ -1,19 +1,18 @@
+from dataclasses import dataclass, field
 from typing import Union
-
-from paprika import data
 
 from NotKinoPoiskAPI.Responses.GeneralResponse import GeneralResponse
 from NotKinoPoiskAPI.Types.Award import Award
 
 
-@data
+@dataclass
 class AwardResponse(GeneralResponse):
 	"""
 	Объект ответа на поиск наград
 	:param total: Количество найденных наград
 	:param items: Список найденных наград
 	"""
-	items: list[Award] = []
+	items: list[Award] = field(default_factory=list)
 
 	def add_award(self, award: Union[Award, list[Award]]):
 		if isinstance(award, Award):

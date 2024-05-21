@@ -1,6 +1,6 @@
-from paprika import NonNull, data
+from dataclasses import dataclass
 
 
-@data
+@dataclass
 class Company:
-	name: NonNull[str]
+	name: str

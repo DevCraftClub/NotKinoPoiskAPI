@@ -1,18 +1,18 @@
 from typing import Union
 
-from paprika import NonNull, data
+from dataclasses import dataclass, field
 
 from NotKinoPoiskAPI.Types.ReviewResponseItem import ReviewResponseItem
 
 
-@data
+@dataclass
 class ReviewResponse:
-	total: NonNull[int]
-	totalPages: NonNull[int]
-	totalPositiveReviews: NonNull[int]
-	totalNegativeReviews: NonNull[int]
-	totalNeutralReviews: NonNull[int]
-	items: list[ReviewResponseItem] = []
+	total: int
+	totalPages: int
+	totalPositiveReviews: int
+	totalNegativeReviews: int
+	totalNeutralReviews: int
+	items: list[ReviewResponseItem] = field(default_factory=list)
 
 	def add_items(self, items: Union[ReviewResponseItem,list[ReviewResponseItem]]):
 		if isinstance(items, list):

@@ -1,9 +1,9 @@
-from paprika import NonNull, data
+from dataclasses import dataclass
 
 from NotKinoPoiskAPI.Enums.RelationType import RelationType
 
 
-@data
+@dataclass
 class FilmResponseFilm:
 	"""
 	:param filmId: ID фильма
@@ -14,13 +14,13 @@ class FilmResponseFilm:
 	:param posterUrlPreview: ссылка на превью постера
 	:param relationType: тип связи
 	"""
-	filmId: NonNull[int]
-	nameRu: NonNull[str]
-	nameEn: NonNull[str]
-	nameOriginal: NonNull[str]
-	posterUrl: NonNull[str]
-	posterUrlPreview: NonNull[str]
-	relationType: NonNull[RelationType]
+	filmId: int
+	nameRu: str
+	nameEn: str
+	nameOriginal: str
+	posterUrl: str
+	posterUrlPreview: str
+	relationType: RelationType
 
 	def __str__(self):
 		title = self.nameRu

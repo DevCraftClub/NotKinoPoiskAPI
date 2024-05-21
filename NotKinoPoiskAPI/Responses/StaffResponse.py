@@ -1,11 +1,11 @@
 from typing import Optional
 
-from paprika import NonNull, data
+from dataclasses import dataclass
 
 from NotKinoPoiskAPI.Enums.Profession import Profession
 
 
-@data
+@dataclass
 class StaffResponse:
 	"""
 	Объект участников съёмок фильма или сериала. Данные выводятся в виде списка.
@@ -17,13 +17,13 @@ class StaffResponse:
 	:param professionText (Optional[str]): Роль в съёмках
 	:param professionKey (Optional[str]): Ключ роли в съёмках
 	"""
-	staffId: NonNull[int]
+	staffId: int
 	nameRu: Optional[str]
 	nameEn: Optional[str]
 	description: Optional[str]
-	posterUrl: NonNull[str]
-	professionText: NonNull[str]
-	professionKey: NonNull[Profession]
+	posterUrl: str
+	professionText: str
+	professionKey: Profession
 
 	def __str__(self):
 		"""

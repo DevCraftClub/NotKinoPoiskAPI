@@ -1,12 +1,11 @@
-from typing import Optional, Union
-
-from paprika import NonNull, data
+from dataclasses import dataclass, field
+from typing import Union
 
 from NotKinoPoiskAPI.Types.Country import Country
 from NotKinoPoiskAPI.Types.Genre import Genre
 
 
-@data
+@dataclass
 class DigitalReleaseItem:
 	"""
 	Класс для хранения информации о цифровом релизе.
@@ -25,20 +24,20 @@ class DigitalReleaseItem:
 	:param duration: Длительность фильма.
 	:param releaseDate: Дата релиза фильма.
 	"""
-	filmId: NonNull[int]
-	nameRu: NonNull[str]
-	nameEn: NonNull[str]
-	year: NonNull[int]
-	posterUrl: NonNull[str]
-	posterUrlPreview: NonNull[str]
-	countries: list[Country] = []
-	genres: list[Genre] = []
-	rating: NonNull[float]
-	ratingVoteCount: NonNull[int]
-	expectationsRating: NonNull[float]
-	expectationsRatingVoteCount: NonNull[int]
-	duration: NonNull[int]
-	releaseDate: NonNull[str]
+	filmId: int
+	nameRu: str
+	nameEn: str
+	year: int
+	posterUrl: str
+	posterUrlPreview: str
+	rating: float
+	ratingVoteCount: int
+	expectationsRating: float
+	expectationsRatingVoteCount: int
+	duration: int
+	releaseDate: str
+	countries: list[Country] = field(default_factory=list)
+	genres: list[Genre] = field(default_factory=list)
 
 	def add_country(self, country: Union[Country, list[Country]]):
 		if isinstance(country, list):

@@ -1,6 +1,6 @@
 from typing import Optional, Union
 
-from paprika import NonNull, data
+from dataclasses import dataclass, field
 
 from NotKinoPoiskAPI.Enums.DistributionSubType import DistributionSubType
 from NotKinoPoiskAPI.Enums.DistributionType import DistributionType
@@ -8,14 +8,14 @@ from NotKinoPoiskAPI.Types.Company import Company
 from NotKinoPoiskAPI.Types.Country import Country
 
 
-@data
+@dataclass
 class Distribution:
-	type: NonNull[DistributionType]
+	type: DistributionType
 	subType: Optional[DistributionSubType]
 	date: Optional[str]
 	reRelease: Optional[bool]
 	country: Optional[Country]
-	companies: list[Company] = []
+	companies: list[Company] = field(default_factory=list)
 
 	def add_company(self, company: Union[Company, list[Company]]):
 		if isinstance(company, list):

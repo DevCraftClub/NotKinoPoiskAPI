@@ -1,13 +1,12 @@
+from dataclasses import dataclass, field
 from typing import Optional, Union
-
-from paprika import NonNull, data
 
 from NotKinoPoiskAPI.Enums.Sex import Sex
 from NotKinoPoiskAPI.Responses.PersonResponseFilms import PersonResponseFilms
 from NotKinoPoiskAPI.Responses.PersonResponseSpouse import PersonResponseSpouse
 
 
-@data
+@dataclass
 class PersonResponse:
 	"""
 	Объект конкретного сотрудника фильма или сериала с более подробной информацией
@@ -27,23 +26,23 @@ class PersonResponse:
 	:param spouses: Супруги сотрудника
 	:param films: Фильмография
 	"""
-	personId: NonNull[int]
+	personId: int
 	webUrl: Optional[str]
 	nameRu: Optional[str]
 	nameEn: Optional[str]
 	sex: Optional[Sex]
-	posterUrl: NonNull[str]
+	posterUrl: str
 	growth: Optional[str]
 	birthday: Optional[str]
 	death: Optional[str]
 	age: Optional[int]
 	birthplace: Optional[str]
 	deathplace: Optional[str]
-	hasAwards: int = 0
 	profession: Optional[str]
-	facts: list[str] = []
-	spouses: list[PersonResponseSpouse] = []
-	films: list[PersonResponseFilms] = []
+	hasAwards: int = 0
+	facts: list[str] = field(default_factory=list)
+	spouses: list[PersonResponseSpouse] = field(default_factory=list)
+	films: list[PersonResponseFilms] = field(default_factory=list)
 
 	def add_fact(self, fact: Union[str, list[str]]):
 		"""

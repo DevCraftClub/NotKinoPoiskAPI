@@ -1,11 +1,11 @@
-from paprika import NonNull, data
+from dataclasses import dataclass
 
 from NotKinoPoiskAPI.Enums.FactType import FactType
 
 
-@data
+@dataclass
 class Fact:
-	text: NonNull[str]
-	type: NonNull[FactType]
-	spoiler: NonNull[bool] = False
+	text: str
+	type: FactType
+	spoiler: bool = False
 	

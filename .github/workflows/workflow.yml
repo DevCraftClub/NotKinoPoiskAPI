@@ -18,7 +18,6 @@
 #            -   name: Generate Report
 #                run: |
 #                    pip install python-decouple
-#                    pip install paprika
 #                    pip install requests
 #                    pip install coverage
 #                    pip install hypothesis

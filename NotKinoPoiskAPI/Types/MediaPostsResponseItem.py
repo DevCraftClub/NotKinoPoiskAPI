@@ -1,11 +1,11 @@
-from paprika import NonNull, data
+from dataclasses import dataclass
 
 
-@data
+@dataclass
 class MediaPostsResponseItem:
-	kinopoiskId: NonNull[int]
-	imageUrl: NonNull[str]
-	title: NonNull[str]
-	description: NonNull[str]
-	url: NonNull[str]
-	publishedAt: NonNull[str]
+	kinopoiskId: int
+	imageUrl: str
+	title: str
+	description: str
+	url: str
+	publishedAt: str

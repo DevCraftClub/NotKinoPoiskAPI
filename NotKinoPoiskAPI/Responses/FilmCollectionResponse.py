@@ -1,12 +1,11 @@
+from dataclasses import dataclass, field
 from typing import Union
-
-from paprika import NonNull, data
 
 from NotKinoPoiskAPI.Responses.GeneralResponse import GeneralResponse
 from NotKinoPoiskAPI.Types.FilmCollectionResponseItem import FilmCollectionResponseItem
 
 
-@data
+@dataclass
 class FilmCollectionResponse(GeneralResponse):
 	"""
 	Класс для хранения информации о коллекции фильмов.
@@ -14,8 +13,8 @@ class FilmCollectionResponse(GeneralResponse):
 	:param totalPages: Количество страниц.
 	:param items: Список фильмов.
 	"""
-	totalPages: NonNull[int]
-	items: list[FilmCollectionResponseItem] = []
+	totalPages: int
+	items: list[FilmCollectionResponseItem] = field(default_factory=list)
 
 	def add_items(self, items: Union[FilmCollectionResponseItem, list[FilmCollectionResponseItem]]):
 		if isinstance(items, list):

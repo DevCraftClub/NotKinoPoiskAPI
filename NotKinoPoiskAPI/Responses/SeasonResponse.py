@@ -1,19 +1,18 @@
+from dataclasses import dataclass, field
 from typing import Union
-
-from paprika import data
 
 from NotKinoPoiskAPI.Responses.GeneralResponse import GeneralResponse
 from NotKinoPoiskAPI.Types.Season import Season
 
 
-@data
+@dataclass
 class SeasonResponse(GeneralResponse):
 	"""
 	Объект ответа на поиск сезонов
 	:param total: Количество найденных сезонов
 	:param items: Список найденных сезонов
 	"""
-	items: list[Season] = []
+	items: list[Season] = field(default_factory=list)
 
 	def add_season(self, season: Union[Season, list[Season]]):
 		if isinstance(season, list):
