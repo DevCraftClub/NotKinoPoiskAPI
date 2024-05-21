@@ -1,25 +1,26 @@
 from typing import Optional
 
-from paprika import data
+from paprika import NonNull, data
 
 from NotKinoPoiskAPI.Enums.Profession import Profession
 
+
 @data
-class FilmShort:
+class PersonResponseFilms:
 	"""
 	Класс для хранения краткой информации о фильме в списке сотрудника.
 	"""
-	filmId: Optional[int]
+	filmId: NonNull[int]
 	nameRu: Optional[str]
 	nameEn: Optional[str]
 	rating: Optional[str]
-	general: bool = False
+	general: NonNull[bool]
 	description: Optional[str]
 	professionKey: Optional[Profession]
 
 	def __init__(self, filmId: Optional[int] = None, nameRu: Optional[str] = None, nameEn: Optional[str] = None,
-				 rating: Optional[str] = None, general: bool = False, description: Optional[str] = None,
-				 professionKey: Optional[Profession] = None):
+	             rating: Optional[str] = None, general: bool = False, description: Optional[str] = None,
+	             professionKey: Optional[Profession] = None):
 		"""
 		:param filmId: ID фильма или сериала
 		:param nameRu: русское название
