@@ -8,20 +8,19 @@ from NotKinoPoiskAPI.Types.Genre import Genre
 
 
 @data
-class FilmSearchResponseFilm:
-	filmId: NonNull[int]
-	nameRu: NonNull[str]
-	nameEn: NonNull[str]
-	type: NonNull[MovieType]
-	year: NonNull[int]
-	description: NonNull[str]
-	filmLength: NonNull[int]
+class FilmCollectionResponseItem:
+	kinopoiskId: NonNull[int]
+	nameRu: Optional[str]
+	nameEn: Optional[str]
+	nameOriginal: Optional[str]
 	countries: list[Country] = []
 	genres: list[Genre] = []
-	rating: NonNull[str]
-	ratingVoteCount: NonNull[int]
-	posterUrl: Optional[str]
-	posterUrlPreview: Optional[str]
+	ratingKinopoisk: Optional[float]
+	ratingImdb: Optional[float]
+	year: Optional[int]
+	type: Optional[MovieType]
+	posterUrl: NonNull[str]
+	posterUrlPreview: NonNull[str]
 
 	def add_country(self, country: Union[Country, list[Country]]):
 		if isinstance(country, list):

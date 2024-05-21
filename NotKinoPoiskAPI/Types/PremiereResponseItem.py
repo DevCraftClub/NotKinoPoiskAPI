@@ -2,26 +2,22 @@ from typing import Optional, Union
 
 from paprika import NonNull, data
 
-from NotKinoPoiskAPI.Enums.MovieType import MovieType
 from NotKinoPoiskAPI.Types.Country import Country
 from NotKinoPoiskAPI.Types.Genre import Genre
 
 
 @data
-class FilmSearchResponseFilm:
-	filmId: NonNull[int]
-	nameRu: NonNull[str]
-	nameEn: NonNull[str]
-	type: NonNull[MovieType]
+class PremiereResponseItem:
+	kinopoiskId: NonNull[int]
+	nameRu: Optional[str]
+	nameEn: Optional[str]
 	year: NonNull[int]
-	description: NonNull[str]
-	filmLength: NonNull[int]
+	posterUrl: NonNull[str]
+	posterUrlPreview: NonNull[str]
 	countries: list[Country] = []
 	genres: list[Genre] = []
-	rating: NonNull[str]
-	ratingVoteCount: NonNull[int]
-	posterUrl: Optional[str]
-	posterUrlPreview: Optional[str]
+	duration: Optional[int]
+	premiereRu: NonNull[str]
 
 	def add_country(self, country: Union[Country, list[Country]]):
 		if isinstance(country, list):
@@ -39,5 +35,7 @@ class FilmSearchResponseFilm:
 		title = self.nameRu
 		title += f" / {self.nameEn}" if self.nameEn else ""
 		title += f" ({self.year})" if self.year else ""
+		title += f" [Премьера: {self.premiereRu}]"
 
 		return str(title).strip()
+	
