@@ -7,6 +7,7 @@ from requests import Session
 
 from NotKinoPoiskAPI.Controller.Connector import Connector
 from NotKinoPoiskAPI.Enums.ImageType import ImageType
+from NotKinoPoiskAPI.Enums.ReviewOrder import ReviewOrder
 from NotKinoPoiskAPI.Responses.ApiKeyResponse import ApiKeyResponse
 from NotKinoPoiskAPI.Responses.AwardResponse import AwardResponse
 from NotKinoPoiskAPI.Responses.BoxOfficeResponse import BoxOfficeResponse
@@ -161,5 +162,11 @@ class NKPA:
 		"""
 		return self.get_data(self.get_api_url(f'films/{film_id}/images?type={image_type.name}&page={page}'))
 
-	def get_reviews(self, film_id: int) -> ReviewResponse:
+	def get_reviews(self, film_id: int, page: int = 1, order: ReviewOrder = ReviewOrder.DATE_DESC) -> ReviewResponse:
+		"""
+		Возвращает список рецензии зрителей с пагинацией. Каждая страница содержит не более чем 20 рецензий.
+		/api/v2.2/films/{id}/reviews
+		:param film_id: ID фильма.
+		"""
+		return self.get_data(self.get_api_url(f'films/{film_id}/reviews?page={page}&order={order.name}'))
 
