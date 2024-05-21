@@ -1,16 +1,16 @@
 from typing import Union
 
-from paprika import NonNull, data
+from dataclasses import dataclass, field
 
 from NotKinoPoiskAPI.Types.FilmSearchResponseFilm import FilmSearchResponseFilm
 
 
-@data
+@dataclass
 class FilmSearchResponse:
-	keyword: NonNull[str]
-	pagesCount: NonNull[int]
-	searchFilmsCountResult: NonNull[int]
-	films: list[FilmSearchResponseFilm] = []
+	keyword: str
+	pagesCount: int
+	searchFilmsCountResult: int
+	films: list[FilmSearchResponseFilm] = field(default_factory=list)
 
 	def add_films(self, films: Union[FilmSearchResponseFilm, list[FilmSearchResponseFilm]]):
 		if isinstance(films, list):

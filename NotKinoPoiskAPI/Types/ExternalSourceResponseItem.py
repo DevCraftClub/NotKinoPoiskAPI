@@ -1,8 +1,8 @@
 from typing import Optional
-from paprika import NonNull, data
+from dataclasses import dataclass
 
 
-@data
+@dataclass
 class ExternalSourceResponseItem:
 	"""
 	Класс для хранения информации о внешнем источнике.
@@ -15,11 +15,11 @@ class ExternalSourceResponseItem:
 	:param title: Название.
 	:param description: Описание.
 	"""
-	url: NonNull[str]
-	platform: NonNull[str]
-	logoUrl: NonNull[str]
-	positiveRating: NonNull[int]
-	negativeRating: NonNull[int]
-	author: NonNull[str]
+	url: str
+	platform: str
+	logoUrl: str
+	positiveRating: int
+	negativeRating: int
+	author: str
 	title: Optional[str]
-	description: NonNull[str]
+	description: str

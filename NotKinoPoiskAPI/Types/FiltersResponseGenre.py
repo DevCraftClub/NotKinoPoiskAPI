@@ -1,8 +1,8 @@
-from paprika import NonNull, data
+from dataclasses import dataclass
 
 from NotKinoPoiskAPI.Types.Genre import Genre
 
 
-@data
+@dataclass
 class FiltersResponseGenre(Genre):
-	id: NonNull[int]
+	id: int

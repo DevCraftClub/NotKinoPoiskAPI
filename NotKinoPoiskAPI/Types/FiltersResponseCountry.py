@@ -1,8 +1,8 @@
-from paprika import NonNull, data
+from dataclasses import dataclass
 
 from NotKinoPoiskAPI.Types.Country import Country
 
 
-@data
+@dataclass
 class FiltersResponseCountry(Country):
-	id: NonNull[int]
+	id: int

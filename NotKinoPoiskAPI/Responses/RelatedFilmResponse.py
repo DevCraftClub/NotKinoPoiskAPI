@@ -1,17 +1,16 @@
+from dataclasses import dataclass, field
 from typing import Union
-
-from paprika import data
 
 from NotKinoPoiskAPI.Responses.GeneralResponse import GeneralResponse
 from NotKinoPoiskAPI.Types.FilmResponseFilm import FilmResponseFilm
 
 
-@data
+@dataclass
 class RelatedFilmResponse(GeneralResponse):
 	"""
 	Класс для хранения информации о связанных фильмах.
 	"""
-	items: list[FilmResponseFilm] = []
+	items: list[FilmResponseFilm] = field(default_factory=list)
 
 	def add_items(self, items: Union[FilmResponseFilm, list[FilmResponseFilm]]):
 		if isinstance(items, list):

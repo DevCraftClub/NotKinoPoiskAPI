@@ -1,15 +1,15 @@
 from typing import Union
 
-from paprika import NonNull, data
+from dataclasses import dataclass, field
 
 from NotKinoPoiskAPI.Types.DigitalReleaseItem import DigitalReleaseItem
 
 
-@data
+@dataclass
 class DigitalReleaseResponse:
-	page: NonNull[int]
-	total: NonNull[int]
-	releases: list[DigitalReleaseItem] = []
+	page: int
+	total: int
+	releases: list[DigitalReleaseItem] = field(default_factory=list)
 
 	def add_release(self, release: Union[DigitalReleaseItem, list[DigitalReleaseItem]]):
 		if isinstance(release, list):

@@ -1,7 +1,6 @@
+from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Optional, Union
-
-from paprika import data, NonNull
 
 from NotKinoPoiskAPI.Enums.ProductionStatus import ProductionStatus
 from NotKinoPoiskAPI.Enums.MovieType import MovieType
@@ -9,7 +8,7 @@ from NotKinoPoiskAPI.Types.Country import Country
 from NotKinoPoiskAPI.Types.Genre import Genre
 
 
-@data
+@dataclass
 class Film:
 	"""
 	Объект фильма или сериала
@@ -60,17 +59,16 @@ class Film:
 	:param completed: Завершен?
 
 	"""
-	kinopoiskId: NonNull[int]
+	kinopoiskId: int
 	kinopoiskHDId: Optional[str]
 	imdbId: Optional[str]
 	nameRu: Optional[str]
 	nameEn: Optional[str]
 	nameOriginal: Optional[str]
-	posterUrl: NonNull[str]
-	posterUrlPreview: NonNull[str]
+	posterUrl: str
+	posterUrlPreview: str
 	coverUrl: Optional[str]
 	logoUrl: Optional[str]
-	reviewsCount: int = 0
 	ratingGoodReview: Optional[int]
 	ratingGoodReviewVoteCount: Optional[int]
 	ratingKinopoisk: Optional[float]
@@ -83,14 +81,13 @@ class Film:
 	ratingAwaitCount: Optional[int]
 	ratingRfCritics: Optional[float]
 	ratingRfCriticsVoteCount: Optional[int]
-	webUrl: NonNull[str]
+	webUrl: str
 	year: Optional[int]
 	filmLength: Optional[int]
 	slogan: Optional[str]
 	description: Optional[str]
 	shortDescription: Optional[str]
 	editorAnnotation: Optional[str]
-	isTicketsAvailable: bool = False
 	productionStatus: Optional[ProductionStatus]
 	type: Optional[MovieType]
 	ratingMpaa: Optional[str]
@@ -98,13 +95,15 @@ class Film:
 	hasImax: Optional[bool]
 	has3D: Optional[bool]
 	lastSync: datetime
-	countries: list[Country] = []
-	genres: list[Genre] = []
 	startYear: Optional[int]
 	endYear: Optional[int]
 	serial: Optional[bool]
 	shortFilm: Optional[bool]
 	completed: Optional[bool]
+	countries: list[Country] = field(default_factory=list)
+	genres: list[Genre] = field(default_factory=list)
+	reviewsCount: int = 0
+	isTicketsAvailable: bool = False
 
 	def add_country(self, country: Union[Country, list[Country]]):
 		if isinstance(country, list):

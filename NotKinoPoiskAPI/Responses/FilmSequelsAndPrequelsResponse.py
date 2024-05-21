@@ -1,10 +1,9 @@
-from paprika import NonNull, data
+from dataclasses import dataclass
 
-from NotKinoPoiskAPI.Enums.RelationType import RelationType
 from NotKinoPoiskAPI.Types.FilmResponseFilm import FilmResponseFilm
 
 
-@data
+@dataclass
 class FilmSequelsAndPrequelsResponse(FilmResponseFilm):
 	"""
 	Класс для хранения информации о продолжениях и предысториях фильма.

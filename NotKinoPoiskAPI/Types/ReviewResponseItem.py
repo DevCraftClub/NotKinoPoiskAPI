@@ -1,17 +1,16 @@
+from dataclasses import dataclass
 from typing import Optional
-
-from paprika import NonNull, data
 
 from NotKinoPoiskAPI.Enums.ReviewType import ReviewType
 
 
-@data
+@dataclass
 class ReviewResponseItem:
-	kinopoiskId: NonNull[int]
-	type: NonNull[ReviewType]
-	date: NonNull[str]
-	positiveRating: NonNull[int]
-	negativeRating: NonNull[int]
-	author: NonNull[str]
+	kinopoiskId: int
+	type: ReviewType
+	date: str
+	positiveRating: int
+	negativeRating: int
+	author: str
 	title: Optional[str]
-	description: NonNull[str]
+	description: str

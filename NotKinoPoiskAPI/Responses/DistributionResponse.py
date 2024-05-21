@@ -1,19 +1,18 @@
+from dataclasses import dataclass, field
 from typing import Union
-
-from paprika import data
 
 from NotKinoPoiskAPI.Responses.GeneralResponse import GeneralResponse
 from NotKinoPoiskAPI.Types.Distribution import Distribution
 
 
-@data
+@dataclass
 class DistributionResponse(GeneralResponse):
 	"""
 	Объект ответа на поиск дистрибьюторов
 	:param total: Количество найденных дистрибьюторов
 	:param items: Список найденных дистрибьюторов
 	"""
-	items: list[Distribution] = []
+	items: list[Distribution] = field(default_factory=list)
 
 	def add_distribution(self, distribution: Union[Distribution, list[Distribution]]):
 		if isinstance(distribution, list):

@@ -1,27 +1,27 @@
 from typing import Optional, Union
 
-from paprika import NonNull, data
+from dataclasses import dataclass, field
 
 from NotKinoPoiskAPI.Enums.MovieType import MovieType
 from NotKinoPoiskAPI.Types.Country import Country
 from NotKinoPoiskAPI.Types.Genre import Genre
 
 
-@data
+@dataclass
 class FilmSearchResponseFilm:
-	filmId: NonNull[int]
-	nameRu: NonNull[str]
-	nameEn: NonNull[str]
-	type: NonNull[MovieType]
-	year: NonNull[int]
-	description: NonNull[str]
-	filmLength: NonNull[int]
-	countries: list[Country] = []
-	genres: list[Genre] = []
-	rating: NonNull[str]
-	ratingVoteCount: NonNull[int]
+	filmId: int
+	nameRu: str
+	nameEn: str
+	type: MovieType
+	year: int
+	description: str
+	filmLength: int
+	rating: str
+	ratingVoteCount: int
 	posterUrl: Optional[str]
 	posterUrlPreview: Optional[str]
+	countries: list[Country] = field(default_factory=list)
+	genres: list[Genre] = field(default_factory=list)
 
 	def add_country(self, country: Union[Country, list[Country]]):
 		if isinstance(country, list):

@@ -1,20 +1,19 @@
+from dataclasses import dataclass, field
 from typing import Union
-
-from paprika import data
 
 from NotKinoPoiskAPI.Types.FiltersResponseCountry import FiltersResponseCountry
 from NotKinoPoiskAPI.Types.FiltersResponseGenre import FiltersResponseGenre
 
 
-@data
+@dataclass
 class FiltersResponse:
 	"""
 	Объект ответа на поиск фильтров
 	:param genres: Список жанров
 	:param countries: Список стран
 	"""
-	genres: list[FiltersResponseGenre] = []
-	countries: list[FiltersResponseCountry] = []
+	genres: list[FiltersResponseGenre] = field(default_factory=list)
+	countries: list[FiltersResponseCountry] = field(default_factory=list)
 
 	def add_genre(self, genre: Union[FiltersResponseGenre, list[FiltersResponseGenre]]):
 		if isinstance(genre, list):

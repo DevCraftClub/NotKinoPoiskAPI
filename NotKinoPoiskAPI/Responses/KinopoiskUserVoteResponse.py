@@ -1,12 +1,11 @@
+from dataclasses import dataclass, field
 from typing import Union
-
-from paprika import NonNull, data
 
 from NotKinoPoiskAPI.Responses.GeneralResponse import GeneralResponse
 from NotKinoPoiskAPI.Types.KinopoiskUserVoteResponseItem import KinopoiskUserVoteResponseItem
 
 
-@data
+@dataclass
 class KinopoiskUserVoteResponse(GeneralResponse):
 	"""
 	Класс для хранения информации о голосах пользователя.
@@ -14,8 +13,8 @@ class KinopoiskUserVoteResponse(GeneralResponse):
 	:param totalPages: Количество страниц.
 	:param items: Список голосов.
 	"""
-	totalPages: NonNull[int]
-	items: list[KinopoiskUserVoteResponseItem] = []
+	totalPages: int
+	items: list[KinopoiskUserVoteResponseItem] = field(default_factory=list)
 
 	def add_item(self, item: Union[KinopoiskUserVoteResponseItem, list[KinopoiskUserVoteResponseItem]]):
 		if isinstance(item, list):

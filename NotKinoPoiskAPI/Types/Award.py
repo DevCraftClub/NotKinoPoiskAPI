@@ -1,18 +1,18 @@
 from typing import Optional, Union
 
-from paprika import NonNull, data
+from dataclasses import dataclass, field
 
 from NotKinoPoiskAPI.Types.AwardPerson import AwardPerson
 
 
-@data
+@dataclass
 class Award:
-	name: NonNull[str]
-	win: NonNull[bool]
+	name: str
+	win: bool
 	imageUrl: Optional[str]
-	nominationName: NonNull[str]
-	year: NonNull[int]
-	persons: list[AwardPerson] = []
+	nominationName: str
+	year: int
+	persons: list[AwardPerson] = field(default_factory=list)
 
 	def add_person(self, person: Union[AwardPerson, list[AwardPerson]]):
 		if isinstance(person, list):

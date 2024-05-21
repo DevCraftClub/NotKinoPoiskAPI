@@ -1,7 +1,7 @@
-from paprika import NonNull, data
+from dataclasses import dataclass
 
 
-@data
+@dataclass
 class ImageResponseItem:
-	imageUrl: NonNull[str]
-	previewUrl: NonNull[str]
+	imageUrl: str
+	previewUrl: str

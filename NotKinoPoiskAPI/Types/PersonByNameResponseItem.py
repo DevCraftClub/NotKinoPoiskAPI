@@ -1,15 +1,15 @@
 from typing import Optional
 
-from paprika import NonNull, data
+from dataclasses import dataclass
 
 from NotKinoPoiskAPI.Enums.Sex import Sex
 
 
-@data
+@dataclass
 class PersonByNameResponseItem:
-	kinopoiskId: NonNull[int]
-	webUrl: NonNull[str]
+	kinopoiskId: int
+	webUrl: str
 	nameRu: Optional[str]
 	nameEn: Optional[str]
 	sex: Optional[Sex]
-	posterUrl: NonNull[str]
+	posterUrl: str

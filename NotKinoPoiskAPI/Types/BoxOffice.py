@@ -1,10 +1,10 @@
-from paprika import NonNull, data
+from dataclasses import dataclass
 
 
-@data
+@dataclass
 class BoxOffice:
-	type: NonNull[str]
-	amount: NonNull[int]
-	currencyCode: NonNull[str]
-	name: NonNull[str]
-	symbol: NonNull[str]
+	type: str
+	amount: int
+	currencyCode: str
+	name: str
+	symbol: str

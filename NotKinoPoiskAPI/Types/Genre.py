@@ -1,10 +1,10 @@
-from paprika import data, NonNull
+from dataclasses import dataclass
 
 
-@data
+@dataclass
 class Genre:
 	"""
 	Объект жанра
 	:param genre: Название жанра
 	"""
-	genre: NonNull[str]
+	genre: str
