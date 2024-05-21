@@ -16,3 +16,4 @@ pip install notkinopoiskapi
 ```python3
 kp = kinopoisk(API_USER_KEY)
 ```
+

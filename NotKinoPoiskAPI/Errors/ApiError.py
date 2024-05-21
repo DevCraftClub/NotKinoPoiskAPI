@@ -13,7 +13,8 @@ class ApiError:
 	message: str
 	errorCode: Optional[int]
 
-	def get_error_description(self, code: int):
+	@staticmethod
+	def get_error_description(code: int):
 		"""
 		Метод для получения описания ошибки по коду.
 		"""

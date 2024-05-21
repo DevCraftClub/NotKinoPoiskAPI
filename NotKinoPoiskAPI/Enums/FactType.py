@@ -2,5 +2,5 @@ from enum import Enum
 
 
 class FactType(Enum):
-	FACT = "Факт"
-	BLOOPER = "Ляп / Ошибка"
+	FACT = "Интересный факт о фильме"
+	BLOOPER = "Киноляп"
