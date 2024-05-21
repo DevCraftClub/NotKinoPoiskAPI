@@ -1,11 +1,12 @@
 from datetime import datetime
-from typing import Optional
+from typing import Optional, Union
 
 from paprika import data, NonNull
 
 from NotKinoPoiskAPI.Enums.ProductionStatus import ProductionStatus
 from NotKinoPoiskAPI.Enums.MovieType import MovieType
 from NotKinoPoiskAPI.Types.Country import Country
+from NotKinoPoiskAPI.Types.Genre import Genre
 
 
 @data
@@ -98,17 +99,29 @@ class Film:
 	has3D: Optional[bool]
 	lastSync: datetime
 	countries: list[Country] = []
-	genres: list[Country] = []
+	genres: list[Genre] = []
 	startYear: Optional[int]
 	endYear: Optional[int]
 	serial: Optional[bool]
 	shortFilm: Optional[bool]
 	completed: Optional[bool]
 
+	def add_country(self, country: Union[Country, list[Country]]):
+		if isinstance(country, list):
+			self.countries.extend(country)
+		else:
+			self.countries.append(country)
+
+	def add_genres(self, genres: Union[Genre, list[Genre]]):
+		if isinstance(genres, list):
+			self.genres.extend(genres)
+		else:
+			self.genres.append(genres)
+
 	def __str__(self):
-		title = self.name_ru
-		title += f" / {self.name_en}" if self.name_en else ""
-		title += f" / {self.name_original}" if self.name_original else ""
+		title = self.nameRu
+		title += f" / {self.nameEn}" if self.nameEn else ""
+		title += f" / {self.nameOriginal}" if self.nameOriginal else ""
 		title += f" ({self.year})" if self.year else ""
 
 		return title.strip()

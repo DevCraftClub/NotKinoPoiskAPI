@@ -1,8 +1,10 @@
 from typing import Optional
 
+from paprika import data
+
 from NotKinoPoiskAPI.Enums.Profession import Profession
 
-
+@data
 class FilmShort:
 	"""
 	Класс для хранения краткой информации о фильме в списке сотрудника.
