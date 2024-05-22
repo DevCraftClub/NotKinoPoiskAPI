@@ -1,9 +1,8 @@
+from dataclasses import dataclass
 from typing import Optional
 
-from paprika import data, NonNull
 
-
-@data
+@dataclass
 class Episode:
 	"""
 	Объект эпизода
@@ -14,9 +13,9 @@ class Episode:
 	:param synopsis: Краткое содержание эпизода
 	:param releaseDate: Краткое содержание эпизода
 	"""
-	seasonNumber: NonNull[int]
-	episodeNumber: NonNull[int]
-	nameRu: NonNull[str]
+	seasonNumber: int
+	episodeNumber: int
+	nameRu: str
 	nameEn: Optional[str]
 	synopsis: Optional[str]
 	releaseDate: Optional[str]

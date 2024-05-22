@@ -1,14 +1,13 @@
+from dataclasses import dataclass, field
 from typing import Union
-
-from paprika import data, NonNull
 
 from NotKinoPoiskAPI.Types.Episode import Episode
 
 
-@data
+@dataclass
 class Season:
-	number: NonNull[int]
-	episodes: list[Episode] = []
+	number: int
+	episodes: list[Episode] = field(default_factory=list)
 
 	def add_episode(self, episode: Union[Episode, list[Episode]]):
 		if isinstance(episode, list):
