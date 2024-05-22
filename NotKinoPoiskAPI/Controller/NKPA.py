@@ -54,6 +54,9 @@ class NKPA:
 		:param version: Версия API.
 		:param method: Метод API.
 		"""
+		filtered_query = {k: v for k, v in query.items() if v is not None}
+		query.clear()
+		query.update(filtered_query)
 		url_query = f'?{urlencode(query)}' if query is not None and len(query) > 0 else ''
 		return f"{self.api_link}/v{version}/{method}{url_query}"
 
