@@ -1,10 +1,10 @@
-from paprika import NonNull, data
+from dataclasses import dataclass
 
 
-@data
+@dataclass
 class Country:
 	"""
 	Объект страны
 	:param country: Название страны
 	"""
-	country: NonNull[str]
+	country: str
