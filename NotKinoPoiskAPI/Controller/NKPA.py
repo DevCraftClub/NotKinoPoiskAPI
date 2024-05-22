@@ -8,7 +8,9 @@ from requests import Session
 
 from NotKinoPoiskAPI.Controller.Connector import Connector
 from NotKinoPoiskAPI.Enums.CollectionType import CollectionType
+from NotKinoPoiskAPI.Enums.FilmsFilterOrder import FilmFilterOrder
 from NotKinoPoiskAPI.Enums.ImageType import ImageType
+from NotKinoPoiskAPI.Enums.MovieType import MovieType
 from NotKinoPoiskAPI.Enums.PremiereMonth import PremiereMonth
 from NotKinoPoiskAPI.Enums.ReviewOrder import ReviewOrder
 from NotKinoPoiskAPI.Responses.ApiKeyResponse import ApiKeyResponse
@@ -19,6 +21,7 @@ from NotKinoPoiskAPI.Responses.ExternalSourceResponse import ExternalSourceRespo
 from NotKinoPoiskAPI.Responses.FactResponse import FactResponse
 from NotKinoPoiskAPI.Responses.FilmCollectionResponse import FilmCollectionResponse
 from NotKinoPoiskAPI.Responses.FilmSearchByFiltersResponse import FilmSearchByFiltersResponse
+from NotKinoPoiskAPI.Responses.FilmSequelsAndPrequelsResponse import FilmSequelsAndPrequelsResponse
 from NotKinoPoiskAPI.Responses.FiltersResponse import FiltersResponse
 from NotKinoPoiskAPI.Responses.ImageResponse import ImageResponse
 from NotKinoPoiskAPI.Responses.PremiereResponse import PremiereResponse
@@ -72,6 +75,7 @@ class NKPA:
 		"""
 		Метод для получения информации о ключе
 		/api/v1/api_keys/{apiKey}
+		TODO: Добавить кеш для проверки API ключа
 		"""
 		url = self.get_api_url(f'api_keys/{self.api_key}', '1')
 		data: ApiKeyResponse
@@ -216,10 +220,32 @@ class NKPA:
 		"""
 		return self.get_data(self.get_api_url('films/filters'))
 
-	def get_films(self, countries: Union[int, list[int], str] = None, genres: Union[int, list[int], str] = None, order: int = None, type: int = None,
-	              ratingFrom: str = 'RATING', page: int = 1) -> FilmSearchByFiltersResponse:
+	def get_films(self, countries: Optional[Union[int, list[int], str]] = None, genres: Optional[Union[int, list[int], str]] = None, imdbId: Optional[str] = None, keyword: Optional[str] = None, order: FilmFilterOrder = FilmFilterOrder.RATING, type: MovieType = MovieType.ALL, ratingFrom: float = 0, ratingTo: float = 10, yearFrom: int = 1000, yearTo: int = 3000, page: int = 1) -> FilmSearchByFiltersResponse:
 		"""
 		Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов. Данный эндпоинт не возращает более 400 фильмов. Используй /api/v2.2/films/filters чтобы получить id стран и жанров.
 		/api/v2.2/films
-		TODO
+		:param countries: список id стран разделенные запятой. Например countries=1,2,3. На данный момент можно указать не более одной страны.
+		:param genres: список id жанров разделенные запятой. Например genres=1,2,3. На данный момент можно указать не более одного жанра.
+		:param imdbId: ID с IMDB
+		:param keyword: ключевое слово, которое встречается в названии фильма
+		:param order: сортировка (RATING, NUM_VOTE, YEAR), по умолчанию: RATING
+		:param type: тип фильма (FILM, TV_SHOW, TV_SERIES, MINI_SERIES, ALL), по умолчанию: ALL
+		:param ratingFrom: минимальный рейтинг, по умолчанию: 0
+		:param ratingTo: максимальный рейтинг, по умолчанию: 10
+		:param yearFrom: минимальный год, по умолчанию: 1000
+		:param yearTo: максимальный год, по умолчанию: 3000
+		:param page: номер страницы, по умолчанию: 1
+		:return FilmSearchByFiltersResponse
 		"""
+		countries = ','.join(countries) if isinstance(countries, list) else str(countries) if isinstance(countries, int) else countries
+		genres = ','.join(genres) if isinstance(genres, list) else str(genres) if isinstance(genres, int) else genres
+		return self.get_data(self.get_api_url('films', countries=countries, genres=genres, imdbId=imdbId, keyword=keyword, order=order.name, type=type.name, ratingFrom=ratingFrom, ratingTo=ratingTo, yearFrom=yearFrom, yearTo=yearTo, page=page))
+
+	def get_film_prequels_and_sequels(self, film_id: int) -> FilmSequelsAndPrequelsResponse:
+		"""
+		Возвращает список частей, что связаны с фильмом
+		/api/v2.1/films/{id}/sequels_and_prequels
+		:param film_id:
+		:return FilmSequelsAndPrequelsResponse
+		"""
+		return self.get_data(self.get_api_url(f'films/{film_id}/sequels_and_prequels', '2.1'))
