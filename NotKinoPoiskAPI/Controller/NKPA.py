@@ -1,19 +1,27 @@
 import random
 from dataclasses import dataclass
-from typing import Any, Optional
+from typing import Any, Optional, Union
+from urllib.parse import urlencode
 
 from decouple import config
 from requests import Session
 
 from NotKinoPoiskAPI.Controller.Connector import Connector
+from NotKinoPoiskAPI.Enums.CollectionType import CollectionType
 from NotKinoPoiskAPI.Enums.ImageType import ImageType
+from NotKinoPoiskAPI.Enums.PremiereMonth import PremiereMonth
 from NotKinoPoiskAPI.Enums.ReviewOrder import ReviewOrder
 from NotKinoPoiskAPI.Responses.ApiKeyResponse import ApiKeyResponse
 from NotKinoPoiskAPI.Responses.AwardResponse import AwardResponse
 from NotKinoPoiskAPI.Responses.BoxOfficeResponse import BoxOfficeResponse
 from NotKinoPoiskAPI.Responses.DistributionResponse import DistributionResponse
+from NotKinoPoiskAPI.Responses.ExternalSourceResponse import ExternalSourceResponse
 from NotKinoPoiskAPI.Responses.FactResponse import FactResponse
+from NotKinoPoiskAPI.Responses.FilmCollectionResponse import FilmCollectionResponse
+from NotKinoPoiskAPI.Responses.FilmSearchByFiltersResponse import FilmSearchByFiltersResponse
+from NotKinoPoiskAPI.Responses.FiltersResponse import FiltersResponse
 from NotKinoPoiskAPI.Responses.ImageResponse import ImageResponse
+from NotKinoPoiskAPI.Responses.PremiereResponse import PremiereResponse
 from NotKinoPoiskAPI.Responses.RelatedFilmResponse import RelatedFilmResponse
 from NotKinoPoiskAPI.Responses.ReviewResponse import ReviewResponse
 from NotKinoPoiskAPI.Responses.SeasonResponse import SeasonResponse
@@ -40,13 +48,14 @@ class NKPA:
 		self.api_key = api_key
 		self.session = Connector(api_key, proxy, session, user_agent, headers, timeout)
 
-	def get_api_url(self, method: str, version: str = '2.2'):
+	def get_api_url(self, method: str, version: str = '2.2', **query) -> str:
 		"""
 		Метод для получения ссылки на метод API.
 		:param version: Версия API.
 		:param method: Метод API.
 		"""
-		return f"{self.api_link}/v{version}/{method}"
+		url_query = f'?{urlencode(query)}' if query is not None and len(query) > 0 else ''
+		return f"{self.api_link}/v{version}/{method}{url_query}"
 
 	def get_data(self, link: str):
 		"""
@@ -160,13 +169,54 @@ class NKPA:
 		:param image_type: Тип изображения.
 		:param page: Номер страницы.
 		"""
-		return self.get_data(self.get_api_url(f'films/{film_id}/images?type={image_type.name}&page={page}'))
+		return self.get_data(self.get_api_url(f'films/{film_id}/images', type=image_type.name, page=page))
 
 	def get_reviews(self, film_id: int, page: int = 1, order: ReviewOrder = ReviewOrder.DATE_DESC) -> ReviewResponse:
 		"""
 		Возвращает список рецензии зрителей с пагинацией. Каждая страница содержит не более чем 20 рецензий.
 		/api/v2.2/films/{id}/reviews
 		:param film_id: ID фильма.
+		:param page: Номер страницы.
+		:param order: Сортировка.
 		"""
-		return self.get_data(self.get_api_url(f'films/{film_id}/reviews?page={page}&order={order.name}'))
+		return self.get_data(self.get_api_url(f'films/{film_id}/reviews', page=page, order=order.name))
 
+	def get_external_sources(self, film_id: int, page: int = 1) -> ExternalSourceResponse:
+		"""
+		Возвращает список сайтов с пагинацией. Каждая страница содержит не более чем 20 рецензий.
+		/api/v2.2/films/{id}/external_sources
+		:param film_id: ID фильма.
+		:param page: Номер страницы.
+		"""
+		return self.get_data(self.get_api_url(f'films/{film_id}/external_sources', page=page))
+
+	def get_collections(self, col_type: CollectionType = CollectionType.TOP_POPULAR_ALL, page: int = 1) -> FilmCollectionResponse:
+		"""
+		Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов.
+		/api/v2.2/films/collections
+		:param col_type: Тип коллекции
+		:param page: Номер страницы
+		"""
+		return self.get_data(self.get_api_url(f'films/collections', type=col_type.name, page=page))
+
+	def get_premieres(self, year: int, month: PremiereMonth) -> PremiereResponse:
+		"""
+		Данный эндпоинт возвращает список кинопремьер. Например https://www.kinopoisk.ru/premiere/
+		/api/v2.2/films/premieres
+		"""
+		return self.get_data(self.get_api_url(f'films/premieres', year=year, month=month.name))
+
+	def get_filters(self) -> FiltersResponse:
+		"""
+		Возвращает список id стран и жанров, которые могут быть использованы в /api/v2.2/films
+		/api/v2.2/films/filters
+		"""
+		return self.get_data(self.get_api_url('films/filters'))
+
+	def get_films(self, countries: Union[int, list[int], str] = None, genres: Union[int, list[int], str] = None, order: int = None, type: int = None,
+	              ratingFrom: str = 'RATING', page: int = 1) -> FilmSearchByFiltersResponse:
+		"""
+		Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов. Данный эндпоинт не возращает более 400 фильмов. Используй /api/v2.2/films/filters чтобы получить id стран и жанров.
+		/api/v2.2/films
+		TODO
+		"""
