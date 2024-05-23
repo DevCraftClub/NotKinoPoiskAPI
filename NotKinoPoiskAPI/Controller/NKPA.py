@@ -21,6 +21,7 @@ from NotKinoPoiskAPI.Responses.ExternalSourceResponse import ExternalSourceRespo
 from NotKinoPoiskAPI.Responses.FactResponse import FactResponse
 from NotKinoPoiskAPI.Responses.FilmCollectionResponse import FilmCollectionResponse
 from NotKinoPoiskAPI.Responses.FilmSearchByFiltersResponse import FilmSearchByFiltersResponse
+from NotKinoPoiskAPI.Responses.FilmSearchResponse import FilmSearchResponse
 from NotKinoPoiskAPI.Responses.FilmSequelsAndPrequelsResponse import FilmSequelsAndPrequelsResponse
 from NotKinoPoiskAPI.Responses.FiltersResponse import FiltersResponse
 from NotKinoPoiskAPI.Responses.ImageResponse import ImageResponse
@@ -249,3 +250,13 @@ class NKPA:
 		:return FilmSequelsAndPrequelsResponse
 		"""
 		return self.get_data(self.get_api_url(f'films/{film_id}/sequels_and_prequels', '2.1'))
+
+	def search_by_keyword(self, keyword: str, page: int = 1) -> FilmSearchResponse:
+		"""
+		Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов.
+		/api/v2.1/films/search-by-keyword
+		:param keyword: ключивые слова для поиска
+		:param page:
+		:return:
+		"""
+		return self.get_data(self.get_api_url('films/search-by-keyword', '2.1', keyword=keyword, page=page))
