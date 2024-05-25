@@ -1,7 +1,8 @@
-from typing import Union
+from typing import Union, List
 
 from dataclasses import dataclass, field
 
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Types.ReviewResponseItem import ReviewResponseItem
 
 
@@ -12,9 +13,12 @@ class ReviewResponse:
 	totalPositiveReviews: int
 	totalNegativeReviews: int
 	totalNeutralReviews: int
-	items: list[ReviewResponseItem] = field(default_factory=list)
+	items: List[ReviewResponseItem] = field(default_factory=list)
 
-	def add_items(self, items: Union[ReviewResponseItem, list[ReviewResponseItem]]):
+	def __post_init__(self):
+		self.items = ObjectController.list_to_object(self.items, ReviewResponseItem)
+
+	def add_items(self, items: Union[ReviewResponseItem, List[ReviewResponseItem]]):
 		if isinstance(items, list):
 			self.items.extend(items)
 		else:

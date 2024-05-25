@@ -1,7 +1,8 @@
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Optional, Union
+from typing import Optional, Union, List
 
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Enums.ProductionStatus import ProductionStatus
 from NotKinoPoiskAPI.Enums.MovieType import MovieType
 from NotKinoPoiskAPI.Types.Country import Country
@@ -100,10 +101,21 @@ class Film:
 	serial: Optional[bool]
 	shortFilm: Optional[bool]
 	completed: Optional[bool]
-	countries: list[Country] = field(default_factory=list)
-	genres: list[Genre] = field(default_factory=list)
+	countries: List[Country] = field(default_factory=list)
+	genres: List[Genre] = field(default_factory=list)
 	reviewsCount: int = 0
 	isTicketsAvailable: bool = False
+
+	def __post_init__(self):
+		if self.countries is None:
+			self.countries = list()
+		else:
+			self.countries = ObjectController.list_to_object(self.countries, Country)
+		if self.genres is None:
+			self.genres = list()
+		else:
+			self.genres = ObjectController.list_to_object(self.genres, Genre)
+		self.type = ObjectController.find_enum(self.type, MovieType)
 
 	def add_country(self, country: Union[Country, list[Country]]):
 		if isinstance(country, list):

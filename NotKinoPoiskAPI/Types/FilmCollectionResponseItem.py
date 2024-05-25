@@ -1,7 +1,8 @@
-from typing import Optional, Union
+from typing import Optional, Union, List
 
 from dataclasses import dataclass, field
 
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Enums.MovieType import MovieType
 from NotKinoPoiskAPI.Types.Country import Country
 from NotKinoPoiskAPI.Types.Genre import Genre
@@ -19,8 +20,12 @@ class FilmCollectionResponseItem:
 	type: Optional[MovieType]
 	posterUrl: str
 	posterUrlPreview: str
-	countries: list[Country] = field(default_factory=list)
-	genres: list[Genre] = field(default_factory=list)
+	countries: List[Country] = field(default_factory=list)
+	genres: List[Genre] = field(default_factory=list)
+
+	def __post_init__(self):
+		self.countries = ObjectController.list_to_object(self.countries, Country)
+		self.genres = ObjectController.list_to_object(self.genres, Genre)
 
 	def add_country(self, country: Union[Country, list[Country]]):
 		if isinstance(country, list):

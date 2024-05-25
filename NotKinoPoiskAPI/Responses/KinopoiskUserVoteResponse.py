@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
-from typing import Union
+from typing import Union, List
 
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Responses.GeneralResponse import GeneralResponse
 from NotKinoPoiskAPI.Types.KinopoiskUserVoteResponseItem import KinopoiskUserVoteResponseItem
 
@@ -14,7 +15,10 @@ class KinopoiskUserVoteResponse(GeneralResponse):
 	:param items: Список голосов.
 	"""
 	totalPages: int
-	items: list[KinopoiskUserVoteResponseItem] = field(default_factory=list)
+	items: List[KinopoiskUserVoteResponseItem] = field(default_factory=list)
+
+	def __post_init__(self):
+		self.items = ObjectController.list_to_object(self.items, KinopoiskUserVoteResponseItem)
 
 	def add_item(self, item: Union[KinopoiskUserVoteResponseItem, list[KinopoiskUserVoteResponseItem]]):
 		if isinstance(item, list):

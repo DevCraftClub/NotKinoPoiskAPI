@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
-from typing import Union
+from typing import Union, List
 
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Responses.GeneralResponse import GeneralResponse
 from NotKinoPoiskAPI.Types.VideoResponseItem import VideoResponseItem
 
@@ -12,7 +13,10 @@ class VideoResponse(GeneralResponse):
 	:param total: Количество видео.
 	:param items: Список видео.
 	"""
-	items: list[VideoResponseItem] = field(default_factory=list)
+	items: List[VideoResponseItem] = field(default_factory=list)
+
+	def __post_init__(self):
+		self.items = ObjectController.list_to_object(self.items, VideoResponseItem)
 
 	def add_item(self, item: Union[VideoResponseItem, list[VideoResponseItem]]):
 		if isinstance(item, list):

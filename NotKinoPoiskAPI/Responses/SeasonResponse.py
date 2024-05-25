@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
-from typing import Union
+from typing import Union, List
 
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Responses.GeneralResponse import GeneralResponse
 from NotKinoPoiskAPI.Types.Season import Season
 
@@ -12,9 +13,12 @@ class SeasonResponse(GeneralResponse):
 	:param total: Количество найденных сезонов
 	:param items: Список найденных сезонов
 	"""
-	items: list[Season] = field(default_factory=list)
+	items: List[Season] = field(default_factory=list)
 
-	def add_season(self, season: Union[Season, list[Season]]):
+	def __post_init__(self):
+		self.items = ObjectController.list_to_object(self.items, Season)
+
+	def add_season(self, season: Union[Season, List[Season]]):
 		if isinstance(season, list):
 			self.items.extend(season)
 		else:

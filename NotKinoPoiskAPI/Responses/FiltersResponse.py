@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
-from typing import Union
+from typing import Union, List
 
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Types.FiltersResponseCountry import FiltersResponseCountry
 from NotKinoPoiskAPI.Types.FiltersResponseGenre import FiltersResponseGenre
 
@@ -12,8 +13,12 @@ class FiltersResponse:
 	:param genres: Список жанров
 	:param countries: Список стран
 	"""
-	genres: list[FiltersResponseGenre] = field(default_factory=list)
-	countries: list[FiltersResponseCountry] = field(default_factory=list)
+	genres: List[FiltersResponseGenre] = field(default_factory=list)
+	countries: List[FiltersResponseCountry] = field(default_factory=list)
+
+	def __post_init__(self):
+		self.genres = ObjectController.list_to_object(self.genres, FiltersResponseGenre)
+		self.countries = ObjectController.list_to_object(self.countries, FiltersResponseCountry)
 
 	def add_genre(self, genre: Union[FiltersResponseGenre, list[FiltersResponseGenre]]):
 		if isinstance(genre, list):

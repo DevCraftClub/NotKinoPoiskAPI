@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
-from typing import Union
+from typing import Union, List
 
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Responses.GeneralResponse import GeneralResponse
 from NotKinoPoiskAPI.Types.BoxOffice import BoxOffice
 
@@ -12,7 +13,10 @@ class BoxOfficeResponse(GeneralResponse):
 	:param total: Количество найденных кассовых сборов
 	:param items: Список найденных кассовых сборов
 	"""
-	items: list[BoxOffice] = field(default_factory=list)
+	items: List[BoxOffice] = field(default_factory=list)
+
+	def __post_init__(self):
+		self.items = ObjectController.list_to_object(self.items, BoxOffice)
 
 	def add_box_office(self, box_office: Union[BoxOffice, list[BoxOffice]]):
 		if isinstance(box_office, list):

@@ -1,7 +1,8 @@
-from typing import Union
+from typing import Union, List
 
 from dataclasses import dataclass, field
 
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Types.DigitalReleaseItem import DigitalReleaseItem
 
 
@@ -9,7 +10,10 @@ from NotKinoPoiskAPI.Types.DigitalReleaseItem import DigitalReleaseItem
 class DigitalReleaseResponse:
 	page: int
 	total: int
-	releases: list[DigitalReleaseItem] = field(default_factory=list)
+	releases: List[DigitalReleaseItem] = field(default_factory=list)
+
+	def __post_init__(self):
+		self.releases = ObjectController.list_to_object(self.releases, DigitalReleaseItem)
 
 	def add_release(self, release: Union[DigitalReleaseItem, list[DigitalReleaseItem]]):
 		if isinstance(release, list):
