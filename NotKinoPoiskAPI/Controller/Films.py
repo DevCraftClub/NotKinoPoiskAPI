@@ -30,12 +30,14 @@ from NotKinoPoiskAPI.Types.Film import Film
 
 
 class KpFilms(NKPA):
+	"""
+	Класс для работы непосредственно с Endpoint /films с API неофициального кинопоиска
+	"""
 
 	def __init__(api_key: Optional[str] = None, proxy: Optional[Any] = None, user_agent: Optional[str] = None,
 				 headers: Optional[dict] = None,
 				 session: Optional[Session] = None, timeout: int = 5):
 		super().__init__(api_key, proxy, user_agent, headers, session, timeout)
-
 
 	def get_film(self, film_id: int) -> Film:
 		"""
