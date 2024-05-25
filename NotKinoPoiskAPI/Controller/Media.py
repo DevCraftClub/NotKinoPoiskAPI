@@ -1,8 +1,9 @@
-from typing import Optional, Any
+from typing import Optional
 
 from requests import Session
 
 from NotKinoPoiskAPI.Controller.NKPA import NKPA
+from NotKinoPoiskAPI.Controller.ProxyController import ProxyController
 from NotKinoPoiskAPI.Responses.MediaPostsResponse import MediaPostsResponse
 
 
@@ -11,7 +12,7 @@ class Media(NKPA):
 	Класс для работы с сериалами и фильмами. Эндпоийнт /media_posts
 	"""
 
-	def __init__(api_key: Optional[str] = None, proxy: Optional[Any] = None, user_agent: Optional[str] = None,
+	def __init__(api_key: Optional[str] = None, proxy: Optional[ProxyController] = None, user_agent: Optional[str] = None,
                  headers: Optional[dict] = None,
                  session: Optional[Session] = None, timeout: int = 5):
 		super().__init__(api_key, proxy, user_agent, headers, session, timeout)

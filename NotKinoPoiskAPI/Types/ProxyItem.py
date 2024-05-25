@@ -1,3 +1,5 @@
+from typing import Optional
+
 from NotKinoPoiskAPI.Enums.ProxyType import ProxyType
 
 
@@ -15,21 +17,24 @@ class ProxyItem:
 	login: str
 	password: str
 	type: ProxyType
+	proxy_set: bool = False
 
-	def __init__(self, proxy_string: str):
-		proxy_type, proxy_address = proxy_string.split('|')
-		self.type = ProxyType(proxy_type.upper())
+	def __init__(self, proxy_string: Optional[str] = None):
+		if proxy_string is not None:
+			proxy_type, proxy_address = proxy_string.split('|')
+			self.type = ProxyType(proxy_type.upper())
 
-		if '@' in proxy_address:
-			login, password, ip_address = proxy_address.split('@')
-			ip, port = ip_address.split(':')
-			self.login = login
-			self.password = password
-		else:
-			ip, port = proxy_address.split(':')
+			if '@' in proxy_address:
+				login, password, ip_address = proxy_address.split('@')
+				ip, port = ip_address.split(':')
+				self.login = login
+				self.password = password
+			else:
+				ip, port = proxy_address.split(':')
 
-		self.ip = ip
-		self.port = int(port) if ':' in port else 80
+			self.ip = ip
+			self.port = int(port) if ':' in port else 80
+			self.proxy_set = True
 
 	def __str__(self):
 		user = f"{self.login}:{self.password}@" if self.login is not None and self.password is not None else ""

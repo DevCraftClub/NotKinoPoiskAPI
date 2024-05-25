@@ -1,8 +1,9 @@
-from typing import Optional, Any, Union
+from typing import Optional, Union
 
 from requests import Session
 
 from NotKinoPoiskAPI.Controller.NKPA import NKPA
+from NotKinoPoiskAPI.Controller.ProxyController import ProxyController
 from NotKinoPoiskAPI.Enums.CollectionType import CollectionType
 from NotKinoPoiskAPI.Enums.FilmsFilterOrder import FilmFilterOrder
 from NotKinoPoiskAPI.Enums.ImageType import ImageType
@@ -34,7 +35,7 @@ class KpFilms(NKPA):
 	Класс для работы непосредственно с Endpoint /films с API неофициального кинопоиска
 	"""
 
-	def __init__(api_key: Optional[str] = None, proxy: Optional[Any] = None, user_agent: Optional[str] = None,
+	def __init__(api_key: Optional[str] = None, proxy: Optional[ProxyController] = None, user_agent: Optional[str] = None,
 				 headers: Optional[dict] = None,
 				 session: Optional[Session] = None, timeout: int = 5):
 		super().__init__(api_key, proxy, user_agent, headers, session, timeout)

@@ -13,7 +13,6 @@ class FilmCollectionResponse(GeneralResponse):
 	:param totalPages: Количество страниц.
 	:param items: Список фильмов.
 	"""
-	totalPages: int
 	items: list[FilmCollectionResponseItem] = field(default_factory=list)
 
 	def add_items(self, items: Union[FilmCollectionResponseItem, list[FilmCollectionResponseItem]]):

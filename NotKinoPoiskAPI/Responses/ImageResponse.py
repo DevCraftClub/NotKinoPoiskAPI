@@ -10,7 +10,6 @@ class ImageResponse(GeneralResponse):
 	"""
 	Класс для хранения информации об изображениях.
 	"""
-	totalPages: int
 	items: list[ImageResponseItem] = field(default_factory=list)
 
 	def add_items(self, items: Union[ImageResponseItem, list[ImageResponseItem]]):

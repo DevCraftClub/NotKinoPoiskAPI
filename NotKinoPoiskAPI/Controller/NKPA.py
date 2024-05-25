@@ -7,6 +7,7 @@ from decouple import config
 from requests import Session
 
 from NotKinoPoiskAPI.Controller.Connector import Connector
+from NotKinoPoiskAPI.Controller.ProxyController import ProxyController
 from NotKinoPoiskAPI.Responses.ApiKeyResponse import ApiKeyResponse
 
 
@@ -19,11 +20,11 @@ class NKPA:
 	session: Optional[Connector]
 	api_link: str = 'https://kinopoiskapiunofficial.tech/api'
 
-	def __init__(self, api_key: Optional[str] = None, proxy: Optional[Any] = None, user_agent: Optional[str] = None,
+	def __init__(self, api_key: Optional[str] = None, proxy: Optional[ProxyController] = None, user_agent: Optional[str] = None,
 				 headers: Optional[dict] = None,
 				 session: Optional[Session] = None, timeout: int = 5):
 		if api_key is None:
-			api_keys_config = config.get('NKPA_API_KEY', default=None, cast=str)
+			api_keys_config = config('NKPA_API_KEY', default=None, cast=str)
 			if api_keys_config is None:
 				raise ValueError("API ключ не указан")
 			api_key = random.choice(api_keys_config.split('||'))

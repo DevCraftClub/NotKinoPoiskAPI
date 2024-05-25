@@ -13,7 +13,6 @@ class FilmSearchByFiltersResponse(GeneralResponse):
 	:param totalPages: Количество страниц
 	:param items: Список найденных фильмов
 	"""
-	totalPages: int
 	items: list[FilmSearchByFiltersResponseItem] = field(default_factory=list)
 
 	def add_items(self, items: Union[FilmSearchByFiltersResponseItem, list[FilmSearchByFiltersResponseItem]]):
