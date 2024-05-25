@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
-from typing import Union
+from typing import Union, List
 
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Responses.GeneralResponse import GeneralResponse
 from NotKinoPoiskAPI.Types.FilmSearchByFiltersResponseItem import FilmSearchByFiltersResponseItem
 
@@ -13,8 +14,10 @@ class FilmSearchByFiltersResponse(GeneralResponse):
 	:param totalPages: Количество страниц
 	:param items: Список найденных фильмов
 	"""
-	totalPages: int
-	items: list[FilmSearchByFiltersResponseItem] = field(default_factory=list)
+	items: List[FilmSearchByFiltersResponseItem] = field(default_factory=list)
+
+	def __post_init__(self):
+		self.items = ObjectController.list_to_object(self.items, FilmSearchByFiltersResponseItem)
 
 	def add_items(self, items: Union[FilmSearchByFiltersResponseItem, list[FilmSearchByFiltersResponseItem]]):
 		if isinstance(items, list):

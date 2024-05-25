@@ -1,8 +1,10 @@
-from typing import Optional, Any
+from typing import Optional
 
 from requests import Session
 
 from NotKinoPoiskAPI.Controller.NKPA import NKPA
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
+from NotKinoPoiskAPI.Controller.ProxyController import ProxyController
 from NotKinoPoiskAPI.Responses.MediaPostsResponse import MediaPostsResponse
 
 
@@ -11,10 +13,10 @@ class Media(NKPA):
 	Класс для работы с сериалами и фильмами. Эндпоийнт /media_posts
 	"""
 
-	def __init__(api_key: Optional[str] = None, proxy: Optional[Any] = None, user_agent: Optional[str] = None,
+	def __init__(self, api_key: Optional[str] = None, proxy: Optional[ProxyController] = None, user_agent: Optional[str] = None,
                  headers: Optional[dict] = None,
                  session: Optional[Session] = None, timeout: int = 5):
-		super().__init__(api_key, proxy, user_agent, headers, session, timeout)
+		super().__init__(api_key=api_key, proxy=proxy, user_agent=user_agent, headers=headers, session=session, timeout=timeout)
 
 	def get_posts(self, page: int = 1) -> MediaPostsResponse:
 		"""
@@ -23,4 +25,4 @@ class Media(NKPA):
 		:param page: Номер страницы.
 		:return MediaPostsResponse
 		"""
-		return self.get_data(self.get_api_url('media_posts', '1', page=page))
+		return ObjectController.json_to_object(self.get_data(self.get_api_url('media_posts', '1', page=page)), MediaPostsResponse)

@@ -23,7 +23,7 @@ class Connector:
 	:param timeout: Время ожидания ответа.
 	"""
 	api_key: str
-	proxy: Optional[ProxyItem]
+	proxy: Optional[ProxyController]
 	session: Optional[Session]
 	user_agent: Optional[str]
 	headers: dict = field(default_factory=dict)
@@ -39,8 +39,12 @@ class Connector:
 		"""
 		Инициализация сессии.
 		"""
+		if not self.proxy or isinstance(self.proxy, str):
+			self.proxy = None
 		if not self.session:
 			self.session = Session()
+		if not self.headers:
+			self.headers = {}
 		self.session.headers.update(self.headers)
 		self.session.headers.update({
 			'X-API-KEY': self.api_key,
@@ -55,19 +59,20 @@ class Connector:
 		Установка прокси.
 		"""
 		proxy = self.proxy if self.proxy else ProxyController()
-		if proxy:
-			proxy_dict = {proxy.type.value: str(proxy)}
+		if proxy and len(proxy.get_proxy_list()) > 0:
+			proxy_item = proxy.get_random_proxy()
+			proxy_dict = {proxy_item.type.value: str(proxy_item)}
 			try:
 				requests.get('https://httpbin.org/headers?json', proxies=proxy_dict, timeout=5, verify=False)
 			except Exception as e:
-				raise Exception(f"Прокси недоступны: {e}.\nИспользованные прокси: {str(proxy)}")
+				raise Exception(f"Прокси недоступны: {e}.\nИспользованные прокси: {str(proxy_item)}")
 			self.session.proxies = proxy_dict
 
 	def set_user_agent(self):
 		"""
 		Установка User-Agent.
 		"""
-		user_agent_env = config.get('NKPA_USER_AGENT', default=None, cast=str)
+		user_agent_env = config('NKPA_USER_AGENT', default=None, cast=str)
 		if user_agent_env:
 			user_agents = user_agent_env.split('||')
 			self.user_agent = random.choice(user_agents)
@@ -84,10 +89,12 @@ class Connector:
 		"""
 
 		try:
-			response = self.session.request(method=method, url=url, params=params, data=data, json=json, timeout=self.timeout)
+			response = self.session.request(method=method, url=url, params=params, data=data, json=json,
+											timeout=self.timeout)
 
 			if response.status_code != 200:
-				raise Exception(f"Ошибка: {response.status_code}.\nОписание: {ApiError.get_error_description(response.status_code)}")
+				raise Exception(
+					f"Ошибка: {response.status_code}.\nОписание: {ApiError.get_error_description(response.status_code)}")
 
 			return response.json()
 		except Exception as e:

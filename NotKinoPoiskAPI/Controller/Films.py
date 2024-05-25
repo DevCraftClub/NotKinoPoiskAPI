@@ -1,8 +1,10 @@
-from typing import Optional, Any, Union
+from typing import Optional, Union
 
 from requests import Session
 
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Controller.NKPA import NKPA
+from NotKinoPoiskAPI.Controller.ProxyController import ProxyController
 from NotKinoPoiskAPI.Enums.CollectionType import CollectionType
 from NotKinoPoiskAPI.Enums.FilmsFilterOrder import FilmFilterOrder
 from NotKinoPoiskAPI.Enums.ImageType import ImageType
@@ -34,10 +36,10 @@ class KpFilms(NKPA):
 	Класс для работы непосредственно с Endpoint /films с API неофициального кинопоиска
 	"""
 
-	def __init__(api_key: Optional[str] = None, proxy: Optional[Any] = None, user_agent: Optional[str] = None,
+	def __init__(self, api_key: Optional[str] = None, proxy: Optional[ProxyController] = None, user_agent: Optional[str] = None,
 				 headers: Optional[dict] = None,
 				 session: Optional[Session] = None, timeout: int = 5):
-		super().__init__(api_key, proxy, user_agent, headers, session, timeout)
+		super().__init__(api_key=api_key, proxy=proxy, user_agent=user_agent, headers=headers, session=session, timeout=timeout)
 
 	def get_film(self, film_id: int) -> Film:
 		"""
@@ -47,7 +49,7 @@ class KpFilms(NKPA):
 		:param film_id: ID фильма.
 		:return Film
 		"""
-		return self.get_data(self.get_api_url(f'films/{film_id}'))
+		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'films/{film_id}')), Film)
 
 	def get_seasons(self, film_id: int) -> SeasonResponse:
 		"""
@@ -56,7 +58,7 @@ class KpFilms(NKPA):
 		:param film_id: ID фильма.
 		:return SeasonResponse
 		"""
-		return self.get_data(self.get_api_url(f'films/{film_id}/seasons'))
+		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'films/{film_id}/seasons')), SeasonResponse)
 
 	def get_film_facts(self, film_id: int) -> FactResponse:
 		"""
@@ -65,7 +67,7 @@ class KpFilms(NKPA):
 		:param film_id: ID фильма.
 		:return FactResponse
 		"""
-		return self.get_data(self.get_api_url(f'films/{film_id}/facts'))
+		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'films/{film_id}/facts')), FactResponse)
 
 	def get_distributions(self, film_id: int) -> DistributionResponse:
 		"""
@@ -74,7 +76,7 @@ class KpFilms(NKPA):
 		:param film_id: ID фильма.
 		:return DistributionResponse
 		"""
-		return self.get_data(self.get_api_url(f'films/{film_id}/distributions'))
+		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'films/{film_id}/distributions')), DistributionResponse)
 
 	def get_box_office(self, film_id: int) -> BoxOfficeResponse:
 		"""
@@ -83,7 +85,7 @@ class KpFilms(NKPA):
 		:param film_id: ID фильма.
 		:return BoxOfficeResponse
 		"""
-		return self.get_data(self.get_api_url(f'films/{film_id}/box_office'))
+		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'films/{film_id}/box_office')), BoxOfficeResponse)
 
 	def get_film_awards(self, film_id: int) -> AwardResponse:
 		"""
@@ -92,7 +94,7 @@ class KpFilms(NKPA):
 		:param film_id: ID фильма.
 		:return AwardResponse
 		"""
-		return self.get_data(self.get_api_url(f'films/{film_id}/awards'))
+		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'films/{film_id}/awards')), AwardResponse)
 
 	def get_film_videos(self, film_id: int) -> VideoResponse:
 		"""
@@ -108,7 +110,7 @@ class KpFilms(NKPA):
 		:param film_id: ID фильма.
 		:return VideoResponse
 		"""
-		return self.get_data(self.get_api_url(f'films/{film_id}/videos'))
+		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'films/{film_id}/videos')), VideoResponse)
 
 	def get_similars(self, film_id: int) -> RelatedFilmResponse:
 		"""
@@ -117,7 +119,7 @@ class KpFilms(NKPA):
 		:param film_id: ID фильма.
 		:return RelatedFilmResponse
 		"""
-		return self.get_data(self.get_api_url(f'films/{film_id}/similars'))
+		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'films/{film_id}/similars')), RelatedFilmResponse)
 
 	def get_images(self, film_id: int, image_type: ImageType = ImageType.STILL, page: int = 1) -> ImageResponse:
 		"""
@@ -139,7 +141,7 @@ class KpFilms(NKPA):
 		:param page: Номер страницы.
 		:return ImageResponse
 		"""
-		return self.get_data(self.get_api_url(f'films/{film_id}/images', type=image_type.name, page=page))
+		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'films/{film_id}/images', type=image_type.name, page=page)), ImageResponse)
 
 	def get_reviews(self, film_id: int, page: int = 1, order: ReviewOrder = ReviewOrder.DATE_DESC) -> ReviewResponse:
 		"""
@@ -150,7 +152,7 @@ class KpFilms(NKPA):
 		:param order: Сортировка.
 		:return ReviewResponse
 		"""
-		return self.get_data(self.get_api_url(f'films/{film_id}/reviews', page=page, order=order.name))
+		return ObjectController.json_to_object(	self.get_data(self.get_api_url(f'films/{film_id}/reviews', page=page, order=order.name)), ReviewResponse)
 
 	def get_external_sources(self, film_id: int, page: int = 1) -> ExternalSourceResponse:
 		"""
@@ -160,7 +162,7 @@ class KpFilms(NKPA):
 		:param page: Номер страницы.
 		:return ExternalSourceResponse
 		"""
-		return self.get_data(self.get_api_url(f'films/{film_id}/external_sources', page=page))
+		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'films/{film_id}/external_sources', page=page)), ExternalSourceResponse)
 
 	def get_collections(self, col_type: CollectionType = CollectionType.TOP_POPULAR_ALL,
 						page: int = 1) -> FilmCollectionResponse:
@@ -171,7 +173,7 @@ class KpFilms(NKPA):
 		:param page: Номер страницы
 		:return FilmCollectionResponse
 		"""
-		return self.get_data(self.get_api_url(f'films/collections', type=col_type.name, page=page))
+		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'films/collections', type=col_type.name, page=page)), FilmCollectionResponse)
 
 	def get_premieres(self, year: int, month: Union[PremiereMonth, int]) -> PremiereResponse:
 		"""
@@ -187,7 +189,7 @@ class KpFilms(NKPA):
 			if month < 1 or month > 12:
 				raise ValueError('month must be in range 1 to 12')
 			month = PremiereMonth(month).name
-		return self.get_data(self.get_api_url(f'films/premieres', year=year, month=month))
+		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'films/premieres', year=year, month=month)), PremiereResponse)
 
 	def get_filters(self) -> FiltersResponse:
 		"""
@@ -195,7 +197,7 @@ class KpFilms(NKPA):
 		/api/v2.2/films/filters
 		:return FiltersResponse
 		"""
-		return self.get_data(self.get_api_url('films/filters'))
+		return ObjectController.json_to_object(self.get_data(self.get_api_url('films/filters')), FiltersResponse)
 
 	def get_films(self, countries: Optional[Union[int, list[int], str]] = None,
 				  genres: Optional[Union[int, list[int], str]] = None, imdbId: Optional[str] = None,
@@ -221,10 +223,10 @@ class KpFilms(NKPA):
 		countries = ','.join(countries) if isinstance(countries, list) else str(countries) if isinstance(countries,
 																										 int) else countries
 		genres = ','.join(genres) if isinstance(genres, list) else str(genres) if isinstance(genres, int) else genres
-		return self.get_data(
+		return ObjectController.json_to_object(self.get_data(
 			self.get_api_url('films', countries=countries, genres=genres, imdbId=imdbId, keyword=keyword,
 							 order=order.name, type=type.name, ratingFrom=ratingFrom, ratingTo=ratingTo,
-							 yearFrom=yearFrom, yearTo=yearTo, page=page))
+							 yearFrom=yearFrom, yearTo=yearTo, page=page)), FilmSearchByFiltersResponse)
 
 	def get_film_prequels_and_sequels(self, film_id: int) -> FilmSequelsAndPrequelsResponse:
 		"""
@@ -233,7 +235,7 @@ class KpFilms(NKPA):
 		:param film_id:
 		:return FilmSequelsAndPrequelsResponse
 		"""
-		return self.get_data(self.get_api_url(f'films/{film_id}/sequels_and_prequels', '2.1'))
+		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'films/{film_id}/sequels_and_prequels', '2.1')), FilmSequelsAndPrequelsResponse)
 
 	def search_by_keyword(self, keyword: str, page: int = 1) -> FilmSearchResponse:
 		"""
@@ -243,7 +245,7 @@ class KpFilms(NKPA):
 		:param page:
 		:return FilmSearchResponse
 		"""
-		return self.get_data(self.get_api_url('films/search-by-keyword', '2.1', keyword=keyword, page=page))
+		return ObjectController.json_to_object(self.get_data(self.get_api_url('films/search-by-keyword', '2.1', keyword=keyword, page=page)), FilmSearchResponse)
 
 	def get_releases(self, year: int, month: Union[PremiereMonth, int], page: int = 1) -> DigitalReleaseResponse:
 		"""
@@ -258,4 +260,4 @@ class KpFilms(NKPA):
 			if month < 1 or month > 12:
 				raise ValueError('month must be in range 1 to 12')
 			month = PremiereMonth(month).name
-		return self.get_data(self.get_api_url('films/releases', '2.1', year=year, month=month, page=page))
+		return ObjectController.json_to_object(self.get_data(self.get_api_url('films/releases', '2.1', year=year, month=month, page=page)), DigitalReleaseResponse)

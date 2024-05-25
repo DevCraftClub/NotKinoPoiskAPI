@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
-from typing import Union
+from typing import Union, List
 
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Responses.GeneralResponse import GeneralResponse
 from NotKinoPoiskAPI.Types.Distribution import Distribution
 
@@ -12,7 +13,10 @@ class DistributionResponse(GeneralResponse):
 	:param total: Количество найденных дистрибьюторов
 	:param items: Список найденных дистрибьюторов
 	"""
-	items: list[Distribution] = field(default_factory=list)
+	items: List[Distribution] = field(default_factory=list)
+
+	def __post_init__(self):
+		self.items = ObjectController.list_to_object(self.items, Distribution)
 
 	def add_distribution(self, distribution: Union[Distribution, list[Distribution]]):
 		if isinstance(distribution, list):

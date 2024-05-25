@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+from typing import List
 
 
 @dataclass
@@ -9,7 +10,8 @@ class GeneralResponse:
 	:param items: Список найденных объектов
 	"""
 	total: int
-	items: list = field(default_factory=list, init=False)
+	totalPages: int = field(default_factory=int, init=False)
+	items: List = field(default_factory=list, init=False)
 
 	def __post_init__(self):
 		if self.items is None:

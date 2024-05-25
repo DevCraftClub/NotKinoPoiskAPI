@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
-from typing import Union
+from typing import Union, List
 
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Responses.GeneralResponse import GeneralResponse
 from NotKinoPoiskAPI.Types.MediaPostsResponseItem import MediaPostsResponseItem
 
@@ -13,8 +14,11 @@ class MediaPostsResponse(GeneralResponse):
 	:param totalPages: Количество страниц.
 	:param items: Список постов.
 	"""
-	totalPages: int
-	items: list[MediaPostsResponseItem] = field(default_factory=list)
+	totalPages: int = 0
+	items: List[MediaPostsResponseItem] = field(default_factory=list)
+
+	def __post_init__(self):
+		self.items = ObjectController.list_to_object(self.items, MediaPostsResponseItem)
 
 	def add_item(self, item: Union[MediaPostsResponseItem, list[MediaPostsResponseItem]]):
 		if isinstance(item, list):

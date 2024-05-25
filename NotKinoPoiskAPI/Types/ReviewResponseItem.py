@@ -14,3 +14,6 @@ class ReviewResponseItem:
 	author: str
 	title: Optional[str]
 	description: str
+
+	def __post_init__(self):
+		self.type = ReviewType(self.type)

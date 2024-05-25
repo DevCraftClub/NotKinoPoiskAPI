@@ -7,6 +7,8 @@ from decouple import config
 from requests import Session
 
 from NotKinoPoiskAPI.Controller.Connector import Connector
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
+from NotKinoPoiskAPI.Controller.ProxyController import ProxyController
 from NotKinoPoiskAPI.Responses.ApiKeyResponse import ApiKeyResponse
 
 
@@ -19,16 +21,18 @@ class NKPA:
 	session: Optional[Connector]
 	api_link: str = 'https://kinopoiskapiunofficial.tech/api'
 
-	def __init__(self, api_key: Optional[str] = None, proxy: Optional[Any] = None, user_agent: Optional[str] = None,
+	def __init__(self, api_key: Optional[str] = None, proxy: Optional[ProxyController] = None,
+				 user_agent: Optional[str] = None,
 				 headers: Optional[dict] = None,
 				 session: Optional[Session] = None, timeout: int = 5):
 		if api_key is None:
-			api_keys_config = config.get('NKPA_API_KEY', default=None, cast=str)
+			api_keys_config = config('NKPA_API_KEY', default=None, cast=str)
 			if api_keys_config is None:
 				raise ValueError("API ключ не указан")
 			api_key = random.choice(api_keys_config.split('||'))
 		self.api_key = api_key
-		self.session = Connector(api_key, proxy, session, user_agent, headers, timeout)
+		self.session = Connector(api_key=api_key, proxy=proxy, session=session, user_agent=user_agent, headers=headers,
+								 timeout=timeout)
 
 	def get_api_url(self, method: str, version: str = '2.2', **query) -> str:
 		"""
@@ -60,8 +64,7 @@ class NKPA:
 		TODO: Добавить кеш для проверки API ключа
 		"""
 		url = self.get_api_url(f'api_keys/{self.api_key}', '1')
-		data: ApiKeyResponse
-		data = self.session.send(url)
+		data = ObjectController.json_to_object(self.session.send(url), ApiKeyResponse)
 		if data.dailyQuota.used > data.dailyQuota.value:
 			raise ValueError(f"Превышен лимит запросов\nИспользованный ключ: {self.api_key}")
 		else:
