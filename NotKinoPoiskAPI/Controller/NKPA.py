@@ -43,8 +43,9 @@ class NKPA:
 	session: Optional[Connector]
 	api_link: str = 'https://kinopoiskapiunofficial.tech/api'
 
-	def __init__(self, api_key: Optional[str] = None, proxy: Optional[Any] = None, user_agent: Optional[str] = None, headers: Optional[dict] = None,
-	             session: Optional[Session] = None, timeout: int = 5):
+	def __init__(self, api_key: Optional[str] = None, proxy: Optional[Any] = None, user_agent: Optional[str] = None,
+				 headers: Optional[dict] = None,
+				 session: Optional[Session] = None, timeout: int = 5):
 		if api_key is None:
 			api_keys_config = config.get('NKPA_API_KEY', default=None, cast=str)
 			if api_keys_config is None:
@@ -114,6 +115,7 @@ class NKPA:
 		Данный эндпоинт возвращает список фактов и ошибок в фильме.
 		/api/v2.2/films/{id}/facts
 		:param film_id: ID фильма.
+		:return FactResponse
 		"""
 		return self.get_data(self.get_api_url(f'films/{film_id}/facts'))
 
@@ -122,6 +124,7 @@ class NKPA:
 		Данный эндпоинт возвращает данные о прокате в разных странах.
 		/api/v2.2/films/{id}/distributions
 		:param film_id: ID фильма.
+		:return DistributionResponse
 		"""
 		return self.get_data(self.get_api_url(f'films/{film_id}/distributions'))
 
@@ -130,6 +133,7 @@ class NKPA:
 		Данный эндпоинт возвращает данные о кассовых сборах фильма.
 		/api/v2.2/films/{id}/box_office
 		:param film_id: ID фильма.
+		:return BoxOfficeResponse
 		"""
 		return self.get_data(self.get_api_url(f'films/{film_id}/box_office'))
 
@@ -138,6 +142,7 @@ class NKPA:
 		Данный эндпоинт возвращает данные о наградах и премиях фильма.
 		/api/v2.2/films/{id}/awards
 		:param film_id: ID фильма.
+		:return AwardResponse
 		"""
 		return self.get_data(self.get_api_url(f'films/{film_id}/awards'))
 
@@ -153,6 +158,7 @@ class NKPA:
 		<iframe is="x-frame-bypass" src="https://widgets.kinopoisk.ru/discovery/trailer/167560?onlyPlayer=1&autoplay=1&cover=1" width="500" height="500"></iframe>
 		/api/v2.2/films/{id}/videos
 		:param film_id: ID фильма.
+		:return VideoResponse
 		"""
 		return self.get_data(self.get_api_url(f'films/{film_id}/videos'))
 
@@ -161,6 +167,7 @@ class NKPA:
 		Данный эндпоинт возвращает похожие фильмы.
 		/api/v2.2/films/{id}/similars
 		:param film_id: ID фильма.
+		:return RelatedFilmResponse
 		"""
 		return self.get_data(self.get_api_url(f'films/{film_id}/similars'))
 
@@ -182,6 +189,7 @@ class NKPA:
 		:param film_id: ID фильма.
 		:param image_type: Тип изображения.
 		:param page: Номер страницы.
+		:return ImageResponse
 		"""
 		return self.get_data(self.get_api_url(f'films/{film_id}/images', type=image_type.name, page=page))
 
@@ -192,6 +200,7 @@ class NKPA:
 		:param film_id: ID фильма.
 		:param page: Номер страницы.
 		:param order: Сортировка.
+		:return ReviewResponse
 		"""
 		return self.get_data(self.get_api_url(f'films/{film_id}/reviews', page=page, order=order.name))
 
@@ -201,15 +210,18 @@ class NKPA:
 		/api/v2.2/films/{id}/external_sources
 		:param film_id: ID фильма.
 		:param page: Номер страницы.
+		:return ExternalSourceResponse
 		"""
 		return self.get_data(self.get_api_url(f'films/{film_id}/external_sources', page=page))
 
-	def get_collections(self, col_type: CollectionType = CollectionType.TOP_POPULAR_ALL, page: int = 1) -> FilmCollectionResponse:
+	def get_collections(self, col_type: CollectionType = CollectionType.TOP_POPULAR_ALL,
+						page: int = 1) -> FilmCollectionResponse:
 		"""
 		Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов.
 		/api/v2.2/films/collections
 		:param col_type: Тип коллекции
 		:param page: Номер страницы
+		:return FilmCollectionResponse
 		"""
 		return self.get_data(self.get_api_url(f'films/collections', type=col_type.name, page=page))
 
@@ -219,6 +231,7 @@ class NKPA:
 		/api/v2.2/films/premieres
 		:param year: Год
 		:param month: Месяц. Либо в виде объекта PremiereMonth. Либо цифра от 1 до 12
+		:return PremiereResponse
 		"""
 		if isinstance(month, PremiereMonth):
 			month = month.name
@@ -232,10 +245,15 @@ class NKPA:
 		"""
 		Возвращает список id стран и жанров, которые могут быть использованы в /api/v2.2/films
 		/api/v2.2/films/filters
+		:return FiltersResponse
 		"""
 		return self.get_data(self.get_api_url('films/filters'))
 
-	def get_films(self, countries: Optional[Union[int, list[int], str]] = None, genres: Optional[Union[int, list[int], str]] = None, imdbId: Optional[str] = None, keyword: Optional[str] = None, order: FilmFilterOrder = FilmFilterOrder.RATING, type: MovieType = MovieType.ALL, ratingFrom: float = 0, ratingTo: float = 10, yearFrom: int = 1000, yearTo: int = 3000, page: int = 1) -> FilmSearchByFiltersResponse:
+	def get_films(self, countries: Optional[Union[int, list[int], str]] = None,
+				  genres: Optional[Union[int, list[int], str]] = None, imdbId: Optional[str] = None,
+				  keyword: Optional[str] = None, order: FilmFilterOrder = FilmFilterOrder.RATING,
+				  type: MovieType = MovieType.ALL, ratingFrom: float = 0, ratingTo: float = 10, yearFrom: int = 1000,
+				  yearTo: int = 3000, page: int = 1) -> FilmSearchByFiltersResponse:
 		"""
 		Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов. Данный эндпоинт не возращает более 400 фильмов. Используй /api/v2.2/films/filters чтобы получить id стран и жанров.
 		/api/v2.2/films
@@ -252,9 +270,13 @@ class NKPA:
 		:param page: номер страницы, по умолчанию: 1
 		:return FilmSearchByFiltersResponse
 		"""
-		countries = ','.join(countries) if isinstance(countries, list) else str(countries) if isinstance(countries, int) else countries
+		countries = ','.join(countries) if isinstance(countries, list) else str(countries) if isinstance(countries,
+																										 int) else countries
 		genres = ','.join(genres) if isinstance(genres, list) else str(genres) if isinstance(genres, int) else genres
-		return self.get_data(self.get_api_url('films', countries=countries, genres=genres, imdbId=imdbId, keyword=keyword, order=order.name, type=type.name, ratingFrom=ratingFrom, ratingTo=ratingTo, yearFrom=yearFrom, yearTo=yearTo, page=page))
+		return self.get_data(
+			self.get_api_url('films', countries=countries, genres=genres, imdbId=imdbId, keyword=keyword,
+							 order=order.name, type=type.name, ratingFrom=ratingFrom, ratingTo=ratingTo,
+							 yearFrom=yearFrom, yearTo=yearTo, page=page))
 
 	def get_film_prequels_and_sequels(self, film_id: int) -> FilmSequelsAndPrequelsResponse:
 		"""
@@ -275,11 +297,11 @@ class NKPA:
 		"""
 		return self.get_data(self.get_api_url('films/search-by-keyword', '2.1', keyword=keyword, page=page))
 
-	def get_releases(self, year: int, month: Union[PremiereMonth, int]) -> DigitalReleaseResponse:
+	def get_releases(self, year: int, month: Union[PremiereMonth, int], page: int = 1) -> DigitalReleaseResponse:
 		"""
 		Данный эндпоинт возвращает список цифровых релизов. Например https://www.kinopoisk.ru/comingsoon/digital/
 		:param year: Год
-		:param month: Месяц. Либо в виде объекта PremiereMonth. Либо цифра от 1 до 12
+		:param month: Месяц. Либо в виде объекта PremiereMonth (JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER). Либо цифра от 1 до 12
 		:return DigitalReleaseResponse
 		"""
 		if isinstance(month, PremiereMonth):
@@ -288,4 +310,4 @@ class NKPA:
 			if month < 1 or month > 12:
 				raise ValueError('month must be in range 1 to 12')
 			month = PremiereMonth(month).name
-		return self.get_data(self.get_api_url('films/releases', '2.1'))
+		return self.get_data(self.get_api_url('films/releases', '2.1', year=year, month=month, page=page))
