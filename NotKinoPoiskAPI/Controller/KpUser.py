@@ -1,0 +1,27 @@
+from typing import Optional, Any
+
+from requests import Session
+
+from NotKinoPoiskAPI.Controller.NKPA import NKPA
+from NotKinoPoiskAPI.Responses.KinopoiskUserVoteResponse import KinopoiskUserVoteResponse
+
+
+class KpUser(NKPA):
+	"""
+	Класс для работы с Endpoint /kp_users с API неофициального кинопоиска
+	"""
+
+	def __init__(api_key: Optional[str] = None, proxy: Optional[Any] = None, user_agent: Optional[str] = None,
+				 headers: Optional[dict] = None,
+				 session: Optional[Session] = None, timeout: int = 5):
+		super().__init__(api_key, proxy, user_agent, headers, session, timeout)
+
+	def get_votes(self, user_id: int, page: int = 1) -> KinopoiskUserVoteResponse:
+		"""
+		Метод для получения рейтинга пользователя
+		/api/v1/kp_users/{id}/votes
+		:param page: Номер страницы
+		:param user_id: ID пользователя на сайте
+		:return: KinopoiskUserVoteResponse
+		"""
+		return self.get_data(self.get_api_url(f'kp_users/{user_id}/votes', '1', page=page))
