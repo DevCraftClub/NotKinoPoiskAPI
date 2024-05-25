@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
 
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Enums.ReviewType import ReviewType
 
 
@@ -16,4 +17,5 @@ class ReviewResponseItem:
 	description: str
 
 	def __post_init__(self):
-		self.type = ReviewType(self.type)
+		if isinstance(self.type, str):
+			self.type = ObjectController.find_enum(self.type, ReviewType)

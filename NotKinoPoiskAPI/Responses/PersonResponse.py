@@ -49,6 +49,8 @@ class PersonResponse:
 	def __post_init__(self):
 		self.spouses = ObjectController.list_to_object(self.spouses, PersonResponseSpouse)
 		self.films = ObjectController.list_to_object(self.films, PersonResponseFilms)
+		if self.sex is not None and isinstance(self.sex, str):
+			self.sex = ObjectController.find_enum(self.sex, Sex)
 
 	def add_fact(self, fact: Union[str, list[str]]):
 		"""

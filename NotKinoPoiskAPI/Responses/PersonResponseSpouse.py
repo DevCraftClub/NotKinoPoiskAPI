@@ -2,6 +2,7 @@ from typing import Optional
 
 from dataclasses import dataclass
 
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Enums.Sex import Sex
 
 
@@ -26,6 +27,10 @@ class PersonResponseSpouse:
 	children: int
 	webUrl: str
 	relation: str
+
+	def __post_init__(self):
+		if self.sex is not None and isinstance(self.sex, str):
+			self.sex = ObjectController.find_enum(self.sex, Sex)
 
 	def __str__(self):
 		"""

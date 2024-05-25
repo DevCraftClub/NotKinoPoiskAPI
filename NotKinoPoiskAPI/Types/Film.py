@@ -115,7 +115,10 @@ class Film:
 			self.genres = list()
 		else:
 			self.genres = ObjectController.list_to_object(self.genres, Genre)
-		self.type = ObjectController.find_enum(self.type, MovieType)
+		if self.type is not None and isinstance(self.type, str):
+			self.type = ObjectController.find_enum(self.type, MovieType)
+		if self.productionStatus is not None and isinstance(self.productionStatus, str):
+			self.productionStatus = ObjectController.find_enum(self.productionStatus, ProductionStatus)
 
 	def add_country(self, country: Union[Country, list[Country]]):
 		if isinstance(country, list):

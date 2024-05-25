@@ -9,6 +9,7 @@ from requests import Session
 from NotKinoPoiskAPI.Controller.Connector import Connector
 from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Controller.ProxyController import ProxyController
+from NotKinoPoiskAPI.Enums.ApiAccountType import ApiAccountType
 from NotKinoPoiskAPI.Responses.ApiKeyResponse import ApiKeyResponse
 
 
@@ -65,7 +66,8 @@ class NKPA:
 		"""
 		url = self.get_api_url(f'api_keys/{self.api_key}', '1')
 		data = ObjectController.json_to_object(self.session.send(url), ApiKeyResponse)
-		if data.dailyQuota.used > data.dailyQuota.value:
-			raise ValueError(f"Превышен лимит запросов\nИспользованный ключ: {self.api_key}")
-		else:
+		account_type = ObjectController.find_enum(data.accountType, ApiAccountType)
+		if account_type == ApiAccountType.UNLIMITED or data.dailyQuota.value == -1 or data.dailyQuota.used < data.dailyQuota.value:
 			return True
+		else:
+			raise ValueError(f"Превышен лимит запросов\nИспользованный ключ: {self.api_key}")

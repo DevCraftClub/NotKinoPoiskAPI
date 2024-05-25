@@ -2,6 +2,7 @@ from typing import Optional
 
 from dataclasses import dataclass
 
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Enums.Profession import Profession
 
 
@@ -24,6 +25,10 @@ class StaffResponse:
 	posterUrl: str
 	professionText: str
 	professionKey: Profession
+
+	def __post_init__(self):
+		if isinstance(self.professionKey, str):
+			self.professionText = ObjectController.find_enum(self.professionKey, Profession)
 
 	def __str__(self):
 		"""
