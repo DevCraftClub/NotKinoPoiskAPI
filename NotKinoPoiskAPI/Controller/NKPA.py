@@ -16,6 +16,7 @@ from NotKinoPoiskAPI.Enums.ReviewOrder import ReviewOrder
 from NotKinoPoiskAPI.Responses.ApiKeyResponse import ApiKeyResponse
 from NotKinoPoiskAPI.Responses.AwardResponse import AwardResponse
 from NotKinoPoiskAPI.Responses.BoxOfficeResponse import BoxOfficeResponse
+from NotKinoPoiskAPI.Responses.DigitalReleaseResponse import DigitalReleaseResponse
 from NotKinoPoiskAPI.Responses.DistributionResponse import DistributionResponse
 from NotKinoPoiskAPI.Responses.ExternalSourceResponse import ExternalSourceResponse
 from NotKinoPoiskAPI.Responses.FactResponse import FactResponse
@@ -57,6 +58,7 @@ class NKPA:
 		Метод для получения ссылки на метод API.
 		:param version: Версия API.
 		:param method: Метод API.
+		:return str
 		"""
 		filtered_query = {k: v for k, v in query.items() if v is not None}
 		query.clear()
@@ -64,18 +66,20 @@ class NKPA:
 		url_query = f'?{urlencode(query)}' if query is not None and len(query) > 0 else ''
 		return f"{self.api_link}/v{version}/{method}{url_query}"
 
-	def get_data(self, link: str):
+	def get_data(self, link: str) -> Any:
 		"""
 		Метод для отправки запроса с проверкой по квоте
 		:param link: Ссылка на метод API.
+		:return Any
 		"""
 		if self.get_api_info():
 			return self.session.send(link)
 
-	def get_api_info(self):
+	def get_api_info(self) -> bool:
 		"""
 		Метод для получения информации о ключе
 		/api/v1/api_keys/{apiKey}
+		:return bool
 		TODO: Добавить кеш для проверки API ключа
 		"""
 		url = self.get_api_url(f'api_keys/{self.api_key}', '1')
@@ -92,6 +96,7 @@ class NKPA:
 		Данный эндпоинт возвращает базовые данные о фильме. Поле lastSync показывает дату последнего обновления данных.
 		/api/v2.2/films/{id}
 		:param film_id: ID фильма.
+		:return Film
 		"""
 		return self.get_data(self.get_api_url(f'films/{film_id}'))
 
@@ -100,6 +105,7 @@ class NKPA:
 		Метод для получения информации о сезонах фильма
 		/api/v2.2/films/{id}/seasons
 		:param film_id: ID фильма.
+		:return SeasonResponse
 		"""
 		return self.get_data(self.get_api_url(f'films/{film_id}/seasons'))
 
@@ -207,12 +213,20 @@ class NKPA:
 		"""
 		return self.get_data(self.get_api_url(f'films/collections', type=col_type.name, page=page))
 
-	def get_premieres(self, year: int, month: PremiereMonth) -> PremiereResponse:
+	def get_premieres(self, year: int, month: Union[PremiereMonth, int]) -> PremiereResponse:
 		"""
 		Данный эндпоинт возвращает список кинопремьер. Например https://www.kinopoisk.ru/premiere/
 		/api/v2.2/films/premieres
+		:param year: Год
+		:param month: Месяц. Либо в виде объекта PremiereMonth. Либо цифра от 1 до 12
 		"""
-		return self.get_data(self.get_api_url(f'films/premieres', year=year, month=month.name))
+		if isinstance(month, PremiereMonth):
+			month = month.name
+		elif isinstance(month, int):
+			if month < 1 or month > 12:
+				raise ValueError('month must be in range 1 to 12')
+			month = PremiereMonth(month).name
+		return self.get_data(self.get_api_url(f'films/premieres', year=year, month=month))
 
 	def get_filters(self) -> FiltersResponse:
 		"""
@@ -257,6 +271,21 @@ class NKPA:
 		/api/v2.1/films/search-by-keyword
 		:param keyword: ключивые слова для поиска
 		:param page:
-		:return:
+		:return FilmSearchResponse
 		"""
 		return self.get_data(self.get_api_url('films/search-by-keyword', '2.1', keyword=keyword, page=page))
+
+	def get_releases(self, year: int, month: Union[PremiereMonth, int]) -> DigitalReleaseResponse:
+		"""
+		Данный эндпоинт возвращает список цифровых релизов. Например https://www.kinopoisk.ru/comingsoon/digital/
+		:param year: Год
+		:param month: Месяц. Либо в виде объекта PremiereMonth. Либо цифра от 1 до 12
+		:return DigitalReleaseResponse
+		"""
+		if isinstance(month, PremiereMonth):
+			month = month.name
+		elif isinstance(month, int):
+			if month < 1 or month > 12:
+				raise ValueError('month must be in range 1 to 12')
+			month = PremiereMonth(month).name
+		return self.get_data(self.get_api_url('films/releases', '2.1'))
