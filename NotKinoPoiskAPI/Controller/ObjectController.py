@@ -1,6 +1,6 @@
 import json
 from types import SimpleNamespace
-from typing import Any, Union, List
+from typing import Any, List, Union
 
 
 class ObjectController:

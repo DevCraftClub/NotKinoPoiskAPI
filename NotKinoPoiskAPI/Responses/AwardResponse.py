@@ -25,5 +25,3 @@ class AwardResponse(GeneralResponse):
 			self.items.append(award)
 		else:
 			self.items.extend(award)
-
-

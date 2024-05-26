@@ -29,4 +29,4 @@ class KpUser(NKPA):
 		:return: KinopoiskUserVoteResponse
 		"""
 		return ObjectController.json_to_object(
-			self.get_data(self.get_api_url(f'kp_users/{user_id}/votes', '1', page=page)), KinopoiskUserVoteResponse)
+				self.get_data(self.get_api_url(f'kp_users/{user_id}/votes', '1', page=page)), KinopoiskUserVoteResponse)

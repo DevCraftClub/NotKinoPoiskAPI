@@ -8,7 +8,7 @@ from NotKinoPoiskAPI.Controller.ProxyController import ProxyController
 from NotKinoPoiskAPI.Responses.MediaPostsResponse import MediaPostsResponse
 
 
-class Media(NKPA):
+class KpMedia(NKPA):
 	"""
 	Класс для работы с сериалами и фильмами. Эндпоийнт /media_posts
 	"""

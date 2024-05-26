@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import Union, List
+from typing import List, Union
 
 from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Responses.GeneralResponse import GeneralResponse
@@ -21,4 +21,3 @@ class RelatedFilmResponse(GeneralResponse):
 			self.items.extend(items)
 		else:
 			self.items.append(items)
-			

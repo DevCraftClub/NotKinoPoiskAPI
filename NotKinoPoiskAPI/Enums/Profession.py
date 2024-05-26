@@ -18,4 +18,3 @@ class Profession(Enum):
 	HERSELF = "Сама себя"
 	HRONO_TITR_MALE = "Хронотитраж мужской"
 	HRONO_TITR_FEMALE = "Хронотитраж женский"
-
