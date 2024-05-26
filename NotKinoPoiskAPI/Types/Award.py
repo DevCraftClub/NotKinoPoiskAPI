@@ -1,6 +1,5 @@
-from typing import Optional, Union, List
-
 from dataclasses import dataclass, field
+from typing import List, Optional, Union
 
 from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Types.AwardPerson import AwardPerson

@@ -2,8 +2,8 @@ from typing import Optional, Union
 
 from requests import Session
 
-from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Controller.NKPA import NKPA
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Controller.ProxyController import ProxyController
 from NotKinoPoiskAPI.Enums.CollectionType import CollectionType
 from NotKinoPoiskAPI.Enums.FilmsFilterOrder import FilmFilterOrder
@@ -150,7 +150,8 @@ class KpFilms(NKPA):
 		:return ImageResponse
 		"""
 		return ObjectController.json_to_object(
-			self.get_data(self.get_api_url(f'films/{film_id}/images', type=image_type.name, page=page)), ImageResponse)
+				self.get_data(self.get_api_url(f'films/{film_id}/images', type=image_type.name, page=page)),
+				ImageResponse)
 
 	def get_reviews(self, film_id: int, page: int = 1, order: ReviewOrder = ReviewOrder.DATE_DESC) -> ReviewResponse:
 		"""
@@ -162,7 +163,8 @@ class KpFilms(NKPA):
 		:return ReviewResponse
 		"""
 		return ObjectController.json_to_object(
-			self.get_data(self.get_api_url(f'films/{film_id}/reviews', page=page, order=order.name)), ReviewResponse)
+				self.get_data(self.get_api_url(f'films/{film_id}/reviews', page=page, order=order.name)),
+				ReviewResponse)
 
 	def get_external_sources(self, film_id: int, page: int = 1) -> ExternalSourceResponse:
 		"""
@@ -173,7 +175,7 @@ class KpFilms(NKPA):
 		:return ExternalSourceResponse
 		"""
 		return ObjectController.json_to_object(
-			self.get_data(self.get_api_url(f'films/{film_id}/external_sources', page=page)), ExternalSourceResponse)
+				self.get_data(self.get_api_url(f'films/{film_id}/external_sources', page=page)), ExternalSourceResponse)
 
 	def get_collections(self, col_type: CollectionType = CollectionType.TOP_POPULAR_ALL,
 	                    page: int = 1) -> FilmCollectionResponse:
@@ -185,8 +187,8 @@ class KpFilms(NKPA):
 		:return FilmCollectionResponse
 		"""
 		return ObjectController.json_to_object(
-			self.get_data(self.get_api_url(f'films/collections', type=col_type.name, page=page)),
-			FilmCollectionResponse)
+				self.get_data(self.get_api_url(f'films/collections', type=col_type.name, page=page)),
+				FilmCollectionResponse)
 
 	def get_premieres(self, year: int, month: Union[PremiereMonth, int]) -> PremiereResponse:
 		"""
@@ -203,7 +205,7 @@ class KpFilms(NKPA):
 				raise ValueError('month must be in range 1 to 12')
 			month = PremiereMonth(month).name
 		return ObjectController.json_to_object(
-			self.get_data(self.get_api_url(f'films/premieres', year=year, month=month)), PremiereResponse)
+				self.get_data(self.get_api_url(f'films/premieres', year=year, month=month)), PremiereResponse)
 
 	def get_filters(self) -> FiltersResponse:
 		"""
@@ -250,8 +252,8 @@ class KpFilms(NKPA):
 		:return FilmSequelsAndPrequelsResponse
 		"""
 		return ObjectController.json_to_object(
-			self.get_data(self.get_api_url(f'films/{film_id}/sequels_and_prequels', '2.1')),
-			FilmSequelsAndPrequelsResponse)
+				self.get_data(self.get_api_url(f'films/{film_id}/sequels_and_prequels', '2.1')),
+				FilmSequelsAndPrequelsResponse)
 
 	def search_by_keyword(self, keyword: str, page: int = 1) -> FilmSearchResponse:
 		"""
@@ -262,8 +264,8 @@ class KpFilms(NKPA):
 		:return FilmSearchResponse
 		"""
 		return ObjectController.json_to_object(
-			self.get_data(self.get_api_url('films/search-by-keyword', '2.1', keyword=keyword, page=page)),
-			FilmSearchResponse)
+				self.get_data(self.get_api_url('films/search-by-keyword', '2.1', keyword=keyword, page=page)),
+				FilmSearchResponse)
 
 	def get_releases(self, year: int, month: Union[PremiereMonth, int], page: int = 1) -> DigitalReleaseResponse:
 		"""
@@ -279,5 +281,5 @@ class KpFilms(NKPA):
 				raise ValueError('month must be in range 1 to 12')
 			month = PremiereMonth(month).name
 		return ObjectController.json_to_object(
-			self.get_data(self.get_api_url('films/releases', '2.1', year=year, month=month, page=page)),
-			DigitalReleaseResponse)
+				self.get_data(self.get_api_url('films/releases', '2.1', year=year, month=month, page=page)),
+				DigitalReleaseResponse)

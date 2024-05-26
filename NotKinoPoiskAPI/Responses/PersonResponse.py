@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import Optional, Union, List
+from typing import List, Optional, Union
 
 from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Enums.Sex import Sex
@@ -44,7 +44,6 @@ class PersonResponse:
 	facts: List[str] = field(default_factory=list)
 	spouses: List[PersonResponseSpouse] = field(default_factory=list)
 	films: List[PersonResponseFilms] = field(default_factory=list)
-
 
 	def __post_init__(self):
 		self.spouses = ObjectController.list_to_object(self.spouses, PersonResponseSpouse)

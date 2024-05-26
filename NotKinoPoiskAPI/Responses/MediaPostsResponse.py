@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import Union, List
+from typing import List, Union
 
 from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Responses.GeneralResponse import GeneralResponse
@@ -25,4 +25,3 @@ class MediaPostsResponse(GeneralResponse):
 			self.items.extend(item)
 		else:
 			self.items.append(item)
-

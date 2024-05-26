@@ -25,9 +25,9 @@ class NKPA:
 	api_link: str = 'https://kinopoiskapiunofficial.tech/api'
 
 	def __init__(self, api_key: Optional[str] = None, proxy: Optional[ProxyController] = None,
-				 user_agent: Optional[str] = None,
-				 headers: Optional[dict] = None,
-				 session: Optional[Session] = None, cache_path: Optional[str] = None, timeout: int = 5):
+	             user_agent: Optional[str] = None,
+	             headers: Optional[dict] = None,
+	             session: Optional[Session] = None, cache_path: Optional[str] = None, timeout: int = 5):
 		if api_key is None:
 			api_keys_config = config('NKPA_API_KEY', default=None, cast=str)
 			if api_keys_config is None:
@@ -35,7 +35,7 @@ class NKPA:
 			api_key = random.choice(api_keys_config.split('||'))
 		self.api_key = api_key
 		self.session = Connector(api_key=api_key, proxy=proxy, session=session, user_agent=user_agent, headers=headers,
-								 timeout=timeout)
+		                         timeout=timeout)
 		self.cache = CacheController(cache_path)
 
 	def get_api_url(self, method: str, version: str = '2.2', **query) -> str:

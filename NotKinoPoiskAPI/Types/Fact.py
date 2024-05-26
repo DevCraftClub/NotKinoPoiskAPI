@@ -11,6 +11,5 @@ class Fact:
 	spoiler: bool = False
 
 	def __post_init__(self):
-
 		if self.type is not None and isinstance(self.type, str):
 			self.type = ObjectController.find_enum(self.type, FactType)

@@ -8,7 +8,6 @@ from requests import Session
 
 from NotKinoPoiskAPI.Controller.ProxyController import ProxyController
 from NotKinoPoiskAPI.Errors.ApiError import ApiError
-from NotKinoPoiskAPI.Types.ProxyItem import ProxyItem
 
 
 @dataclass
@@ -47,8 +46,8 @@ class Connector:
 			self.headers = {}
 		self.session.headers.update(self.headers)
 		self.session.headers.update({
-			'X-API-KEY': self.api_key,
-			'Content-Type': 'application/json',
+				'X-API-KEY'   : self.api_key,
+				'Content-Type': 'application/json',
 		})
 
 		self.set_proxy()
@@ -90,11 +89,11 @@ class Connector:
 
 		try:
 			response = self.session.request(method=method, url=url, params=params, data=data, json=json,
-											timeout=self.timeout)
+			                                timeout=self.timeout)
 
 			if response.status_code != 200:
 				raise Exception(
-					f"Ошибка: {response.status_code}.\nОписание: {ApiError.get_error_description(response.status_code)}")
+						f"Ошибка: {response.status_code}.\nОписание: {ApiError.get_error_description(response.status_code)}")
 
 			return response.json()
 		except Exception as e:

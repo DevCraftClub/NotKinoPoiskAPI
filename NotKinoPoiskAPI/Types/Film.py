@@ -1,10 +1,10 @@
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Optional, Union, List
+from typing import List, Optional, Union
 
 from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
-from NotKinoPoiskAPI.Enums.ProductionStatus import ProductionStatus
 from NotKinoPoiskAPI.Enums.MovieType import MovieType
+from NotKinoPoiskAPI.Enums.ProductionStatus import ProductionStatus
 from NotKinoPoiskAPI.Types.Country import Country
 from NotKinoPoiskAPI.Types.Genre import Genre
 

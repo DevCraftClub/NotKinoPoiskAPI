@@ -1,4 +1,4 @@
-from typing import Optional, List
+from typing import List, Optional
 
 from requests import Session
 
@@ -15,9 +15,10 @@ class KpStaff(NKPA):
 	Класс для работы с сотрудниками фильмов и сериалов. Эндпоийнт /staff и /persons
 	"""
 
-	def __init__(self, api_key: Optional[str] = None, proxy: Optional[ProxyController] = None, user_agent: Optional[str] = None,
-				 headers: Optional[dict] = None,
-				 session: Optional[Session] = None, cache_path: Optional[str] = None, timeout: int = 5):
+	def __init__(self, api_key: Optional[str] = None, proxy: Optional[ProxyController] = None,
+	             user_agent: Optional[str] = None,
+	             headers: Optional[dict] = None,
+	             session: Optional[Session] = None, cache_path: Optional[str] = None, timeout: int = 5):
 		super().__init__(api_key=api_key, proxy=proxy, user_agent=user_agent, headers=headers, session=session,
 		                 cache_path=cache_path, timeout=timeout)
 
@@ -28,7 +29,8 @@ class KpStaff(NKPA):
 		:param film_id: ID фильма.
 		:return list[StaffResponse]
 		"""
-		return ObjectController.list_to_object(self.get_data(self.get_api_url('staff', '1', filmId=film_id)), StaffResponse)
+		return ObjectController.list_to_object(self.get_data(self.get_api_url('staff', '1', filmId=film_id)),
+		                                       StaffResponse)
 
 	def get_staff(self, person_id: int) -> PersonResponse:
 		"""
@@ -37,7 +39,7 @@ class KpStaff(NKPA):
 		:param person_id: ID сотрудника.
 		:return PersonResponse
 		"""
-		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'staff/{person_id}')), PersonResponse)
+		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'staff/{person_id}', '1')), PersonResponse)
 
 	def get_persons(self, name: str) -> PersonByNameResponse:
 		"""
@@ -46,4 +48,5 @@ class KpStaff(NKPA):
 		:param name: Имя сотрудника.
 		:return PersonByNameResponse
 		"""
-		return ObjectController.json_to_object(self.get_data(self.get_api_url('persons', '1', name=name)), PersonByNameResponse)
+		return ObjectController.json_to_object(self.get_data(self.get_api_url('persons', '1', name=name)),
+		                                       PersonByNameResponse)

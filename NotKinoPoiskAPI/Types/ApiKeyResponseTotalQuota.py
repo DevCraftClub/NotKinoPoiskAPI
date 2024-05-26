@@ -10,4 +10,3 @@ class ApiKeyResponseTotalQuota:
 	"""
 	value: int
 	used: int
-	

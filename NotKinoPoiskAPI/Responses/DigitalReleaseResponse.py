@@ -1,6 +1,5 @@
-from typing import Union, List
-
 from dataclasses import dataclass, field
+from typing import List, Union
 
 from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Types.DigitalReleaseItem import DigitalReleaseItem

@@ -1,6 +1,5 @@
-from typing import Optional, Union, List
-
 from dataclasses import dataclass, field
+from typing import List, Optional, Union
 
 from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Types.Country import Country
@@ -43,4 +42,3 @@ class PremiereResponseItem:
 		title += f" [Премьера: {self.premiereRu}]"
 
 		return str(title).strip()
-	

@@ -1,6 +1,5 @@
-from typing import Optional, Union, List
-
 from dataclasses import dataclass, field
+from typing import List, Optional, Union
 
 from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Enums.DistributionSubType import DistributionSubType
@@ -20,7 +19,8 @@ class Distribution:
 
 	def __post_init__(self):
 		self.companies = ObjectController.list_to_object(self.companies, Company)
-		if self.country is not None and isinstance(self.country, str): self.country = ObjectController.json_to_object(self.country, Country)
+		if self.country is not None and isinstance(self.country, str): self.country = ObjectController.json_to_object(
+			self.country, Country)
 
 		if isinstance(self.type, str):
 			self.type = ObjectController.find_enum(self.type, DistributionType)

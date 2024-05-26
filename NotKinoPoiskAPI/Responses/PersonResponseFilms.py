@@ -1,6 +1,5 @@
-from typing import Optional
-
 from dataclasses import dataclass
+from typing import Optional
 
 from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Enums.Profession import Profession

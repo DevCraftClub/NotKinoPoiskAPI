@@ -15,7 +15,6 @@ class PremiereMonth(Enum):
 	NOVEMBER = 11
 	DECEMBER = 12
 
-
 	@classmethod
 	def get_month(cls, month: int) -> "PremiereMonth":
 		return cls(month)
