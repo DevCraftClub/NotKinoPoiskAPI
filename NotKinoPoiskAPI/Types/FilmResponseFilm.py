@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Enums.RelationType import RelationType
 
 
@@ -21,6 +22,10 @@ class FilmResponseFilm:
 	posterUrl: str
 	posterUrlPreview: str
 	relationType: RelationType
+
+	def __post_init__(self):
+		if isinstance(self.relationType, str):
+			self.relationType = ObjectController.find_enum(self.relationType, RelationType)
 
 	def __str__(self):
 		title = self.nameRu

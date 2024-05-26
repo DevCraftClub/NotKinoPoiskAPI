@@ -20,7 +20,13 @@ class Distribution:
 
 	def __post_init__(self):
 		self.companies = ObjectController.list_to_object(self.companies, Company)
-		self.country = ObjectController.json_to_object(self.country, Country)
+		if self.country is not None and isinstance(self.country, str): self.country = ObjectController.json_to_object(self.country, Country)
+
+		if isinstance(self.type, str):
+			self.type = ObjectController.find_enum(self.type, DistributionType)
+
+		if self.subType is not None and isinstance(self.subType, str):
+			self.subType = ObjectController.find_enum(self.subType, DistributionSubType)
 
 	def add_company(self, company: Union[Company, list[Company]]):
 		if isinstance(company, list):

@@ -2,6 +2,7 @@ from typing import Optional
 
 from dataclasses import dataclass
 
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Enums.Profession import Profession
 
 
@@ -24,6 +25,10 @@ class PersonResponseFilms:
 	general: bool
 	description: Optional[str]
 	professionKey: Optional[Profession]
+
+	def __post_init__(self):
+		if self.professionKey is not None and isinstance(self.professionKey, str):
+			self.professionKey = ObjectController.find_enum(self.professionKey, Profession)
 
 	def __str__(self):
 		"""

@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
 from NotKinoPoiskAPI.Enums.ApiAccountType import ApiAccountType
 from NotKinoPoiskAPI.Types.ApiKeyResponseDailyQuota import ApiKeyResponseDailyQuota
 from NotKinoPoiskAPI.Types.ApiKeyResponseTotalQuota import ApiKeyResponseTotalQuota
@@ -17,8 +18,8 @@ class ApiKeyResponse:
 
 	def __post_init__(self):
 		if isinstance(self.totalQuota, dict):
-			self.totalQuota = ApiKeyResponseTotalQuota(**self.totalQuota)
+			self.totalQuota = ObjectController.json_to_object(self.totalQuota, ApiKeyResponseTotalQuota)
 		if isinstance(self.dailyQuota, dict):
-			self.dailyQuota = ApiKeyResponseDailyQuota(**self.dailyQuota)
-		if isinstance(self.accountType, dict):
-			self.accountType = ApiAccountType(self.accountType)
+			self.dailyQuota = ObjectController.json_to_object(self.dailyQuota, ApiKeyResponseDailyQuota)
+		if isinstance(self.accountType, str):
+			self.accountType = ObjectController.find_enum(self.accountType, ApiAccountType)
