@@ -14,14 +14,16 @@ from NotKinoPoiskAPI.Errors.ApiError import ApiError
 class Connector:
 	"""
 	Класс для подключения к API.
-	:param proxy: Прокси для подключения.
-	:param session: Сессия для запросов.
-	:param user_agent: User-Agent для запросов.
-	:param headers: Дополнительные заголовки.
-	:param method: Метод запроса.
-	:param timeout: Время ожидания ответа.
+
+	:param str api_key: API-Key для подключения.
+	:param ProxyController proxy: Прокси для подключения.
+	:param Session session: Сессия для запросов.
+	:param str user_agent: User-Agent для запросов.
+	:param dict headers: Дополнительные заголовки.
+	:param int timeout: Время ожидания ответа.
 	"""
 	api_key: str
+	"""API-Key для подключения"""
 	proxy: Optional[ProxyController]
 	session: Optional[Session]
 	user_agent: Optional[str]
@@ -80,11 +82,16 @@ class Connector:
 	def send(self, url: str, params: dict = None, data: dict = None, json: dict = None, method: str = 'GET'):
 		"""
 		Отправка запроса.
-		:param url: URL запроса.
-		:param params: Параметры запроса.
-		:param data: Данные запроса.
-		:param json: JSON данные запроса.
-		:param method: Метод запроса.
+
+		:param str url: URL запроса.
+		:param dict params: Параметры запроса.
+		:param dict data: Данные запроса.
+		:param dict json: JSON данные запроса.
+		:param str method: Метод запроса.
+
+		:return: Возвращает JSON объект в случае удачи. При ошибке выбрасывает её и останавливает скрипт
+
+		:rtype: dict
 		"""
 
 		try:
