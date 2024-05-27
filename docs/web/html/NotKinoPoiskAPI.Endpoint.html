@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NotKinoPoiskAPI.Endpoint package &mdash; документация NotKinoPoiskAPI 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+    <link rel="shortcut icon" href="_static/ntkpapi.jpg"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=e35015f7"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=29b1f277"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            NotKinoPoiskAPI
+              <img src="_static/ntkpapi.jpg" class="logo" alt="Логотип"/>
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="_autosummary/NotKinoPoiskAPI.html">NotKinoPoiskAPI</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NotKinoPoiskAPI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">NotKinoPoiskAPI.Endpoint package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/NotKinoPoiskAPI.Endpoint.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="notkinopoiskapi-endpoint-package">
+<h1>NotKinoPoiskAPI.Endpoint package<a class="headerlink" href="#notkinopoiskapi-endpoint-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-NotKinoPoiskAPI.Endpoint.Films">
+<span id="notkinopoiskapi-endpoint-films-module"></span><h2>NotKinoPoiskAPI.Endpoint.Films module<a class="headerlink" href="#module-NotKinoPoiskAPI.Endpoint.Films" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Films.KpFilms">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">NotKinoPoiskAPI.Endpoint.Films.</span></span><span class="sig-name descname"><span class="pre">KpFilms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proxy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="NotKinoPoiskAPI.Controller.html#NotKinoPoiskAPI.Controller.ProxyController.ProxyController" title="NotKinoPoiskAPI.Controller.ProxyController.ProxyController"><span class="pre">ProxyController</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_agent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Films.html#KpFilms"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#NotKinoPoiskAPI.Endpoint.NKPA.NKPA" title="NotKinoPoiskAPI.Endpoint.NKPA.NKPA"><code class="xref py py-class docutils literal notranslate"><span class="pre">NKPA</span></code></a></p>
+<p>Класс для работы непосредственно с Endpoint /films с API неофициального кинопоиска</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_box_office">
+<span class="sig-name descname"><span class="pre">get_box_office</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">film_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.BoxOfficeResponse.BoxOfficeResponse" title="NotKinoPoiskAPI.Responses.BoxOfficeResponse.BoxOfficeResponse"><span class="pre">BoxOfficeResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Films.html#KpFilms.get_box_office"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_box_office" title="Link to this definition"></a></dt>
+<dd><p>Данный эндпоинт возвращает данные о кассовых сборах фильма.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v2.2/films/{id}/box_office</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>film_id</strong> (<em>int</em>) – ID фильма.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает данные о кассовых сборах фильма</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.BoxOfficeResponse.BoxOfficeResponse" title="NotKinoPoiskAPI.Responses.BoxOfficeResponse.BoxOfficeResponse">BoxOfficeResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_collections">
+<span class="sig-name descname"><span class="pre">get_collections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">col_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="NotKinoPoiskAPI.Enums.html#NotKinoPoiskAPI.Enums.CollectionType.CollectionType" title="NotKinoPoiskAPI.Enums.CollectionType.CollectionType"><span class="pre">CollectionType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">CollectionType.TOP_POPULAR_ALL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.FilmCollectionResponse.FilmCollectionResponse" title="NotKinoPoiskAPI.Responses.FilmCollectionResponse.FilmCollectionResponse"><span class="pre">FilmCollectionResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Films.html#KpFilms.get_collections"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_collections" title="Link to this definition"></a></dt>
+<dd><p>Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v2.2/films/collections</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>col_type</strong> (<a class="reference internal" href="NotKinoPoiskAPI.Enums.html#NotKinoPoiskAPI.Enums.CollectionType.CollectionType" title="NotKinoPoiskAPI.Enums.CollectionType.CollectionType"><em>CollectionType</em></a>) – Тип коллекции</p></li>
+<li><p><strong>page</strong> (<em>int</em>) – Номер страницы</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает список фильмов с пагинацией</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.FilmCollectionResponse.FilmCollectionResponse" title="NotKinoPoiskAPI.Responses.FilmCollectionResponse.FilmCollectionResponse">FilmCollectionResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_distributions">
+<span class="sig-name descname"><span class="pre">get_distributions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">film_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.DistributionResponse.DistributionResponse" title="NotKinoPoiskAPI.Responses.DistributionResponse.DistributionResponse"><span class="pre">DistributionResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Films.html#KpFilms.get_distributions"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_distributions" title="Link to this definition"></a></dt>
+<dd><p>Данный эндпоинт возвращает данные о прокате в разных странах.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v2.2/films/{id}/distributions</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>film_id</strong> (<em>int</em>) – ID фильма.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает данные о прокате в разных странах</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.DistributionResponse.DistributionResponse" title="NotKinoPoiskAPI.Responses.DistributionResponse.DistributionResponse">DistributionResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_external_sources">
+<span class="sig-name descname"><span class="pre">get_external_sources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">film_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.ExternalSourceResponse.ExternalSourceResponse" title="NotKinoPoiskAPI.Responses.ExternalSourceResponse.ExternalSourceResponse"><span class="pre">ExternalSourceResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Films.html#KpFilms.get_external_sources"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_external_sources" title="Link to this definition"></a></dt>
+<dd><p>Возвращает список сайтов с пагинацией. Каждая страница содержит не более чем 20 рецензий.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v2.2/films/{id}/external_sources</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>film_id</strong> (<em>int</em>) – ID фильма.</p></li>
+<li><p><strong>page</strong> (<em>int</em>) – Номер страницы.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает список сайтов с пагинацией</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.ExternalSourceResponse.ExternalSourceResponse" title="NotKinoPoiskAPI.Responses.ExternalSourceResponse.ExternalSourceResponse">ExternalSourceResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film">
+<span class="sig-name descname"><span class="pre">get_film</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">film_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Types.html#NotKinoPoiskAPI.Types.Film.Film" title="NotKinoPoiskAPI.Types.Film.Film"><span class="pre">Film</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Films.html#KpFilms.get_film"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film" title="Link to this definition"></a></dt>
+<dd><p>Метод для получения информации о фильме
+Данный эндпоинт возвращает базовые данные о фильме. Поле lastSync показывает дату последнего обновления данных.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v2.2/films/{id}</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>film_id</strong> (<em>int</em>) – ID фильма.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Информация о фильме</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Types.html#NotKinoPoiskAPI.Types.Film.Film" title="NotKinoPoiskAPI.Types.Film.Film">Film</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_awards">
+<span class="sig-name descname"><span class="pre">get_film_awards</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">film_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.AwardResponse.AwardResponse" title="NotKinoPoiskAPI.Responses.AwardResponse.AwardResponse"><span class="pre">AwardResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Films.html#KpFilms.get_film_awards"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_awards" title="Link to this definition"></a></dt>
+<dd><p>Данный эндпоинт возвращает данные о наградах и премиях фильма.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v2.2/films/{id}/awards</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>film_id</strong> (<em>int</em>) – ID фильма.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает данные о наградах и премиях фильма</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.AwardResponse.AwardResponse" title="NotKinoPoiskAPI.Responses.AwardResponse.AwardResponse">AwardResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_facts">
+<span class="sig-name descname"><span class="pre">get_film_facts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">film_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.FactResponse.FactResponse" title="NotKinoPoiskAPI.Responses.FactResponse.FactResponse"><span class="pre">FactResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Films.html#KpFilms.get_film_facts"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_facts" title="Link to this definition"></a></dt>
+<dd><p>Данный эндпоинт возвращает список фактов и ошибок в фильме.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v2.2/films/{id}/facts</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>film_id</strong> (<em>int</em>) – ID фильма.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает список фактов и ошибок в фильме</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.FactResponse.FactResponse" title="NotKinoPoiskAPI.Responses.FactResponse.FactResponse">FactResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_prequels_and_sequels">
+<span class="sig-name descname"><span class="pre">get_film_prequels_and_sequels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">film_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.FilmSequelsAndPrequelsResponse.FilmSequelsAndPrequelsResponse" title="NotKinoPoiskAPI.Responses.FilmSequelsAndPrequelsResponse.FilmSequelsAndPrequelsResponse"><span class="pre">FilmSequelsAndPrequelsResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Films.html#KpFilms.get_film_prequels_and_sequels"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_prequels_and_sequels" title="Link to this definition"></a></dt>
+<dd><p>Возвращает список частей, что связаны с фильмом</p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v2.1/films/{id}/sequels_and_prequels</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>film_id</strong> (<em>int</em>)</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает список частей, что связаны с фильмом</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.FilmSequelsAndPrequelsResponse.FilmSequelsAndPrequelsResponse" title="NotKinoPoiskAPI.Responses.FilmSequelsAndPrequelsResponse.FilmSequelsAndPrequelsResponse">FilmSequelsAndPrequelsResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_videos">
+<span class="sig-name descname"><span class="pre">get_film_videos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">film_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.VideoResponse.VideoResponse" title="NotKinoPoiskAPI.Responses.VideoResponse.VideoResponse"><span class="pre">VideoResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Films.html#KpFilms.get_film_videos"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_videos" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><p>Данный эндпоинт возвращает трейлеры, тизеры, видео для фильма по kinopoisk film id. В данный момент доступно три site:</p>
+<ul class="simple">
+<li><p>YOUTUBE - в этом случае url это просто ссылка на youtube видео.</p></li>
+<li><p>YANDEX_DISK - в этом случае url это ссылка на yandex disk.</p></li>
+<li><p>KINOPOISK_WIDGET - в этом случае url это ссылка на кинопоиск виджет. Например <a class="reference external" href="https://widgets.kinopoisk.ru/discovery/trailer/123573?onlyPlayer=1&amp;autoplay=1&amp;cover=1">https://widgets.kinopoisk.ru/discovery/trailer/123573?onlyPlayer=1&amp;autoplay=1&amp;cover=1</a>.</p></li>
+</ul>
+<p>Если вы хотите вставить этот виджет на вашу страницу, вы можете сделать следующее:</p>
+</div></blockquote>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Подключение виджета на сайт</span><a class="headerlink" href="#id1" title="Link to this code"></a></div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/@ungap/custom-elements-builtin&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos">2</span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/x-frame-bypass&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos">3</span><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">is</span><span class="o">=</span><span class="s">&quot;x-frame-bypass&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://widgets.kinopoisk.ru/discovery/trailer/167560?onlyPlayer=1&amp;autoplay=1&amp;cover=1&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;500&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;500&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v2.2/films/{id}/videos</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>film_id</strong> (<em>int</em>) – ID фильма.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>возвращает трейлеры, тизеры, видео для фильма</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.VideoResponse.VideoResponse" title="NotKinoPoiskAPI.Responses.VideoResponse.VideoResponse">VideoResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_films">
+<span class="sig-name descname"><span class="pre">get_films</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">countries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genres</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imdbId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyword</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="NotKinoPoiskAPI.Enums.html#NotKinoPoiskAPI.Enums.FilmsFilterOrder.FilmFilterOrder" title="NotKinoPoiskAPI.Enums.FilmsFilterOrder.FilmFilterOrder"><span class="pre">FilmFilterOrder</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">FilmFilterOrder.RATING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="NotKinoPoiskAPI.Enums.html#NotKinoPoiskAPI.Enums.MovieType.MovieType" title="NotKinoPoiskAPI.Enums.MovieType.MovieType"><span class="pre">MovieType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">MovieType.ALL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratingFrom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratingTo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yearFrom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yearTo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.FilmSearchByFiltersResponse.FilmSearchByFiltersResponse" title="NotKinoPoiskAPI.Responses.FilmSearchByFiltersResponse.FilmSearchByFiltersResponse"><span class="pre">FilmSearchByFiltersResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Films.html#KpFilms.get_films"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_films" title="Link to this definition"></a></dt>
+<dd><p>Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов. Данный эндпоинт не возращает более 400 фильмов. Используй /api/v2.2/films/filters чтобы получить id стран и жанров.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>На данный момент можно указать не более одной страны и жанра.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v2.2/films</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>countries</strong> (<em>Optional</em><em>[</em><em>Union</em><em>[</em><em>int</em><em>, </em><em>list</em><em>[</em><em>int</em><em>]</em><em>, </em><em>str</em><em>]</em><em>]</em>) – список id стран разделенные запятой. Например countries=1,2,3. На данный момент можно указать не более одной страны.</p></li>
+<li><p><strong>genres</strong> (<em>Optional</em><em>[</em><em>Union</em><em>[</em><em>int</em><em>, </em><em>list</em><em>[</em><em>int</em><em>]</em><em>, </em><em>str</em><em>]</em><em>]</em>) – список id жанров разделенные запятой. Например genres=1,2,3. На данный момент можно указать не более одного жанра.</p></li>
+<li><p><strong>imdbId</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – ID с IMDB</p></li>
+<li><p><strong>keyword</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – ключевое слово, которое встречается в названии фильма</p></li>
+<li><p><strong>order</strong> (<a class="reference internal" href="NotKinoPoiskAPI.Enums.html#NotKinoPoiskAPI.Enums.FilmsFilterOrder.FilmFilterOrder" title="NotKinoPoiskAPI.Enums.FilmsFilterOrder.FilmFilterOrder"><em>FilmFilterOrder</em></a>) – сортировка (RATING, NUM_VOTE, YEAR), по умолчанию: RATING</p></li>
+<li><p><strong>type</strong> (<a class="reference internal" href="NotKinoPoiskAPI.Enums.html#NotKinoPoiskAPI.Enums.MovieType.MovieType" title="NotKinoPoiskAPI.Enums.MovieType.MovieType"><em>MovieType</em></a>) – тип фильма (FILM, TV_SHOW, TV_SERIES, MINI_SERIES, ALL), по умолчанию: ALL</p></li>
+<li><p><strong>ratingFrom</strong> (<em>float</em>) – минимальный рейтинг, по умолчанию: 0</p></li>
+<li><p><strong>ratingTo</strong> (<em>float</em>) – максимальный рейтинг, по умолчанию: 10</p></li>
+<li><p><strong>yearFrom</strong> (<em>int</em>) – минимальный год, по умолчанию: 1000</p></li>
+<li><p><strong>yearTo</strong> (<em>int</em>) – максимальный год, по умолчанию: 3000</p></li>
+<li><p><strong>page</strong> (<em>int</em>) – номер страницы, по умолчанию: 1</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает список фильмов с пагинацией</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.FilmSearchByFiltersResponse.FilmSearchByFiltersResponse" title="NotKinoPoiskAPI.Responses.FilmSearchByFiltersResponse.FilmSearchByFiltersResponse">FilmSearchByFiltersResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_filters">
+<span class="sig-name descname"><span class="pre">get_filters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.FiltersResponse.FiltersResponse" title="NotKinoPoiskAPI.Responses.FiltersResponse.FiltersResponse"><span class="pre">FiltersResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Films.html#KpFilms.get_filters"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_filters" title="Link to this definition"></a></dt>
+<dd><p>Возвращает список id стран и жанров, которые могут быть использованы в /api/v2.2/films</p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v2.2/films/filters</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Возвращает список id стран и жанров</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.FiltersResponse.FiltersResponse" title="NotKinoPoiskAPI.Responses.FiltersResponse.FiltersResponse">FiltersResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_images">
+<span class="sig-name descname"><span class="pre">get_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">film_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="NotKinoPoiskAPI.Enums.html#NotKinoPoiskAPI.Enums.ImageType.ImageType" title="NotKinoPoiskAPI.Enums.ImageType.ImageType"><span class="pre">ImageType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">ImageType.STILL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.ImageResponse.ImageResponse" title="NotKinoPoiskAPI.Responses.ImageResponse.ImageResponse"><span class="pre">ImageResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Films.html#KpFilms.get_images"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_images" title="Link to this definition"></a></dt>
+<dd><p>Данный эндпоинт возвращает изображения связанные с фильмом с пагинацией. Каждая страница содержит не более чем 20 фильмов.</p>
+<p>Доступные изображения:</p>
+<ul class="simple">
+<li><p>STILL - кадры</p></li>
+<li><p>SHOOTING - изображения со съемок</p></li>
+<li><p>POSTER - постеры</p></li>
+<li><p>FAN_ART - фан-арты</p></li>
+<li><p>PROMO - промо</p></li>
+<li><p>CONCEPT - концепт-арты</p></li>
+<li><p>WALLPAPER - обои</p></li>
+<li><p>COVER - обложки</p></li>
+<li><p>SCREENSHOT - скриншоты</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v2.2/films/{id}/images</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>film_id</strong> (<em>int</em>) – ID фильма.</p></li>
+<li><p><strong>image_type</strong> (<a class="reference internal" href="NotKinoPoiskAPI.Enums.html#NotKinoPoiskAPI.Enums.ImageType.ImageType" title="NotKinoPoiskAPI.Enums.ImageType.ImageType"><em>ImageType</em></a>) – Тип изображения.</p></li>
+<li><p><strong>page</strong> (<em>int</em>) – Номер страницы.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает изображения связанные с фильмом с пагинацией</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.ImageResponse.ImageResponse" title="NotKinoPoiskAPI.Responses.ImageResponse.ImageResponse">ImageResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_premieres">
+<span class="sig-name descname"><span class="pre">get_premieres</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">month</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="NotKinoPoiskAPI.Enums.html#NotKinoPoiskAPI.Enums.KpMonth.KpMonth" title="NotKinoPoiskAPI.Enums.KpMonth.KpMonth"><span class="pre">KpMonth</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.PremiereResponse.PremiereResponse" title="NotKinoPoiskAPI.Responses.PremiereResponse.PremiereResponse"><span class="pre">PremiereResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Films.html#KpFilms.get_premieres"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_premieres" title="Link to this definition"></a></dt>
+<dd><p>Данный эндпоинт возвращает список кинопремьер. Например <a class="reference external" href="https://www.kinopoisk.ru/premiere/">https://www.kinopoisk.ru/premiere/</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v2.2/films/premieres</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>year</strong> (<em>int</em>) – Год</p></li>
+<li><p><strong>month</strong> (<a class="reference internal" href="NotKinoPoiskAPI.Enums.html#NotKinoPoiskAPI.Enums.KpMonth.KpMonth" title="NotKinoPoiskAPI.Enums.KpMonth.KpMonth"><em>KpMonth</em></a>) – Месяц. Либо в виде объекта PremiereMonth. Либо цифра от 1 до 12</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает список кинопремьер</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.PremiereResponse.PremiereResponse" title="NotKinoPoiskAPI.Responses.PremiereResponse.PremiereResponse">PremiereResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_releases">
+<span class="sig-name descname"><span class="pre">get_releases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">month</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="NotKinoPoiskAPI.Enums.html#NotKinoPoiskAPI.Enums.KpMonth.KpMonth" title="NotKinoPoiskAPI.Enums.KpMonth.KpMonth"><span class="pre">KpMonth</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.DigitalReleaseResponse.DigitalReleaseResponse" title="NotKinoPoiskAPI.Responses.DigitalReleaseResponse.DigitalReleaseResponse"><span class="pre">DigitalReleaseResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Films.html#KpFilms.get_releases"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_releases" title="Link to this definition"></a></dt>
+<dd><p>Данный эндпоинт возвращает список цифровых релизов. Например <a class="reference external" href="https://www.kinopoisk.ru/comingsoon/digital/">https://www.kinopoisk.ru/comingsoon/digital/</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v2.1/films/releases</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>year</strong> (<em>int</em>) – Год</p></li>
+<li><p><strong>month</strong> (<em>Union</em><em>[</em><a class="reference internal" href="NotKinoPoiskAPI.Enums.html#NotKinoPoiskAPI.Enums.KpMonth.KpMonth" title="NotKinoPoiskAPI.Enums.KpMonth.KpMonth"><em>KpMonth</em></a><em>, </em><em>int</em><em>]</em>) – Месяц. Либо в виде объекта <cite>KpMonth</cite> (JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER). Либо цифра от 1 до 12</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает список цифровых релизов</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.DigitalReleaseResponse.DigitalReleaseResponse" title="NotKinoPoiskAPI.Responses.DigitalReleaseResponse.DigitalReleaseResponse">DigitalReleaseResponse</a></p>
+</dd>
+<dt class="field-odd">Исключение<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – Если месяц вне диапазона от 1 до 12</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_reviews">
+<span class="sig-name descname"><span class="pre">get_reviews</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">film_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="NotKinoPoiskAPI.Enums.html#NotKinoPoiskAPI.Enums.ReviewOrder.ReviewOrder" title="NotKinoPoiskAPI.Enums.ReviewOrder.ReviewOrder"><span class="pre">ReviewOrder</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">ReviewOrder.DATE_DESC</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.ReviewResponse.ReviewResponse" title="NotKinoPoiskAPI.Responses.ReviewResponse.ReviewResponse"><span class="pre">ReviewResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Films.html#KpFilms.get_reviews"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_reviews" title="Link to this definition"></a></dt>
+<dd><p>Возвращает список рецензии зрителей с пагинацией. Каждая страница содержит не более чем 20 рецензий.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v2.2/films/{id}/reviews</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>film_id</strong> (<em>int</em>) – ID фильма.</p></li>
+<li><p><strong>page</strong> (<em>int</em>) – Номер страницы.</p></li>
+<li><p><strong>order</strong> (<a class="reference internal" href="NotKinoPoiskAPI.Enums.html#NotKinoPoiskAPI.Enums.ReviewOrder.ReviewOrder" title="NotKinoPoiskAPI.Enums.ReviewOrder.ReviewOrder"><em>ReviewOrder</em></a>) – Сортировка.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает список рецензии зрителей с пагинацией</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.ReviewResponse.ReviewResponse" title="NotKinoPoiskAPI.Responses.ReviewResponse.ReviewResponse">ReviewResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_seasons">
+<span class="sig-name descname"><span class="pre">get_seasons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">film_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.SeasonResponse.SeasonResponse" title="NotKinoPoiskAPI.Responses.SeasonResponse.SeasonResponse"><span class="pre">SeasonResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Films.html#KpFilms.get_seasons"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_seasons" title="Link to this definition"></a></dt>
+<dd><p>Метод для получения информации о сезонах фильма</p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v2.2/films/{id}/seasons</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>film_id</strong> (<em>int</em>) – ID фильма.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Информация о сезонах фильма</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.SeasonResponse.SeasonResponse" title="NotKinoPoiskAPI.Responses.SeasonResponse.SeasonResponse">SeasonResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_similars">
+<span class="sig-name descname"><span class="pre">get_similars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">film_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.RelatedFilmResponse.RelatedFilmResponse" title="NotKinoPoiskAPI.Responses.RelatedFilmResponse.RelatedFilmResponse"><span class="pre">RelatedFilmResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Films.html#KpFilms.get_similars"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_similars" title="Link to this definition"></a></dt>
+<dd><p>Данный эндпоинт возвращает похожие фильмы.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v2.2/films/{id}/similars</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>film_id</strong> (<em>int</em>) – ID фильма.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает похожие фильмы</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.RelatedFilmResponse.RelatedFilmResponse" title="NotKinoPoiskAPI.Responses.RelatedFilmResponse.RelatedFilmResponse">RelatedFilmResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.search_by_keyword">
+<span class="sig-name descname"><span class="pre">search_by_keyword</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyword</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.FilmSearchResponse.FilmSearchResponse" title="NotKinoPoiskAPI.Responses.FilmSearchResponse.FilmSearchResponse"><span class="pre">FilmSearchResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Films.html#KpFilms.search_by_keyword"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.search_by_keyword" title="Link to this definition"></a></dt>
+<dd><p>Поиск фильмов и сериалов по ключевому слову. Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v2.1/films/search-by-keyword</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>keyword</strong> (<em>str</em>) – ключивые слова для поиска</p></li>
+<li><p><strong>page</strong> (<em>int</em>) – номер страницы</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает список фильмов с пагинацией</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.FilmSearchResponse.FilmSearchResponse" title="NotKinoPoiskAPI.Responses.FilmSearchResponse.FilmSearchResponse">FilmSearchResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-NotKinoPoiskAPI.Endpoint.KpUser">
+<span id="notkinopoiskapi-endpoint-kpuser-module"></span><h2>NotKinoPoiskAPI.Endpoint.KpUser module<a class="headerlink" href="#module-NotKinoPoiskAPI.Endpoint.KpUser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.KpUser.KpUser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">NotKinoPoiskAPI.Endpoint.KpUser.</span></span><span class="sig-name descname"><span class="pre">KpUser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proxy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="NotKinoPoiskAPI.Controller.html#NotKinoPoiskAPI.Controller.ProxyController.ProxyController" title="NotKinoPoiskAPI.Controller.ProxyController.ProxyController"><span class="pre">ProxyController</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_agent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/KpUser.html#KpUser"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.KpUser.KpUser" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#NotKinoPoiskAPI.Endpoint.NKPA.NKPA" title="NotKinoPoiskAPI.Endpoint.NKPA.NKPA"><code class="xref py py-class docutils literal notranslate"><span class="pre">NKPA</span></code></a></p>
+<p>Класс для работы с Endpoint /kp_users с API неофициального кинопоиска</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.KpUser.KpUser.get_votes">
+<span class="sig-name descname"><span class="pre">get_votes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.KinopoiskUserVoteResponse.KinopoiskUserVoteResponse" title="NotKinoPoiskAPI.Responses.KinopoiskUserVoteResponse.KinopoiskUserVoteResponse"><span class="pre">KinopoiskUserVoteResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/KpUser.html#KpUser.get_votes"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.KpUser.KpUser.get_votes" title="Link to this definition"></a></dt>
+<dd><p>Метод для получения рейтинга пользователя</p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v1/kp_users/{id}/votes</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>page</strong> (<em>int</em>) – Номер страницы</p></li>
+<li><p><strong>user_id</strong> (<em>int</em>) – ID пользователя на сайте</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Рейтинга пользователя</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.KinopoiskUserVoteResponse.KinopoiskUserVoteResponse" title="NotKinoPoiskAPI.Responses.KinopoiskUserVoteResponse.KinopoiskUserVoteResponse">KinopoiskUserVoteResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-NotKinoPoiskAPI.Endpoint.Media">
+<span id="notkinopoiskapi-endpoint-media-module"></span><h2>NotKinoPoiskAPI.Endpoint.Media module<a class="headerlink" href="#module-NotKinoPoiskAPI.Endpoint.Media" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Media.KpMedia">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">NotKinoPoiskAPI.Endpoint.Media.</span></span><span class="sig-name descname"><span class="pre">KpMedia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proxy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="NotKinoPoiskAPI.Controller.html#NotKinoPoiskAPI.Controller.ProxyController.ProxyController" title="NotKinoPoiskAPI.Controller.ProxyController.ProxyController"><span class="pre">ProxyController</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_agent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Media.html#KpMedia"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Media.KpMedia" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#NotKinoPoiskAPI.Endpoint.NKPA.NKPA" title="NotKinoPoiskAPI.Endpoint.NKPA.NKPA"><code class="xref py py-class docutils literal notranslate"><span class="pre">NKPA</span></code></a></p>
+<p>Класс для работы с сериалами и фильмами. Эндпоийнт /media_posts</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Media.KpMedia.get_posts">
+<span class="sig-name descname"><span class="pre">get_posts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.MediaPostsResponse.MediaPostsResponse" title="NotKinoPoiskAPI.Responses.MediaPostsResponse.MediaPostsResponse"><span class="pre">MediaPostsResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Media.html#KpMedia.get_posts"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Media.KpMedia.get_posts" title="Link to this definition"></a></dt>
+<dd><p>Метод для получения медиа новостей с кинопоиска</p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v1/media_posts</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>page</strong> (<em>int</em>) – Номер страницы.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Медиа новости</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.MediaPostsResponse.MediaPostsResponse" title="NotKinoPoiskAPI.Responses.MediaPostsResponse.MediaPostsResponse">MediaPostsResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-NotKinoPoiskAPI.Endpoint.NKPA">
+<span id="notkinopoiskapi-endpoint-nkpa-module"></span><h2>NotKinoPoiskAPI.Endpoint.NKPA module<a class="headerlink" href="#module-NotKinoPoiskAPI.Endpoint.NKPA" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.NKPA.NKPA">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">NotKinoPoiskAPI.Endpoint.NKPA.</span></span><span class="sig-name descname"><span class="pre">NKPA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proxy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="NotKinoPoiskAPI.Controller.html#NotKinoPoiskAPI.Controller.ProxyController.ProxyController" title="NotKinoPoiskAPI.Controller.ProxyController.ProxyController"><span class="pre">ProxyController</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_agent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/NKPA.html#NKPA"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.NKPA.NKPA" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Класс работы с самим  Kinopoisk API Unofficial</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.NKPA.NKPA.api_key">
+<span class="sig-name descname"><span class="pre">api_key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.NKPA.NKPA.api_key" title="Link to this definition"></a></dt>
+<dd><p>API ключ</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.NKPA.NKPA.api_link">
+<span class="sig-name descname"><span class="pre">api_link</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://kinopoiskapiunofficial.tech/api'</span></em><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.NKPA.NKPA.api_link" title="Link to this definition"></a></dt>
+<dd><p>Ссылка на API</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.NKPA.NKPA.cache">
+<span class="sig-name descname"><span class="pre">cache</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="NotKinoPoiskAPI.Controller.html#NotKinoPoiskAPI.Controller.CacheController.CacheController" title="NotKinoPoiskAPI.Controller.CacheController.CacheController"><span class="pre">CacheController</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.NKPA.NKPA.cache" title="Link to this definition"></a></dt>
+<dd><p>Кеш для запросов</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.NKPA.NKPA.get_api_info">
+<span class="sig-name descname"><span class="pre">get_api_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/NKPA.html#NKPA.get_api_info"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.NKPA.NKPA.get_api_info" title="Link to this definition"></a></dt>
+<dd><p>Метод для получения информации о ключе</p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v1/api_keys/{apiKey}</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Возвращает либо утвердительный ответ, либо вызывает ошибку</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Исключение<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – Если превышен лимит запросов</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.NKPA.NKPA.get_api_url">
+<span class="sig-name descname"><span class="pre">get_api_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'2.2'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/NKPA.html#NKPA.get_api_url"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.NKPA.NKPA.get_api_url" title="Link to this definition"></a></dt>
+<dd><p>Метод для получения ссылки на метод API. Фильтрует пустые (<cite>None</cite>) данные</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>version</strong> (<em>str</em>) – Версия API.</p></li>
+<li><p><strong>method</strong> (<em>str</em>) – Метод API.</p></li>
+<li><p><strong>query</strong> (<em>dict</em>) – Параметры запроса.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Ссылка на метод API.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.NKPA.NKPA.get_data">
+<span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">link</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/NKPA.html#NKPA.get_data"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.NKPA.NKPA.get_data" title="Link to this definition"></a></dt>
+<dd><p>Запрашивает данные по эндпойнту, проверяя предварительно данные в кеше</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>link</strong> (<em>str</em>) – Ссылка на метод API.</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Данные по эндпойнту</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.NKPA.NKPA.session">
+<span class="sig-name descname"><span class="pre">session</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="NotKinoPoiskAPI.Controller.html#NotKinoPoiskAPI.Controller.Connector.Connector" title="NotKinoPoiskAPI.Controller.Connector.Connector"><span class="pre">Connector</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.NKPA.NKPA.session" title="Link to this definition"></a></dt>
+<dd><p>Сессия для запросов</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-NotKinoPoiskAPI.Endpoint.Staff">
+<span id="notkinopoiskapi-endpoint-staff-module"></span><h2>NotKinoPoiskAPI.Endpoint.Staff module<a class="headerlink" href="#module-NotKinoPoiskAPI.Endpoint.Staff" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Staff.KpStaff">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">NotKinoPoiskAPI.Endpoint.Staff.</span></span><span class="sig-name descname"><span class="pre">KpStaff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proxy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="NotKinoPoiskAPI.Controller.html#NotKinoPoiskAPI.Controller.ProxyController.ProxyController" title="NotKinoPoiskAPI.Controller.ProxyController.ProxyController"><span class="pre">ProxyController</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_agent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Staff.html#KpStaff"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Staff.KpStaff" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#NotKinoPoiskAPI.Endpoint.NKPA.NKPA" title="NotKinoPoiskAPI.Endpoint.NKPA.NKPA"><code class="xref py py-class docutils literal notranslate"><span class="pre">NKPA</span></code></a></p>
+<p>Класс для работы с сотрудниками фильмов и сериалов. Эндпоийнт /staff и /persons</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Staff.KpStaff.get_film_staff">
+<span class="sig-name descname"><span class="pre">get_film_staff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">film_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.StaffResponse.StaffResponse" title="NotKinoPoiskAPI.Responses.StaffResponse.StaffResponse"><span class="pre">StaffResponse</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Staff.html#KpStaff.get_film_staff"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Staff.KpStaff.get_film_staff" title="Link to this definition"></a></dt>
+<dd><p>Метод для получения информации о сотрудниках фильма</p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v1/staff</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>film_id</strong> (<em>int</em>) – ID фильма.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Информация о сотрудниках фильма</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.StaffResponse.StaffResponse" title="NotKinoPoiskAPI.Responses.StaffResponse.StaffResponse">StaffResponse</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Staff.KpStaff.get_persons">
+<span class="sig-name descname"><span class="pre">get_persons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.PersonByNameResponse.PersonByNameResponse" title="NotKinoPoiskAPI.Responses.PersonByNameResponse.PersonByNameResponse"><span class="pre">PersonByNameResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Staff.html#KpStaff.get_persons"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Staff.KpStaff.get_persons" title="Link to this definition"></a></dt>
+<dd><p>Метод для поиска сотрудника по имени</p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v1/persons</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>name</strong> (<em>str</em>) – Имя сотрудника.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Результат поиска</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.PersonByNameResponse.PersonByNameResponse" title="NotKinoPoiskAPI.Responses.PersonByNameResponse.PersonByNameResponse">PersonByNameResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NotKinoPoiskAPI.Endpoint.Staff.KpStaff.get_staff">
+<span class="sig-name descname"><span class="pre">get_staff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.PersonResponse.PersonResponse" title="NotKinoPoiskAPI.Responses.PersonResponse.PersonResponse"><span class="pre">PersonResponse</span></a></span></span><a class="reference internal" href="_modules/NotKinoPoiskAPI/Endpoint/Staff.html#KpStaff.get_staff"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#NotKinoPoiskAPI.Endpoint.Staff.KpStaff.get_staff" title="Link to this definition"></a></dt>
+<dd><p>Метод для получения информации о сотруднике</p>
+<dl class="field-list simple">
+<dt class="field-odd">Endpoint<span class="colon">:</span></dt>
+<dd class="field-odd"><p>/api/v1/staff/{id}</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>person_id</strong> (<em>int</em>) – ID сотрудника.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Информация о сотруднике</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="NotKinoPoiskAPI.Responses.html#NotKinoPoiskAPI.Responses.PersonResponse.PersonResponse" title="NotKinoPoiskAPI.Responses.PersonResponse.PersonResponse">PersonResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-NotKinoPoiskAPI.Endpoint">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-NotKinoPoiskAPI.Endpoint" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2024, Maxim Harder. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

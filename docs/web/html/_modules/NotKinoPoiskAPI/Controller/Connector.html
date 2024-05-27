@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NotKinoPoiskAPI.Controller.Connector &mdash; документация NotKinoPoiskAPI 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/ntkpapi.jpg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=e35015f7"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/translations.js?v=29b1f277"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            NotKinoPoiskAPI
+              <img src="../../../_static/ntkpapi.jpg" class="logo" alt="Логотип"/>
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../_autosummary/NotKinoPoiskAPI.html">NotKinoPoiskAPI</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">NotKinoPoiskAPI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Код модуля</a></li>
+      <li class="breadcrumb-item active">NotKinoPoiskAPI.Controller.Connector</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Исходный код NotKinoPoiskAPI.Controller.Connector</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">decouple</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">requests</span> <span class="kn">import</span> <span class="n">Session</span>
+
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Controller.ProxyController</span> <span class="kn">import</span> <span class="n">ProxyController</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Errors.ApiError</span> <span class="kn">import</span> <span class="n">ApiError</span>
+
+
+<div class="viewcode-block" id="Connector">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Controller.html#NotKinoPoiskAPI.Controller.Connector.Connector">[документация]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Connector</span><span class="p">:</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Класс для подключения к API.</span>
+
+<span class="sd">	:param str api_key: API-Key для подключения.</span>
+<span class="sd">	:param ProxyController proxy: Прокси для подключения.</span>
+<span class="sd">	:param Session session: Сессия для запросов.</span>
+<span class="sd">	:param str user_agent: User-Agent для запросов.</span>
+<span class="sd">	:param dict headers: Дополнительные заголовки.</span>
+<span class="sd">	:param int timeout: Время ожидания ответа.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">api_key</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;API-Key для подключения&quot;&quot;&quot;</span>
+	<span class="n">proxy</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ProxyController</span><span class="p">]</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;Прокси для подключения&quot;&quot;&quot;</span>
+	<span class="n">session</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Session</span><span class="p">]</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;Сессия для запросов&quot;&quot;&quot;</span>
+	<span class="n">user_agent</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;User-Agent для запросов&quot;&quot;&quot;</span>
+	<span class="n">headers</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;Дополнительные заголовки&quot;&quot;&quot;</span>
+	<span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;Время ожидания ответа&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Пост-Инициализация класса.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">initialize_session</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Connector.initialize_session">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Controller.html#NotKinoPoiskAPI.Controller.Connector.Connector.initialize_session">[документация]</a>
+	<span class="k">def</span> <span class="nf">initialize_session</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Инициализация сессии.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">proxy</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">proxy</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">proxy</span> <span class="o">=</span> <span class="kc">None</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">headers</span> <span class="o">=</span> <span class="p">{}</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+				<span class="s1">&#39;X-API-KEY&#39;</span>   <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">,</span>
+				<span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+		<span class="p">})</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_proxy</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">set_user_agent</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Connector.set_proxy">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Controller.html#NotKinoPoiskAPI.Controller.Connector.Connector.set_proxy">[документация]</a>
+	<span class="k">def</span> <span class="nf">set_proxy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Установка прокси.</span>
+
+<span class="sd">		:raise Exception: Если прокси недоступны.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">proxy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">proxy</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">proxy</span> <span class="k">else</span> <span class="n">ProxyController</span><span class="p">()</span>
+		<span class="k">if</span> <span class="n">proxy</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">proxy</span><span class="o">.</span><span class="n">get_proxy_list</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+			<span class="n">proxy_item</span> <span class="o">=</span> <span class="n">proxy</span><span class="o">.</span><span class="n">get_random_proxy</span><span class="p">()</span>
+			<span class="n">proxy_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">proxy_item</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">proxy_item</span><span class="p">)}</span>
+			<span class="k">try</span><span class="p">:</span>
+				<span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://httpbin.org/headers?json&#39;</span><span class="p">,</span> <span class="n">proxies</span><span class="o">=</span><span class="n">proxy_dict</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+			<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+				<span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Прокси недоступны: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">Использованные прокси: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">proxy_item</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">proxies</span> <span class="o">=</span> <span class="n">proxy_dict</span></div>
+
+
+<div class="viewcode-block" id="Connector.set_user_agent">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Controller.html#NotKinoPoiskAPI.Controller.Connector.Connector.set_user_agent">[документация]</a>
+	<span class="k">def</span> <span class="nf">set_user_agent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Установка User-Agent.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">user_agent_env</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s1">&#39;NKPA_USER_AGENT&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cast</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">user_agent_env</span><span class="p">:</span>
+			<span class="n">user_agents</span> <span class="o">=</span> <span class="n">user_agent_env</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;||&#39;</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">user_agent</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">user_agents</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_agent</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="Connector.send">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Controller.html#NotKinoPoiskAPI.Controller.Connector.Connector.send">[документация]</a>
+	<span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">json</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;GET&#39;</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Отправка запроса.</span>
+
+<span class="sd">		:param str url: URL запроса.</span>
+<span class="sd">		:param dict params: Параметры запроса.</span>
+<span class="sd">		:param dict data: Данные запроса.</span>
+<span class="sd">		:param dict json: JSON данные запроса.</span>
+<span class="sd">		:param str method: Метод запроса.</span>
+
+<span class="sd">		:return: Возвращает JSON объект в случае удачи. При ошибке выбрасывает её и останавливает скрипт</span>
+
+<span class="sd">		:raise Exception: Если подключение к API произошло неуспешно</span>
+
+<span class="sd">		:rtype: dict</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+
+		<span class="k">try</span><span class="p">:</span>
+			<span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">,</span>
+			                                <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+
+			<span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+				<span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+						<span class="sa">f</span><span class="s2">&quot;Ошибка: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">Описание: </span><span class="si">{</span><span class="n">ApiError</span><span class="o">.</span><span class="n">get_error_description</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+			<span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+		<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+			<span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Произошла ошибка: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2024, Maxim Harder. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

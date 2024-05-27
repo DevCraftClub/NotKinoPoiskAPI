@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NotKinoPoiskAPI.Endpoint.Films &mdash; документация NotKinoPoiskAPI 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/ntkpapi.jpg"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=e35015f7"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/translations.js?v=29b1f277"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            NotKinoPoiskAPI
+              <img src="../../../_static/ntkpapi.jpg" class="logo" alt="Логотип"/>
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../_autosummary/NotKinoPoiskAPI.html">NotKinoPoiskAPI</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">NotKinoPoiskAPI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Код модуля</a></li>
+      <li class="breadcrumb-item active">NotKinoPoiskAPI.Endpoint.Films</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Исходный код NotKinoPoiskAPI.Endpoint.Films</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">from</span> <span class="nn">requests</span> <span class="kn">import</span> <span class="n">Session</span>
+
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Endpoint.NKPA</span> <span class="kn">import</span> <span class="n">NKPA</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Controller.ObjectController</span> <span class="kn">import</span> <span class="n">ObjectController</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Controller.ProxyController</span> <span class="kn">import</span> <span class="n">ProxyController</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Enums.CollectionType</span> <span class="kn">import</span> <span class="n">CollectionType</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Enums.FilmsFilterOrder</span> <span class="kn">import</span> <span class="n">FilmFilterOrder</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Enums.ImageType</span> <span class="kn">import</span> <span class="n">ImageType</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Enums.MovieType</span> <span class="kn">import</span> <span class="n">MovieType</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Enums.KpMonth</span> <span class="kn">import</span> <span class="n">KpMonth</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Enums.ReviewOrder</span> <span class="kn">import</span> <span class="n">ReviewOrder</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Responses.AwardResponse</span> <span class="kn">import</span> <span class="n">AwardResponse</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Responses.BoxOfficeResponse</span> <span class="kn">import</span> <span class="n">BoxOfficeResponse</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Responses.DigitalReleaseResponse</span> <span class="kn">import</span> <span class="n">DigitalReleaseResponse</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Responses.DistributionResponse</span> <span class="kn">import</span> <span class="n">DistributionResponse</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Responses.ExternalSourceResponse</span> <span class="kn">import</span> <span class="n">ExternalSourceResponse</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Responses.FactResponse</span> <span class="kn">import</span> <span class="n">FactResponse</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Responses.FilmCollectionResponse</span> <span class="kn">import</span> <span class="n">FilmCollectionResponse</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Responses.FilmSearchByFiltersResponse</span> <span class="kn">import</span> <span class="n">FilmSearchByFiltersResponse</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Responses.FilmSearchResponse</span> <span class="kn">import</span> <span class="n">FilmSearchResponse</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Responses.FilmSequelsAndPrequelsResponse</span> <span class="kn">import</span> <span class="n">FilmSequelsAndPrequelsResponse</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Responses.FiltersResponse</span> <span class="kn">import</span> <span class="n">FiltersResponse</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Responses.ImageResponse</span> <span class="kn">import</span> <span class="n">ImageResponse</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Responses.PremiereResponse</span> <span class="kn">import</span> <span class="n">PremiereResponse</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Responses.RelatedFilmResponse</span> <span class="kn">import</span> <span class="n">RelatedFilmResponse</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Responses.ReviewResponse</span> <span class="kn">import</span> <span class="n">ReviewResponse</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Responses.SeasonResponse</span> <span class="kn">import</span> <span class="n">SeasonResponse</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Responses.VideoResponse</span> <span class="kn">import</span> <span class="n">VideoResponse</span>
+<span class="kn">from</span> <span class="nn">NotKinoPoiskAPI.Types.Film</span> <span class="kn">import</span> <span class="n">Film</span>
+
+
+<div class="viewcode-block" id="KpFilms">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Endpoint.html#NotKinoPoiskAPI.Endpoint.Films.KpFilms">[документация]</a>
+<span class="k">class</span> <span class="nc">KpFilms</span><span class="p">(</span><span class="n">NKPA</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Класс для работы непосредственно с Endpoint /films с API неофициального кинопоиска</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">proxy</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ProxyController</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+	             <span class="n">user_agent</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+	             <span class="n">headers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+	             <span class="n">session</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Session</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">cache_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Конструктор класса</span>
+
+<span class="sd">		:param str api_key: API-Key для подключения.</span>
+<span class="sd">		:param ProxyController proxy: Прокси для подключения.</span>
+<span class="sd">		:param Session session: Сессия для запросов.</span>
+<span class="sd">		:param str user_agent: User-Agent для запросов.</span>
+<span class="sd">		:param dict headers: Дополнительные заголовки.</span>
+<span class="sd">		:param int timeout: Время ожидания ответа.</span>
+<span class="sd">		:param str cache_path: Путь к папке кеша.</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">,</span> <span class="n">proxy</span><span class="o">=</span><span class="n">proxy</span><span class="p">,</span> <span class="n">user_agent</span><span class="o">=</span><span class="n">user_agent</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">,</span>
+		                 <span class="n">cache_path</span><span class="o">=</span><span class="n">cache_path</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+
+<div class="viewcode-block" id="KpFilms.get_film">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Endpoint.html#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film">[документация]</a>
+	<span class="k">def</span> <span class="nf">get_film</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">film_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Film</span><span class="p">:</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Метод для получения информации о фильме</span>
+<span class="sd">		Данный эндпоинт возвращает базовые данные о фильме. Поле lastSync показывает дату последнего обновления данных.</span>
+
+<span class="sd">		:Endpoint: /api/v2.2/films/{id}</span>
+<span class="sd">		:param int film_id: ID фильма.</span>
+<span class="sd">		:return: Информация о фильме</span>
+<span class="sd">		:rtype: Film</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">ObjectController</span><span class="o">.</span><span class="n">json_to_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_api_url</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;films/</span><span class="si">{</span><span class="n">film_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)),</span> <span class="n">Film</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KpFilms.get_seasons">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Endpoint.html#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_seasons">[документация]</a>
+	<span class="k">def</span> <span class="nf">get_seasons</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">film_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SeasonResponse</span><span class="p">:</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Метод для получения информации о сезонах фильма</span>
+
+<span class="sd">		:Endpoint: /api/v2.2/films/{id}/seasons</span>
+<span class="sd">		:param int film_id: ID фильма.</span>
+<span class="sd">		:return: Информация о сезонах фильма</span>
+<span class="sd">		:rtype: SeasonResponse</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">ObjectController</span><span class="o">.</span><span class="n">json_to_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_api_url</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;films/</span><span class="si">{</span><span class="n">film_id</span><span class="si">}</span><span class="s1">/seasons&#39;</span><span class="p">)),</span>
+		                                       <span class="n">SeasonResponse</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KpFilms.get_film_facts">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Endpoint.html#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_facts">[документация]</a>
+	<span class="k">def</span> <span class="nf">get_film_facts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">film_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FactResponse</span><span class="p">:</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Данный эндпоинт возвращает список фактов и ошибок в фильме.</span>
+
+<span class="sd">		:Endpoint: /api/v2.2/films/{id}/facts</span>
+<span class="sd">		:param int film_id: ID фильма.</span>
+<span class="sd">		:return:  Возвращает список фактов и ошибок в фильме</span>
+<span class="sd">		:rtype: FactResponse</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">ObjectController</span><span class="o">.</span><span class="n">json_to_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_api_url</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;films/</span><span class="si">{</span><span class="n">film_id</span><span class="si">}</span><span class="s1">/facts&#39;</span><span class="p">)),</span> <span class="n">FactResponse</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KpFilms.get_distributions">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Endpoint.html#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_distributions">[документация]</a>
+	<span class="k">def</span> <span class="nf">get_distributions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">film_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DistributionResponse</span><span class="p">:</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Данный эндпоинт возвращает данные о прокате в разных странах.</span>
+
+<span class="sd">		:Endpoint: /api/v2.2/films/{id}/distributions</span>
+<span class="sd">		:param int film_id: ID фильма.</span>
+<span class="sd">		:return: Возвращает данные о прокате в разных странах</span>
+<span class="sd">		:rtype: DistributionResponse</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">ObjectController</span><span class="o">.</span><span class="n">json_to_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_api_url</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;films/</span><span class="si">{</span><span class="n">film_id</span><span class="si">}</span><span class="s1">/distributions&#39;</span><span class="p">)),</span>
+		                                       <span class="n">DistributionResponse</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KpFilms.get_box_office">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Endpoint.html#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_box_office">[документация]</a>
+	<span class="k">def</span> <span class="nf">get_box_office</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">film_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BoxOfficeResponse</span><span class="p">:</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Данный эндпоинт возвращает данные о кассовых сборах фильма.</span>
+
+<span class="sd">		:Endpoint: /api/v2.2/films/{id}/box_office</span>
+<span class="sd">		:param int film_id: ID фильма.</span>
+<span class="sd">		:return: Возвращает данные о кассовых сборах фильма</span>
+<span class="sd">		:rtype: BoxOfficeResponse</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">ObjectController</span><span class="o">.</span><span class="n">json_to_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_api_url</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;films/</span><span class="si">{</span><span class="n">film_id</span><span class="si">}</span><span class="s1">/box_office&#39;</span><span class="p">)),</span>
+		                                       <span class="n">BoxOfficeResponse</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KpFilms.get_film_awards">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Endpoint.html#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_awards">[документация]</a>
+	<span class="k">def</span> <span class="nf">get_film_awards</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">film_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AwardResponse</span><span class="p">:</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Данный эндпоинт возвращает данные о наградах и премиях фильма.</span>
+
+<span class="sd">		:Endpoint: /api/v2.2/films/{id}/awards</span>
+<span class="sd">		:param int film_id: ID фильма.</span>
+<span class="sd">		:return: Возвращает данные о наградах и премиях фильма</span>
+<span class="sd">		:rtype: AwardResponse</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">ObjectController</span><span class="o">.</span><span class="n">json_to_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_api_url</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;films/</span><span class="si">{</span><span class="n">film_id</span><span class="si">}</span><span class="s1">/awards&#39;</span><span class="p">)),</span>
+		                                       <span class="n">AwardResponse</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KpFilms.get_film_videos">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Endpoint.html#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_videos">[документация]</a>
+	<span class="k">def</span> <span class="nf">get_film_videos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">film_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VideoResponse</span><span class="p">:</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Данный эндпоинт возвращает трейлеры, тизеры, видео для фильма по kinopoisk film id. В данный момент доступно три site:</span>
+
+<span class="sd">		- YOUTUBE - в этом случае url это просто ссылка на youtube видео.</span>
+<span class="sd">		- YANDEX_DISK - в этом случае url это ссылка на yandex disk.</span>
+<span class="sd">		- KINOPOISK_WIDGET - в этом случае url это ссылка на кинопоиск виджет. Например https://widgets.kinopoisk.ru/discovery/trailer/123573?onlyPlayer=1&amp;autoplay=1&amp;cover=1.</span>
+
+<span class="sd">		Если вы хотите вставить этот виджет на вашу страницу, вы можете сделать следующее:</span>
+
+<span class="sd">.. code-block:: html</span>
+<span class="sd">	:caption: Подключение виджета на сайт</span>
+<span class="sd">	:linenos:</span>
+
+<span class="sd">	&lt;script src=&quot;https://unpkg.com/@ungap/custom-elements-builtin&quot;&gt;&lt;/script&gt;</span>
+<span class="sd">	&lt;script type=&quot;module&quot; src=&quot;https://unpkg.com/x-frame-bypass&quot;&gt;&lt;/script&gt;</span>
+<span class="sd">	&lt;iframe is=&quot;x-frame-bypass&quot; src=&quot;https://widgets.kinopoisk.ru/discovery/trailer/167560?onlyPlayer=1&amp;autoplay=1&amp;cover=1&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/iframe&gt;</span>
+
+<span class="sd">:Endpoint: /api/v2.2/films/{id}/videos</span>
+<span class="sd">:param int film_id: ID фильма.</span>
+<span class="sd">:return: возвращает трейлеры, тизеры, видео для фильма</span>
+<span class="sd">:rtype: VideoResponse</span>
+<span class="sd">&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">ObjectController</span><span class="o">.</span><span class="n">json_to_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_api_url</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;films/</span><span class="si">{</span><span class="n">film_id</span><span class="si">}</span><span class="s1">/videos&#39;</span><span class="p">)),</span>
+		                                       <span class="n">VideoResponse</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KpFilms.get_similars">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Endpoint.html#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_similars">[документация]</a>
+	<span class="k">def</span> <span class="nf">get_similars</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">film_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RelatedFilmResponse</span><span class="p">:</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Данный эндпоинт возвращает похожие фильмы.</span>
+
+<span class="sd">		:Endpoint: /api/v2.2/films/{id}/similars</span>
+<span class="sd">		:param int film_id: ID фильма.</span>
+<span class="sd">		:return: Возвращает похожие фильмы</span>
+<span class="sd">		:rtype: RelatedFilmResponse</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">ObjectController</span><span class="o">.</span><span class="n">json_to_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_api_url</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;films/</span><span class="si">{</span><span class="n">film_id</span><span class="si">}</span><span class="s1">/similars&#39;</span><span class="p">)),</span>
+		                                       <span class="n">RelatedFilmResponse</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KpFilms.get_images">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Endpoint.html#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_images">[документация]</a>
+	<span class="k">def</span> <span class="nf">get_images</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">film_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">image_type</span><span class="p">:</span> <span class="n">ImageType</span> <span class="o">=</span> <span class="n">ImageType</span><span class="o">.</span><span class="n">STILL</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ImageResponse</span><span class="p">:</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Данный эндпоинт возвращает изображения связанные с фильмом с пагинацией. Каждая страница содержит не более чем 20 фильмов.</span>
+
+<span class="sd">		Доступные изображения:</span>
+
+<span class="sd">		* STILL - кадры</span>
+<span class="sd">		* SHOOTING - изображения со съемок</span>
+<span class="sd">		* POSTER - постеры</span>
+<span class="sd">		* FAN_ART - фан-арты</span>
+<span class="sd">		* PROMO - промо</span>
+<span class="sd">		* CONCEPT - концепт-арты</span>
+<span class="sd">		* WALLPAPER - обои</span>
+<span class="sd">		* COVER - обложки</span>
+<span class="sd">		* SCREENSHOT - скриншоты</span>
+
+<span class="sd">		:Endpoint: /api/v2.2/films/{id}/images</span>
+<span class="sd">		:param int film_id: ID фильма.</span>
+<span class="sd">		:param ImageType image_type: Тип изображения.</span>
+<span class="sd">		:param int page: Номер страницы.</span>
+<span class="sd">		:return: Возвращает изображения связанные с фильмом с пагинацией</span>
+<span class="sd">		:rtype: ImageResponse</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">ObjectController</span><span class="o">.</span><span class="n">json_to_object</span><span class="p">(</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_api_url</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;films/</span><span class="si">{</span><span class="n">film_id</span><span class="si">}</span><span class="s1">/images&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">image_type</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="n">page</span><span class="p">)),</span>
+			<span class="n">ImageResponse</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KpFilms.get_reviews">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Endpoint.html#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_reviews">[документация]</a>
+	<span class="k">def</span> <span class="nf">get_reviews</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">film_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="n">ReviewOrder</span> <span class="o">=</span> <span class="n">ReviewOrder</span><span class="o">.</span><span class="n">DATE_DESC</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReviewResponse</span><span class="p">:</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Возвращает список рецензии зрителей с пагинацией. Каждая страница содержит не более чем 20 рецензий.</span>
+
+<span class="sd">		:Endpoint: /api/v2.2/films/{id}/reviews</span>
+<span class="sd">		:param int film_id: ID фильма.</span>
+<span class="sd">		:param int page: Номер страницы.</span>
+<span class="sd">		:param ReviewOrder order: Сортировка.</span>
+<span class="sd">		:return: Возвращает список рецензии зрителей с пагинацией</span>
+<span class="sd">		:rtype: ReviewResponse</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">ObjectController</span><span class="o">.</span><span class="n">json_to_object</span><span class="p">(</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_api_url</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;films/</span><span class="si">{</span><span class="n">film_id</span><span class="si">}</span><span class="s1">/reviews&#39;</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="n">page</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="o">.</span><span class="n">name</span><span class="p">)),</span>
+			<span class="n">ReviewResponse</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KpFilms.get_external_sources">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Endpoint.html#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_external_sources">[документация]</a>
+	<span class="k">def</span> <span class="nf">get_external_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">film_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ExternalSourceResponse</span><span class="p">:</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Возвращает список сайтов с пагинацией. Каждая страница содержит не более чем 20 рецензий.</span>
+
+<span class="sd">		:Endpoint: /api/v2.2/films/{id}/external_sources</span>
+<span class="sd">		:param int film_id: ID фильма.</span>
+<span class="sd">		:param int page: Номер страницы.</span>
+<span class="sd">		:return: Возвращает список сайтов с пагинацией</span>
+<span class="sd">		:rtype: ExternalSourceResponse</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">ObjectController</span><span class="o">.</span><span class="n">json_to_object</span><span class="p">(</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_api_url</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;films/</span><span class="si">{</span><span class="n">film_id</span><span class="si">}</span><span class="s1">/external_sources&#39;</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="n">page</span><span class="p">)),</span> <span class="n">ExternalSourceResponse</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KpFilms.get_collections">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Endpoint.html#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_collections">[документация]</a>
+	<span class="k">def</span> <span class="nf">get_collections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col_type</span><span class="p">:</span> <span class="n">CollectionType</span> <span class="o">=</span> <span class="n">CollectionType</span><span class="o">.</span><span class="n">TOP_POPULAR_ALL</span><span class="p">,</span>
+	                    <span class="n">page</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FilmCollectionResponse</span><span class="p">:</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов.</span>
+
+<span class="sd">		:Endpoint: /api/v2.2/films/collections</span>
+<span class="sd">		:param CollectionType col_type: Тип коллекции</span>
+<span class="sd">		:param int page: Номер страницы</span>
+<span class="sd">		:return: Возвращает список фильмов с пагинацией</span>
+<span class="sd">		:rtype: FilmCollectionResponse</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">ObjectController</span><span class="o">.</span><span class="n">json_to_object</span><span class="p">(</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_api_url</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;films/collections&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">col_type</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="n">page</span><span class="p">)),</span>
+			<span class="n">FilmCollectionResponse</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KpFilms.get_premieres">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Endpoint.html#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_premieres">[документация]</a>
+	<span class="k">def</span> <span class="nf">get_premieres</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">year</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">month</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">KpMonth</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">PremiereResponse</span><span class="p">:</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Данный эндпоинт возвращает список кинопремьер. Например https://www.kinopoisk.ru/premiere/</span>
+
+<span class="sd">		:Endpoint: /api/v2.2/films/premieres</span>
+<span class="sd">		:param int year: Год</span>
+<span class="sd">		:param KpMonth month: Месяц. Либо в виде объекта PremiereMonth. Либо цифра от 1 до 12</span>
+<span class="sd">		:return: Возвращает список кинопремьер</span>
+<span class="sd">		:rtype: PremiereResponse</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">KpMonth</span><span class="p">):</span>
+			<span class="n">month</span> <span class="o">=</span> <span class="n">month</span><span class="o">.</span><span class="n">name</span>
+		<span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+			<span class="k">if</span> <span class="n">month</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">month</span> <span class="o">&gt;</span> <span class="mi">12</span><span class="p">:</span>
+				<span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;month must be in range 1 to 12&#39;</span><span class="p">)</span>
+			<span class="n">month</span> <span class="o">=</span> <span class="n">KpMonth</span><span class="p">(</span><span class="n">month</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
+		<span class="k">return</span> <span class="n">ObjectController</span><span class="o">.</span><span class="n">json_to_object</span><span class="p">(</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_api_url</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;films/premieres&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="p">)),</span> <span class="n">PremiereResponse</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KpFilms.get_filters">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Endpoint.html#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_filters">[документация]</a>
+	<span class="k">def</span> <span class="nf">get_filters</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FiltersResponse</span><span class="p">:</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Возвращает список id стран и жанров, которые могут быть использованы в /api/v2.2/films</span>
+
+<span class="sd">		:Endpoint: /api/v2.2/films/filters</span>
+<span class="sd">		:return: Возвращает список id стран и жанров</span>
+<span class="sd">		:rtype: FiltersResponse</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">ObjectController</span><span class="o">.</span><span class="n">json_to_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_api_url</span><span class="p">(</span><span class="s1">&#39;films/filters&#39;</span><span class="p">)),</span> <span class="n">FiltersResponse</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KpFilms.get_films">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Endpoint.html#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_films">[документация]</a>
+	<span class="k">def</span> <span class="nf">get_films</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">countries</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+	              <span class="n">genres</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">imdbId</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+	              <span class="n">keyword</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="n">FilmFilterOrder</span> <span class="o">=</span> <span class="n">FilmFilterOrder</span><span class="o">.</span><span class="n">RATING</span><span class="p">,</span>
+	              <span class="nb">type</span><span class="p">:</span> <span class="n">MovieType</span> <span class="o">=</span> <span class="n">MovieType</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">ratingFrom</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ratingTo</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">yearFrom</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+	              <span class="n">yearTo</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FilmSearchByFiltersResponse</span><span class="p">:</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов. Данный эндпоинт не возращает более 400 фильмов. Используй /api/v2.2/films/filters чтобы получить id стран и жанров.</span>
+
+<span class="sd">		.. note::</span>
+
+<span class="sd">			На данный момент можно указать не более одной страны и жанра.</span>
+
+<span class="sd">		:Endpoint: /api/v2.2/films</span>
+<span class="sd">		:param Optional[Union[int, list[int], str]] countries: список id стран разделенные запятой. Например countries=1,2,3. На данный момент можно указать не более одной страны.</span>
+<span class="sd">		:param Optional[Union[int, list[int], str]] genres: список id жанров разделенные запятой. Например genres=1,2,3. На данный момент можно указать не более одного жанра.</span>
+<span class="sd">		:param Optional[str] imdbId: ID с IMDB</span>
+<span class="sd">		:param Optional[str] keyword: ключевое слово, которое встречается в названии фильма</span>
+<span class="sd">		:param FilmFilterOrder order: сортировка (RATING, NUM_VOTE, YEAR), по умолчанию: RATING</span>
+<span class="sd">		:param MovieType type: тип фильма (FILM, TV_SHOW, TV_SERIES, MINI_SERIES, ALL), по умолчанию: ALL</span>
+<span class="sd">		:param float ratingFrom: минимальный рейтинг, по умолчанию: 0</span>
+<span class="sd">		:param float ratingTo: максимальный рейтинг, по умолчанию: 10</span>
+<span class="sd">		:param int yearFrom: минимальный год, по умолчанию: 1000</span>
+<span class="sd">		:param int yearTo: максимальный год, по умолчанию: 3000</span>
+<span class="sd">		:param int page: номер страницы, по умолчанию: 1</span>
+<span class="sd">		:return: Возвращает список фильмов с пагинацией</span>
+<span class="sd">		:rtype: FilmSearchByFiltersResponse</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">countries</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">countries</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">countries</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">countries</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">countries</span><span class="p">,</span>
+		                                                                                                 <span class="nb">int</span><span class="p">)</span> <span class="k">else</span> <span class="n">countries</span>
+		<span class="n">genres</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">genres</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">genres</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">genres</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">genres</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">else</span> <span class="n">genres</span>
+		<span class="k">return</span> <span class="n">ObjectController</span><span class="o">.</span><span class="n">json_to_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">get_api_url</span><span class="p">(</span><span class="s1">&#39;films&#39;</span><span class="p">,</span> <span class="n">countries</span><span class="o">=</span><span class="n">countries</span><span class="p">,</span> <span class="n">genres</span><span class="o">=</span><span class="n">genres</span><span class="p">,</span> <span class="n">imdbId</span><span class="o">=</span><span class="n">imdbId</span><span class="p">,</span> <span class="n">keyword</span><span class="o">=</span><span class="n">keyword</span><span class="p">,</span>
+			                 <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">ratingFrom</span><span class="o">=</span><span class="n">ratingFrom</span><span class="p">,</span> <span class="n">ratingTo</span><span class="o">=</span><span class="n">ratingTo</span><span class="p">,</span>
+			                 <span class="n">yearFrom</span><span class="o">=</span><span class="n">yearFrom</span><span class="p">,</span> <span class="n">yearTo</span><span class="o">=</span><span class="n">yearTo</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="n">page</span><span class="p">)),</span> <span class="n">FilmSearchByFiltersResponse</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KpFilms.get_film_prequels_and_sequels">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Endpoint.html#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_prequels_and_sequels">[документация]</a>
+	<span class="k">def</span> <span class="nf">get_film_prequels_and_sequels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">film_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FilmSequelsAndPrequelsResponse</span><span class="p">:</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Возвращает список частей, что связаны с фильмом</span>
+
+<span class="sd">		:Endpoint: /api/v2.1/films/{id}/sequels_and_prequels</span>
+<span class="sd">		:param int film_id:</span>
+<span class="sd">		:return: Возвращает список частей, что связаны с фильмом</span>
+<span class="sd">		:rtype: FilmSequelsAndPrequelsResponse</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">ObjectController</span><span class="o">.</span><span class="n">json_to_object</span><span class="p">(</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_api_url</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;films/</span><span class="si">{</span><span class="n">film_id</span><span class="si">}</span><span class="s1">/sequels_and_prequels&#39;</span><span class="p">,</span> <span class="s1">&#39;2.1&#39;</span><span class="p">)),</span>
+			<span class="n">FilmSequelsAndPrequelsResponse</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KpFilms.search_by_keyword">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Endpoint.html#NotKinoPoiskAPI.Endpoint.Films.KpFilms.search_by_keyword">[документация]</a>
+	<span class="k">def</span> <span class="nf">search_by_keyword</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyword</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FilmSearchResponse</span><span class="p">:</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Поиск фильмов и сериалов по ключевому слову. Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов.</span>
+
+<span class="sd">		:Endpoint: /api/v2.1/films/search-by-keyword</span>
+<span class="sd">		:param str keyword: ключивые слова для поиска</span>
+<span class="sd">		:param int page: номер страницы</span>
+<span class="sd">		:return: Возвращает список фильмов с пагинацией</span>
+<span class="sd">		:rtype: FilmSearchResponse</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">ObjectController</span><span class="o">.</span><span class="n">json_to_object</span><span class="p">(</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_api_url</span><span class="p">(</span><span class="s1">&#39;films/search-by-keyword&#39;</span><span class="p">,</span> <span class="s1">&#39;2.1&#39;</span><span class="p">,</span> <span class="n">keyword</span><span class="o">=</span><span class="n">keyword</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="n">page</span><span class="p">)),</span>
+			<span class="n">FilmSearchResponse</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KpFilms.get_releases">
+<a class="viewcode-back" href="../../../NotKinoPoiskAPI.Endpoint.html#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_releases">[документация]</a>
+	<span class="k">def</span> <span class="nf">get_releases</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">year</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">month</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">KpMonth</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">page</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DigitalReleaseResponse</span><span class="p">:</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Данный эндпоинт возвращает список цифровых релизов. Например https://www.kinopoisk.ru/comingsoon/digital/</span>
+
+<span class="sd">		:Endpoint: /api/v2.1/films/releases</span>
+<span class="sd">		:param int year: Год</span>
+<span class="sd">		:param Union[KpMonth, int] month: Месяц. Либо в виде объекта `KpMonth` (JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER). Либо цифра от 1 до 12</span>
+<span class="sd">		:return: Возвращает список цифровых релизов</span>
+<span class="sd">		:rtype: DigitalReleaseResponse</span>
+<span class="sd">		:raise ValueError: Если месяц вне диапазона от 1 до 12</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">KpMonth</span><span class="p">):</span>
+			<span class="n">month</span> <span class="o">=</span> <span class="n">month</span><span class="o">.</span><span class="n">name</span>
+		<span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+			<span class="k">if</span> <span class="n">month</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">month</span> <span class="o">&gt;</span> <span class="mi">12</span><span class="p">:</span>
+				<span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;месяц должен быть в диапазоне от 1 до 12&#39;</span><span class="p">)</span>
+			<span class="n">month</span> <span class="o">=</span> <span class="n">ObjectController</span><span class="o">.</span><span class="n">find_enum</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">month</span><span class="p">),</span> <span class="n">KpMonth</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
+		<span class="k">return</span> <span class="n">ObjectController</span><span class="o">.</span><span class="n">json_to_object</span><span class="p">(</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_api_url</span><span class="p">(</span><span class="s1">&#39;films/releases&#39;</span><span class="p">,</span> <span class="s1">&#39;2.1&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="n">page</span><span class="p">)),</span>
+			<span class="n">DigitalReleaseResponse</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2024, Maxim Harder. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
