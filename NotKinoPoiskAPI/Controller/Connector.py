@@ -25,10 +25,15 @@ class Connector:
 	api_key: str
 	"""API-Key для подключения"""
 	proxy: Optional[ProxyController]
+	"""Прокси для подключения"""
 	session: Optional[Session]
+	"""Сессия для запросов"""
 	user_agent: Optional[str]
+	"""User-Agent для запросов"""
 	headers: dict = field(default_factory=dict)
+	"""Дополнительные заголовки"""
 	timeout: int = 5
+	"""Время ожидания ответа"""
 
 	def __post_init__(self):
 		"""
@@ -58,6 +63,8 @@ class Connector:
 	def set_proxy(self):
 		"""
 		Установка прокси.
+
+		:raise Exception: Если прокси недоступны.
 		"""
 		proxy = self.proxy if self.proxy else ProxyController()
 		if proxy and len(proxy.get_proxy_list()) > 0:
@@ -90,6 +97,8 @@ class Connector:
 		:param str method: Метод запроса.
 
 		:return: Возвращает JSON объект в случае удачи. При ошибке выбрасывает её и останавливает скрипт
+
+		:raise Exception: Если подключение к API произошло неуспешно
 
 		:rtype: dict
 		"""

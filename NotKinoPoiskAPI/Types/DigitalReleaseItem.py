@@ -10,47 +10,57 @@ from NotKinoPoiskAPI.Types.Genre import Genre
 class DigitalReleaseItem:
 	"""
 	Класс для хранения информации о цифровом релизе.
-	:param filmId: ID фильма.
-	:param nameRu: Русское название фильма.
-	:param nameEn: Английское название фильма.
-	:param year: Год выпуска фильма.
-	:param posterUrl: Ссылка на постер фильма.
-	:param posterUrlPreview: Ссылка на превью постера фильма.
-	:param countries: Список стран производства фильма.
-	:param genres: Список жанров фильма.
-	:param rating: Рейтинг фильма.
-	:param ratingVoteCount: Количество голосов за рейтинг фильма.
-	:param expectationsRating: Рейтинг ожиданий фильма.
-	:param expectationsRatingVoteCount: Количество голосов за рейтинг ожиданий фильма.
-	:param duration: Длительность фильма.
-	:param releaseDate: Дата релиза фильма.
 	"""
 	filmId: int
+	"""ID фильма"""
 	nameRu: str
+	"""Русское название фильма"""
 	nameEn: str
+	"""Английское название фильма"""
 	year: int
+	"""Год выпуска фильма"""
 	posterUrl: str
+	"""Ссылка на постер фильма"""
 	posterUrlPreview: str
+	"""Ссылка на превью постера фильма"""
 	rating: float
+	"""Рейтинг фильма"""
 	ratingVoteCount: int
+	"""Количество голосов за рейтинг фильма"""
 	expectationsRating: float
+	"""Рейтинг ожиданий фильма"""
 	expectationsRatingVoteCount: int
+	"""Количество голосов за рейтинг ожиданий фильма"""
 	duration: int
+	"""Длительность фильма"""
 	releaseDate: str
+	"""Дата релиза фильма"""
 	countries: List[Country] = field(default_factory=list)
+	"""Список стран производства фильма"""
 	genres: List[Genre] = field(default_factory=list)
+	"""Список жанров фильма"""
 
 	def __post_init__(self):
 		self.countries = ObjectController.list_to_object(self.countries, Country)
 		self.genres = ObjectController.list_to_object(self.genres, Genre)
 
 	def add_country(self, country: Union[Country, list[Country]]):
+		"""
+		Добавление страны производства
+
+		:param Union[Country, list[Country]] country: Страна или список стран
+		"""
 		if isinstance(country, list):
 			self.countries.extend(country)
 		else:
 			self.countries.append(country)
 
 	def add_genres(self, genres: Union[Genre, list[Genre]]):
+		"""
+		Добавление жанра
+
+		:param Union[Genre, list[Genre]] genres: Жанр или список жанров
+		"""
 		if isinstance(genres, list):
 			self.genres.extend(genres)
 		else:

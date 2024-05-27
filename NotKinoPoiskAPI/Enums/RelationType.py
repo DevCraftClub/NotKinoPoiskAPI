@@ -2,6 +2,7 @@ from enum import Enum
 
 
 class RelationType(Enum):
+	"""Типы связей"""
 	SEQUEL = "Сиквел"
 	"""Сиквел"""
 	PREQUEL = "Приквел"

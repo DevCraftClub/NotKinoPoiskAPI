@@ -10,15 +10,19 @@ from NotKinoPoiskAPI.Types.Distribution import Distribution
 class DistributionResponse(GeneralResponse):
 	"""
 	Объект ответа на поиск дистрибьюторов
-	:param total: Количество найденных дистрибьюторов
-	:param items: Список найденных дистрибьюторов
 	"""
 	items: List[Distribution] = field(default_factory=list)
+	"""Список найденных дистрибьюторов"""
 
 	def __post_init__(self):
 		self.items = ObjectController.list_to_object(self.items, Distribution)
 
 	def add_distribution(self, distribution: Union[Distribution, list[Distribution]]):
+		"""
+		Добавление дистрибьютора
+
+		:param Union[Distribution, list[Distribution]] distribution: Дистрибьютор или список дистрибьюторов
+		"""
 		if isinstance(distribution, list):
 			self.items.extend(distribution)
 		else:

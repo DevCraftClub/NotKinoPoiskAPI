@@ -7,21 +7,22 @@ from NotKinoPoiskAPI.Enums.RelationType import RelationType
 @dataclass
 class FilmResponseFilm:
 	"""
-	:param filmId: ID фильма
-	:param nameRu: русское название
-	:param nameEn: английское название
-	:param nameOriginal: оригинальное название
-	:param posterUrl: ссылка на постер
-	:param posterUrlPreview: ссылка на превью постера
-	:param relationType: тип связи
+	Класс для хранения информации о фильме.
 	"""
 	filmId: int
+	"""ID фильма"""
 	nameRu: str
+	"""русское название"""
 	nameEn: str
+	"""английское название"""
 	nameOriginal: str
+	"""оригинальное название"""
 	posterUrl: str
+	"""ссылка на постер"""
 	posterUrlPreview: str
+	"""ссылка на превью постера"""
 	relationType: RelationType
+	"""тип связи"""
 
 	def __post_init__(self):
 		if isinstance(self.relationType, str):

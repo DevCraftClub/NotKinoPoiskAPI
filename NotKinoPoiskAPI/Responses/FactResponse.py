@@ -10,15 +10,19 @@ from NotKinoPoiskAPI.Types.Fact import Fact
 class FactResponse(GeneralResponse):
 	"""
 	Объект ответа на поиск фактов
-	:param total: Количество найденных фактов
-	:param items: Список найденных фактов
 	"""
 	items: List[Fact] = field(default_factory=list)
+	"""Список найденных фактов"""
 
 	def __post_init__(self):
 		self.items = ObjectController.list_to_object(self.items, Fact)
 
 	def add_fact(self, fact: Union[Fact, list[Fact]]):
+		"""
+		Добавление факта
+
+		:param Union[Fact, list[Fact]] fact: Факт или список фактов
+		"""
 		if isinstance(fact, Fact):
 			self.items.append(fact)
 		else:

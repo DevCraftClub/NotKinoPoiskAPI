@@ -10,12 +10,21 @@ from NotKinoPoiskAPI.Types.Country import Country
 
 @dataclass
 class Distribution:
+	"""
+	Класс для хранения информации о дистрибьюции.
+	"""
 	type: DistributionType
+	"""Тип"""
 	subType: Optional[DistributionSubType]
+	"""Подтип"""
 	date: Optional[str]
+	"""Дата"""
 	reRelease: Optional[bool]
+	"""Переиздание"""
 	country: Optional[Country]
+	"""Страна"""
 	companies: List[Company] = field(default_factory=list)
+	"""Список компаний"""
 
 	def __post_init__(self):
 		self.companies = ObjectController.list_to_object(self.companies, Company)
@@ -29,6 +38,11 @@ class Distribution:
 			self.subType = ObjectController.find_enum(self.subType, DistributionSubType)
 
 	def add_company(self, company: Union[Company, list[Company]]):
+		"""
+		Добавление компании
+
+		:param Union[Company, list[Company]] company: Компания или список компаний
+		"""
 		if isinstance(company, list):
 			self.companies.extend(company)
 		else:

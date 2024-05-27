@@ -20,38 +20,6 @@ NotKinoPoiskAPI.Controller.Connector module
    :undoc-members:
    :show-inheritance:
 
-NotKinoPoiskAPI.Controller.Films module
----------------------------------------
-
-.. automodule:: NotKinoPoiskAPI.Controller.Films
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-NotKinoPoiskAPI.Controller.KpUser module
-----------------------------------------
-
-.. automodule:: NotKinoPoiskAPI.Controller.KpUser
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-NotKinoPoiskAPI.Controller.Media module
----------------------------------------
-
-.. automodule:: NotKinoPoiskAPI.Controller.Media
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-NotKinoPoiskAPI.Controller.NKPA module
---------------------------------------
-
-.. automodule:: NotKinoPoiskAPI.Controller.NKPA
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 NotKinoPoiskAPI.Controller.ObjectController module
 --------------------------------------------------
 
@@ -64,14 +32,6 @@ NotKinoPoiskAPI.Controller.ProxyController module
 -------------------------------------------------
 
 .. automodule:: NotKinoPoiskAPI.Controller.ProxyController
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-NotKinoPoiskAPI.Controller.Staff module
----------------------------------------
-
-.. automodule:: NotKinoPoiskAPI.Controller.Staff
    :members:
    :undoc-members:
    :show-inheritance:

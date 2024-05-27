@@ -9,10 +9,9 @@ from NotKinoPoiskAPI.Types.Award import Award
 class AwardResponse(GeneralResponse):
 	"""
 	Объект ответа на поиск наград
-	:param total: Количество найденных наград
-	:param items: Список найденных наград
 	"""
 	items: list[Award] = field(default_factory=list)
+	"""Список найденных наград"""
 
 	def __post_init__(self):
 		if self.items is None:
@@ -21,6 +20,11 @@ class AwardResponse(GeneralResponse):
 			self.items = [Award(**award) if isinstance(award, dict) else award for award in self.items]
 
 	def add_award(self, award: Union[Award, list[Award]]):
+		"""
+		Добавление награды
+
+		:param Union[Award, list[Award]] award: Награда или список наград
+		"""
 		if isinstance(award, Award):
 			self.items.append(award)
 		else:

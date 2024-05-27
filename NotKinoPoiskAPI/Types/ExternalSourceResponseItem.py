@@ -6,20 +6,20 @@ from typing import Optional
 class ExternalSourceResponseItem:
 	"""
 	Класс для хранения информации о внешнем источнике.
-	:param url: Ссылка на источник.
-	:param platform: Платформа.
-	:param logoUrl: Ссылка на логотип.
-	:param positiveRating: Положительный рейтинг.
-	:param negativeRating: Отрицательный рейтинг.
-	:param author: Автор.
-	:param title: Название.
-	:param description: Описание.
 	"""
 	url: str
+	"""Ссылка на источник"""
 	platform: str
+	"""Платформа"""
 	logoUrl: str
+	"""Ссылка на логотип"""
 	positiveRating: int
+	"""Положительный рейтинг"""
 	negativeRating: int
+	"""Отрицательный рейтинг"""
 	author: str
+	"""Автор"""
 	title: Optional[str]
+	"""Название"""
 	description: str
+	"""Описание"""

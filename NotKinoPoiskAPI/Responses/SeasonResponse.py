@@ -10,15 +10,19 @@ from NotKinoPoiskAPI.Types.Season import Season
 class SeasonResponse(GeneralResponse):
 	"""
 	Объект ответа на поиск сезонов
-	:param total: Количество найденных сезонов
-	:param items: Список найденных сезонов
 	"""
 	items: List[Season] = field(default_factory=list)
+	"""Список сезонов"""
 
 	def __post_init__(self):
 		self.items = ObjectController.list_to_object(self.items, Season)
 
 	def add_season(self, season: Union[Season, List[Season]]):
+		"""
+		Добавление сезона
+
+		:param Union[Season, List[Season]] season: Сезон или список сезонов
+		"""
 		if isinstance(season, list):
 			self.items.extend(season)
 		else:

@@ -49,9 +49,7 @@ class CacheController:
 		Получить путь до файла с кешем
 
 		:param str file_name: Данные для хэширования
-
 		:return: Путь до файла с кешем
-
 		:rtype: str
 		"""
 		data_hash = hashlib.md5(file_name.encode(encoding='UTF-8')).hexdigest()
@@ -74,11 +72,9 @@ class CacheController:
 		Если кеш не существует или время жизни кеша истекло, то возвращает None
 
 		:param str name: Имя кеша
-
 		:return: Данные из кеша, либо None (если данные отсутствуют или устарели)
-
 		:rtype: dict | None
-        """
+		"""
 		cache_file = self.get_cache_file(name)
 		if Path(cache_file).exists():
 			file_created = datetime.datetime.fromtimestamp(CacheController.creation_date(cache_file))

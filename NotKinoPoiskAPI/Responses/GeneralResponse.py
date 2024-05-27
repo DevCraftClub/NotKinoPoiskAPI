@@ -6,12 +6,13 @@ from typing import List
 class GeneralResponse:
 	"""
 	Объект ответа
-	:param total: Количество найденных объектов
-	:param items: Список найденных объектов
 	"""
 	total: int
+	"""Количество найденных объектов"""
 	totalPages: int = field(default_factory=int, init=False)
+	"""Количество страниц"""
 	items: List = field(default_factory=list, init=False)
+	"""Список найденных объектов"""
 
 	def __post_init__(self):
 		if self.items is None:

@@ -11,39 +11,41 @@ from NotKinoPoiskAPI.Responses.PersonResponseSpouse import PersonResponseSpouse
 class PersonResponse:
 	"""
 	Объект конкретного сотрудника фильма или сериала с более подробной информацией
-	:param personId: Уникальный идентификатор сотрудника
-	:param webUrl: Ссылка на страницу сотрудника
-	:param nameRu: Имя сотрудника на русском языке
-	:param nameEn: Имя на английском языке
-	:param sex: Пол сотрудника
-	:param posterUrl: Фото сотрудника
-	:param growth: Рост сотрудника
-	:param age: Возраст сотрудника
-	:param birthplace: Место рождения
-	:param deathplace: Место смерти
-	:param hasAwards: Количество наград
-	:param profession: Основной род деятельности
-	:param facts: Факты о сотруднике
-	:param spouses: Супруги сотрудника
-	:param films: Фильмография
 	"""
 	personId: int
+	"""Уникальный идентификатор сотрудника"""
 	webUrl: Optional[str]
+	"""Ссылка на страницу сотрудника"""
 	nameRu: Optional[str]
+	"""Имя сотрудника на русском языке"""
 	nameEn: Optional[str]
+	"""Имя на английском языке"""
 	sex: Optional[Sex]
+	"""Пол сотрудника"""
 	posterUrl: str
+	"""Фото сотрудника"""
 	growth: Optional[str]
+	"""Рост сотрудника"""
 	birthday: Optional[str]
+	"""Дата рождения сотрудника"""
 	death: Optional[str]
+	"""Дата смерти сотрудника"""
 	age: Optional[int]
+	"""Возраст сотрудника"""
 	birthplace: Optional[str]
+	"""Место рождения"""
 	deathplace: Optional[str]
+	"""Место смерти"""
 	profession: Optional[str]
+	"""Основной род деятельности"""
 	hasAwards: int = 0
+	"""Количество наград"""
 	facts: List[str] = field(default_factory=list)
+	"""Факты о сотруднике"""
 	spouses: List[PersonResponseSpouse] = field(default_factory=list)
+	"""Супруги сотрудника"""
 	films: List[PersonResponseFilms] = field(default_factory=list)
+	"""Фильмография"""
 
 	def __post_init__(self):
 		self.spouses = ObjectController.list_to_object(self.spouses, PersonResponseSpouse)
@@ -54,7 +56,8 @@ class PersonResponse:
 	def add_fact(self, fact: Union[str, list[str]]):
 		"""
 		Добавляет факт о сотруднике.
-		:param fact: Факт о сотруднике. Допустимы список или строка
+
+		:param Union[str, list[str]] fact: Факт о сотруднике. Допустимы список или строка
 		"""
 		if isinstance(fact, str):
 			self.facts.append(fact)
@@ -64,7 +67,8 @@ class PersonResponse:
 	def add_spouse(self, spouse: Union[PersonResponseSpouse, list[PersonResponseSpouse]]):
 		"""
 		Добавляет супругу сотрудника.
-		:param spouse: Супруга сотрудника. Допустимы список с объектами Spouse или сам объект Spouse
+
+		:param Union[PersonResponseSpouse, list[PersonResponseSpouse]] spouse: Супруга сотрудника. Допустимы список с объектами Spouse или сам объект Spouse
 		"""
 		if isinstance(spouse, PersonResponseSpouse):
 			self.spouses.append(spouse)
@@ -74,7 +78,8 @@ class PersonResponse:
 	def add_film(self, film: Union[PersonResponseFilms, list[PersonResponseFilms]]):
 		"""
 		Добавляет фильм сотрудника.
-		:param film: Фильм сотрудника. Допустимы список с объектами FilmShort или сам объект FilmShort
+
+		:param Union[PersonResponseFilms, list[PersonResponseFilms]] film: Фильм сотрудника. Допустимы список с объектами FilmShort или сам объект FilmShort
 		"""
 		if isinstance(film, PersonResponseFilms):
 			self.films.append(film)

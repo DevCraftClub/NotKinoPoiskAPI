@@ -6,18 +6,19 @@ from NotKinoPoiskAPI.Enums.ProxyType import ProxyType
 class ProxyItem:
 	"""
 	Класс для хранения информации о прокси.
-	:param ip: IP адрес прокси.
-	:param port: Порт прокси.
-	:param login: Логин прокси.
-	:param password: Пароль прокси.
-	:param type: Тип прокси.
 	"""
 	ip: str
+	"""IP адрес прокси"""
 	port: int
+	"""Порт прокси"""
 	login: str
+	"""Логин прокси"""
 	password: str
+	"""Пароль прокси"""
 	type: ProxyType
+	"""Тип прокси"""
 	proxy_set: bool = False
+	"""Установлен ли прокси"""
 
 	def __init__(self, proxy_string: Optional[str] = None):
 		if proxy_string is not None:

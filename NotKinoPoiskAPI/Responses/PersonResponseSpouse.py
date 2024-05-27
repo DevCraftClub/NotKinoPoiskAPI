@@ -9,23 +9,23 @@ from NotKinoPoiskAPI.Enums.Sex import Sex
 class PersonResponseSpouse:
 	"""
 	Объект супруга / супруги сотрудника
-	:param personId: Optional[int] - Универсальный ID .
-	:param name: Optional[str] - Имя
-	:param divorced: bool - Указывает на то, что супруги разведены. По умолчанию: False.
-	:param divorcedReason: Optional[str] - Причина развода.
-	:param sex: Optional[Sex] - Пол супруга / супруги
-	:param children: int - Количество детей
-	:param webUrl: Optional[str] - Ссылка на персону
-	:param relation: Optional[str] - Описание отношения
 	"""
 	personId: int
+	"""Уникальный идентификатор супруга"""
 	name: Optional[str]
+	"""Имя супруга"""
 	divorced: bool
+	"""Указывает на то, что супруги разведены"""
 	divorcedReason: Optional[str]
+	"""Причина развода"""
 	sex: Optional[Sex]
+	"""Пол супруга"""
 	children: int
+	"""Количество детей"""
 	webUrl: str
+	"""Ссылка на персону"""
 	relation: str
+	"""Описание отношения"""
 
 	def __post_init__(self):
 		if self.sex is not None and isinstance(self.sex, str):

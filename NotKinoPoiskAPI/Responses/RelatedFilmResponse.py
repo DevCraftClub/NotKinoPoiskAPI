@@ -12,11 +12,17 @@ class RelatedFilmResponse(GeneralResponse):
 	Класс для хранения информации о связанных фильмах.
 	"""
 	items: List[FilmResponseFilm] = field(default_factory=list)
+	"""Список фильмов"""
 
 	def __post_init__(self):
 		self.items = ObjectController.list_to_object(self.items, FilmResponseFilm)
 
 	def add_items(self, items: Union[FilmResponseFilm, List[FilmResponseFilm]]):
+		"""
+		Добавление фильмов
+
+		:param Union[FilmResponseFilm, List[FilmResponseFilm]] items: Фильм или список фильмов
+		"""
 		if isinstance(items, list):
 			self.items.extend(items)
 		else:

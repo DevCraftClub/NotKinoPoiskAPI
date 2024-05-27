@@ -9,6 +9,7 @@ Subpackages
 
    NotKinoPoiskAPI.Controller
    NotKinoPoiskAPI.Data
+   NotKinoPoiskAPI.Endpoint
    NotKinoPoiskAPI.Enums
    NotKinoPoiskAPI.Errors
    NotKinoPoiskAPI.Responses

@@ -6,16 +6,18 @@ from typing import Optional
 class ApiError:
 	"""
 	Класс для хранения информации об ошибке.
-	:param message: Сообщение об ошибке.
-	:param errorCode: Код ошибки.
 	"""
 	message: str
-	errorCode: Optional[int]
+	"""Сообщение об ошибке"""
 
 	@staticmethod
 	def get_error_description(code: int):
 		"""
 		Метод для получения описания ошибки по коду.
+
+		:param int code: Код ошибки
+		:return: Описание ошибки
+		:rtype: str
 		"""
 		error_codes = {
 				401: "Пустой или неправильный токен",

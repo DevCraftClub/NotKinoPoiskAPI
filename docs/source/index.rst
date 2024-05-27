@@ -3,18 +3,18 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to NotKinoPoiskAPI's documentation!
+Документация плагина NotKinoPoiskAPI!
 ===========================================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+.. autosummary::
+   :toctree: _autosummary
+   :template: summary/custom-module-template.rst
+   :recursive:
 
-   modules
+   NotKinoPoiskAPI
 
-Indices and tables
-==================
+Информация
+===========================================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+:Автор: Maxim Harder <dev@devcraft.club>
+:Версия: 1.0.0

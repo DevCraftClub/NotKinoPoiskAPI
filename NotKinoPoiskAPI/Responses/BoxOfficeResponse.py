@@ -10,15 +10,19 @@ from NotKinoPoiskAPI.Types.BoxOffice import BoxOffice
 class BoxOfficeResponse(GeneralResponse):
 	"""
 	Объект ответа на поиск кассовых сборов
-	:param total: Количество найденных кассовых сборов
-	:param items: Список найденных кассовых сборов
 	"""
 	items: List[BoxOffice] = field(default_factory=list)
+	"""Список найденных кассовых сборов"""
 
 	def __post_init__(self):
 		self.items = ObjectController.list_to_object(self.items, BoxOffice)
 
 	def add_box_office(self, box_office: Union[BoxOffice, list[BoxOffice]]):
+		"""
+		Добавление кассовых сборов
+
+		:param Union[BoxOffice, list[BoxOffice]] box_office: Кассовые сборы или список кассовых сборов
+		"""
 		if isinstance(box_office, list):
 			self.items.extend(box_office)
 		else:

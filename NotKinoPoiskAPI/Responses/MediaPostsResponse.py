@@ -10,17 +10,21 @@ from NotKinoPoiskAPI.Types.MediaPostsResponseItem import MediaPostsResponseItem
 class MediaPostsResponse(GeneralResponse):
 	"""
 	Класс для хранения информации о постах.
-	:param total: Количество постов.
-	:param totalPages: Количество страниц.
-	:param items: Список постов.
 	"""
 	totalPages: int = 0
+	"""Количество страниц"""
 	items: List[MediaPostsResponseItem] = field(default_factory=list)
+	"""Список постов"""
 
 	def __post_init__(self):
 		self.items = ObjectController.list_to_object(self.items, MediaPostsResponseItem)
 
 	def add_item(self, item: Union[MediaPostsResponseItem, list[MediaPostsResponseItem]]):
+		"""
+		Добавление поста
+
+		:param Union[MediaPostsResponseItem, list[MediaPostsResponseItem]] item: Пост или список постов
+		"""
 		if isinstance(item, list):
 			self.items.extend(item)
 		else:

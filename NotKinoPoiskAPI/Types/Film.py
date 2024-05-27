@@ -13,98 +13,97 @@ from NotKinoPoiskAPI.Types.Genre import Genre
 class Film:
 	"""
 	Объект фильма или сериала
-	:param kinopoiskId: Идентификатор фильма
-	:param kinopoiskHDId: Идентификатор фильма в HD
-	:param imdbId: Идентификатор фильма в IMDB
-	:param nameRu: Название фильма
-	:param nameEn: Название фильма (англ.)
-	:param nameOriginal: Название фильма (оригинал)
-	:param posterUrl: Ссылка на постер
-	:param posterUrlPreview: Ссылка на постер
-	:param coverUrl: Ссылка на обложку
-	:param logoUrl: Ссылка на логотип
-	:param reviewsCount: Количество отзывов
-	:param ratingGoodReview: Рейтинг отзывов
-	:param ratingGoodReviewVoteCount: Количество отзывов
-	:param ratingKinopoisk: Рейтинг фильма
-	:param ratingKinopoiskVoteCount: Количество отзывов
-	:param ratingImdb: Рейтинг фильма в IMDB
-	:param ratingImdbVoteCount: Количество отзывов
-	:param ratingFilmCritics: Рейтинг фильма в критике
-	:param ratingFilmCriticsVoteCount: Количество отзывов
-	:param ratingAwait: Рейтинг фильма
-	:param ratingAwaitCount: Количество отзывов
-	:param ratingRfCritics: Рейтинг фильма в критике
-	:param ratingRfCriticsVoteCount: Количество отзывов
-	:param webUrl: Ссылка на страницу фильма
-	:param year: Год выпуска
-	:param filmLength: Длительность фильма
-	:param slogan: Слоган
-	:param description: Описание фильма
-	:param shortDescription: Краткое описание фильма
-	:param editorAnnotation: Аннотация режиссера
-	:param isTicketsAvailable: Есть ли билеты
-	:param productionStatus: Статус производства
-	:param type: Тип медиа
-	:param ratingMpaa: Рейтинг MPAA
-	:param ratingAgeLimits: Возрастные ограничения
-	:param countries: Страны
-	:param genres: Жанры
-	:param hasImax: Есть ли IMAX
-	:param has3D: Есть ли 3D
-	:param lastSync: Дата последнего обновления
-	:param startYear: Год начала выпуска
-	:param endYear: Год окончания выпуска
-	:param serial: Сериал?
-	:param shortFilm: Короткометражка?
-	:param completed: Завершен?
-
 	"""
 	kinopoiskId: int
+	"""Идентификатор фильма"""
 	kinopoiskHDId: Optional[str]
+	"""Идентификатор фильма в КиноПоиск Онлайн"""
 	imdbId: Optional[str]
+	"""Идентификатор фильма на IMDB"""
 	nameRu: Optional[str]
+	"""Название фильма"""
 	nameEn: Optional[str]
+	"""Название фильма на английском"""
 	nameOriginal: Optional[str]
+	"""Оригинальное название фильма"""
 	posterUrl: str
+	"""Ссылка на постер"""
 	posterUrlPreview: str
+	"""Ссылка на превью постера"""
 	coverUrl: Optional[str]
+	"""Ссылка на обложку"""
 	logoUrl: Optional[str]
+	"""Ссылка на логотип"""
 	ratingGoodReview: Optional[int]
+	"""Рейтинг отзывов"""
 	ratingGoodReviewVoteCount: Optional[int]
+	"""Количество хороших отзывов"""
 	ratingKinopoisk: Optional[float]
+	"""Рейтинг КиноПоиск"""
 	ratingKinopoiskVoteCount: Optional[int]
+	"""Количество голосов за рейтинг КиноПоиск"""
 	ratingImdb: Optional[float]
+	"""Рейтинг IMDB"""
 	ratingImdbVoteCount: Optional[int]
+	"""Количество голосов за рейтинг IMDB"""
 	ratingFilmCritics: Optional[float]
+	"""Рейтинг критиков"""
 	ratingFilmCriticsVoteCount: Optional[int]
+	"""Количество голосов за рейтинг критиков"""
 	ratingAwait: Optional[float]
+	"""Рейтинг ожидания"""
 	ratingAwaitCount: Optional[int]
+	"""Количество голосов за рейтинг ожидания"""
 	ratingRfCritics: Optional[float]
+	"""Рейтинг критиков России"""
 	ratingRfCriticsVoteCount: Optional[int]
+	"""Количество голосов за рейтинг критиков России"""
 	webUrl: str
+	"""Ссылка на страницу фильма"""
 	year: Optional[int]
+	"""Год выпуска"""
 	filmLength: Optional[int]
+	"""Длительность фильма"""
 	slogan: Optional[str]
+	"""Слоган"""
 	description: Optional[str]
+	"""Описание"""
 	shortDescription: Optional[str]
+	"""Краткое описание"""
 	editorAnnotation: Optional[str]
+	"""Аннотация режиссера"""
 	productionStatus: Optional[ProductionStatus]
+	"""Статус производства"""
 	type: Optional[MovieType]
+	"""Тип медиа"""
 	ratingMpaa: Optional[str]
+	"""Рейтинг MPAA"""
 	ratingAgeLimits: Optional[str]
+	"""Возрастные ограничения"""
 	hasImax: Optional[bool]
+	"""Есть ли в IMAX"""
 	has3D: Optional[bool]
+	"""Есть ли в 3D"""
 	lastSync: datetime
+	"""Дата последнего обновления"""
 	startYear: Optional[int]
+	"""Год начала выпуска"""
 	endYear: Optional[int]
+	"""Год окончания выпуска"""
 	serial: Optional[bool]
+	"""Сериал"""
 	shortFilm: Optional[bool]
+	"""Короткометражка"""
 	completed: Optional[bool]
+	"""Завершен"""
 	countries: List[Country] = field(default_factory=list)
+	"""Страны"""
 	genres: List[Genre] = field(default_factory=list)
+	"""Жанры"""
 	reviewsCount: int = 0
+	"""Количество отзывов"""
 	isTicketsAvailable: bool = False
+	"""Доступны ли билеты"""
 
 	def __post_init__(self):
 		if self.countries is None:
@@ -121,12 +120,22 @@ class Film:
 			self.productionStatus = ObjectController.find_enum(self.productionStatus, ProductionStatus)
 
 	def add_country(self, country: Union[Country, list[Country]]):
+		"""
+		Добавление страны производства
+
+		:param Union[Country, list[Country]] country: Страна или список стран
+		"""
 		if isinstance(country, list):
 			self.countries.extend(country)
 		else:
 			self.countries.append(country)
 
 	def add_genres(self, genres: Union[Genre, list[Genre]]):
+		"""
+		Добавление жанра
+
+		:param Union[Genre, list[Genre]] genres: Жанр или список жанров
+		"""
 		if isinstance(genres, list):
 			self.genres.extend(genres)
 		else:

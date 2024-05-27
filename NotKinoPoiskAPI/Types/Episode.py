@@ -6,19 +6,19 @@ from typing import Optional
 class Episode:
 	"""
 	Объект эпизода
-	:param seasonNumber: Номер сезона
-	:param episodeNumber: Номер эпизода
-	:param nameRu: Название эпизода
-	:param nameEn: Название эпизода на английском
-	:param synopsis: Краткое содержание эпизода
-	:param releaseDate: Краткое содержание эпизода
 	"""
 	seasonNumber: int
+	"""Номер сезона"""
 	episodeNumber: int
+	"""Номер эпизода"""
 	nameRu: str
+	"""Название эпизода"""
 	nameEn: Optional[str]
+	"""Название эпизода на английском"""
 	synopsis: Optional[str]
+	"""Краткое содержание эпизода"""
 	releaseDate: Optional[str]
+	"""Дата выхода"""
 
 	def __str__(self):
 		"""

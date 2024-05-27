@@ -10,15 +10,19 @@ from NotKinoPoiskAPI.Types.PersonByNameResponseItem import PersonByNameResponseI
 class PersonByNameResponse(GeneralResponse):
 	"""
 	Класс для хранения информации о персоне по имени.
-	:param total: Количество персон.
-	:param items: Список персон.
 	"""
 	items: List[PersonByNameResponseItem] = field(default_factory=list)
+	"""Список персон"""
 
 	def __post_init__(self):
 		self.items = ObjectController.list_to_object(self.items, PersonByNameResponseItem)
 
 	def add_items(self, items: Union[PersonByNameResponseItem, list[PersonByNameResponseItem]]):
+		"""
+		Добавление персон
+
+		:param Union[PersonByNameResponseItem, list[PersonByNameResponseItem]] items: Персона или список персон
+		"""
 		if isinstance(items, list):
 			self.items.extend(items)
 		else:

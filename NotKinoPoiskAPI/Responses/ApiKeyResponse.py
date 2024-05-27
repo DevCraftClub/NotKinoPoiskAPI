@@ -10,11 +10,15 @@ from NotKinoPoiskAPI.Types.ApiKeyResponseTotalQuota import ApiKeyResponseTotalQu
 class ApiKeyResponse:
 	"""
 	Класс для хранения информации о ключе API.
-	:param totalQuota: Ключ API.
+
+	:return: Информация о ключе API
 	"""
 	totalQuota: ApiKeyResponseTotalQuota
+	"""Общий лимит запросов"""
 	dailyQuota: ApiKeyResponseDailyQuota
+	"""Дневной лимит запросов"""
 	accountType: ApiAccountType
+	"""Тип аккаунта"""
 
 	def __post_init__(self):
 		if isinstance(self.totalQuota, dict):

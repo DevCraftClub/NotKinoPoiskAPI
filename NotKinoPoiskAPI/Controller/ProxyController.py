@@ -13,11 +13,13 @@ class ProxyController:
 	Класс для работы с прокси
 	"""
 	proxy_list: list[ProxyItem] = field(default_factory=list)
+	"""Список прокси"""
 
 	def __init__(self, proxy_data: Optional[Union[str, ProxyItem, list[ProxyItem]]] = None):
 		"""
 		Инициализация
-		:param proxy_data: Данные для добавления прокси. Либо необработанной строкой, либо списком или самим объектом прокси
+
+		:param Optional[Union[str, ProxyItem, list[ProxyItem]]] proxy_data: Данные для добавления прокси. Либо необработанной строкой, либо списком или самим объектом прокси
 		"""
 		if proxy_data is None:
 			proxy_data = config('NKPA_PROXY', default=None, cast=str)
@@ -32,8 +34,7 @@ class ProxyController:
 	def add_proxy(self, proxy: Union[str, ProxyItem, list[ProxyItem]]):
 		"""
 		Добавление прокси
-		:param proxy: Строка, объект или список объектов прокси
-		:return:
+		:param Union[str, ProxyItem, list[ProxyItem]] proxy: Строка, объект или список объектов прокси
 		"""
 		if isinstance(proxy, ProxyItem):
 			self.proxy_list.append(proxy)
@@ -43,7 +44,9 @@ class ProxyController:
 	def get_proxy_list(self) -> list[ProxyItem]:
 		"""
 		Получение списка прокси
-		:return list[ProxyItem]
+
+		:return: Возвращает список проски
+		:rtype: list[ProxyItem]
 		"""
 		try:
 			return self.proxy_list
@@ -54,7 +57,9 @@ class ProxyController:
 	def get_random_proxy(self) -> ProxyItem | None:
 		"""
 		Получение случайного прокси
-		:return ProxyItem | None
+
+		:return: Получение случайного прокси
+		:rtype: ProxyItem | None
 		"""
 		if len(self.get_proxy_list()) == 0:
 			return None

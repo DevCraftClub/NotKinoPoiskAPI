@@ -10,10 +10,9 @@ from NotKinoPoiskAPI.Types.PremiereResponseItem import PremiereResponseItem
 class PremiereResponse(GeneralResponse):
 	"""
 	Класс для хранения информации о премьере.
-	:param total: Количество премьер.
-	:param items: Список премьер.
 	"""
 	items: List[PremiereResponseItem] = field(default_factory=list)
+	"""Список премьер"""
 
 	def __post_init__(self):
 		self.items = ObjectController.list_to_object(self.items, PremiereResponseItem)

@@ -9,21 +9,21 @@ from NotKinoPoiskAPI.Enums.Profession import Profession
 class PersonResponseFilms:
 	"""
 	Класс для хранения краткой информации о фильме в списке сотрудника.
-	:param filmId: ID фильма или сериала
-	:param nameRu: русское название
-	:param nameEn: английское название
-	:param rating: описание рейтинга
-	:param general: основное состав
-	:param description: описание роли в съёмках
-	:param professionKey: ключ роли в съёмках
 	"""
 	filmId: int
+	"""ID фильма или сериала"""
 	nameRu: Optional[str]
+	"""русское название"""
 	nameEn: Optional[str]
+	"""английское название"""
 	rating: Optional[str]
+	"""описание рейтинга"""
 	general: bool
+	"""основной состав"""
 	description: Optional[str]
+	"""описание роли в съёмках"""
 	professionKey: Optional[Profession]
+	"""ключ роли в съёмках"""
 
 	def __post_init__(self):
 		if self.professionKey is not None and isinstance(self.professionKey, str):

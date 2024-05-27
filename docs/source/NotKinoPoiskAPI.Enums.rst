@@ -60,18 +60,18 @@ NotKinoPoiskAPI.Enums.ImageType module
    :undoc-members:
    :show-inheritance:
 
-NotKinoPoiskAPI.Enums.MovieType module
---------------------------------------
+NotKinoPoiskAPI.Enums.KpMonth module
+------------------------------------
 
-.. automodule:: NotKinoPoiskAPI.Enums.MovieType
+.. automodule:: NotKinoPoiskAPI.Enums.KpMonth
    :members:
    :undoc-members:
    :show-inheritance:
 
-NotKinoPoiskAPI.Enums.PremiereMonth module
-------------------------------------------
+NotKinoPoiskAPI.Enums.MovieType module
+--------------------------------------
 
-.. automodule:: NotKinoPoiskAPI.Enums.PremiereMonth
+.. automodule:: NotKinoPoiskAPI.Enums.MovieType
    :members:
    :undoc-members:
    :show-inheritance:

@@ -9,18 +9,33 @@ from NotKinoPoiskAPI.Types.Genre import Genre
 
 @dataclass
 class FilmCollectionResponseItem:
+	"""
+	Объект фильма или сериала
+	"""
 	kinopoiskId: int
+	"""Идентификатор фильма"""
 	nameRu: Optional[str]
+	"""Название фильма"""
 	nameEn: Optional[str]
+	"""Название фильма на английском"""
 	nameOriginal: Optional[str]
+	"""Оригинальное название фильма"""
 	ratingKinopoisk: Optional[float]
+	"""Рейтинг КиноПоиск"""
 	ratingImdb: Optional[float]
+	"""Рейтинг IMDB"""
 	year: Optional[int]
+	"""Год выпуска фильма"""
 	type: Optional[MovieType]
+	"""Тип фильма"""
 	posterUrl: str
+	"""Ссылка на постер"""
 	posterUrlPreview: str
+	"""Ссылка на превью постера"""
 	countries: List[Country] = field(default_factory=list)
+	"""Список стран производства фильма"""
 	genres: List[Genre] = field(default_factory=list)
+	"""Список жанров фильма"""
 
 	def __post_init__(self):
 		self.countries = ObjectController.list_to_object(self.countries, Country)
@@ -29,12 +44,22 @@ class FilmCollectionResponseItem:
 			self.type = ObjectController.find_enum(self.type, MovieType)
 
 	def add_country(self, country: Union[Country, list[Country]]):
+		"""
+		Добавление страны производства
+
+		:param Union[Country, list[Country]] country: Страна или список стран
+		"""
 		if isinstance(country, list):
 			self.countries.extend(country)
 		else:
 			self.countries.append(country)
 
 	def add_genres(self, genres: Union[Genre, list[Genre]]):
+		"""
+		Добавление жанра
+
+		:param Union[Genre, list[Genre]] genres: Жанр или список жанров
+		"""
 		if isinstance(genres, list):
 			self.genres.extend(genres)
 		else:
