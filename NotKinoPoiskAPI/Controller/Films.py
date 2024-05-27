@@ -49,7 +49,7 @@ class KpFilms(NKPA):
 		Данный эндпоинт возвращает базовые данные о фильме. Поле lastSync показывает дату последнего обновления данных.
 		/api/v2.2/films/{id}
 		:param film_id: ID фильма.
-		:return Film
+		:return: Film
 		"""
 		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'films/{film_id}')), Film)
 
@@ -68,7 +68,7 @@ class KpFilms(NKPA):
 		Данный эндпоинт возвращает список фактов и ошибок в фильме.
 		/api/v2.2/films/{id}/facts
 		:param film_id: ID фильма.
-		:return FactResponse
+		:return: FactResponse
 		"""
 		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'films/{film_id}/facts')), FactResponse)
 
@@ -77,7 +77,7 @@ class KpFilms(NKPA):
 		Данный эндпоинт возвращает данные о прокате в разных странах.
 		/api/v2.2/films/{id}/distributions
 		:param film_id: ID фильма.
-		:return DistributionResponse
+		:return: DistributionResponse
 		"""
 		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'films/{film_id}/distributions')),
 		                                       DistributionResponse)
@@ -97,7 +97,7 @@ class KpFilms(NKPA):
 		Данный эндпоинт возвращает данные о наградах и премиях фильма.
 		/api/v2.2/films/{id}/awards
 		:param film_id: ID фильма.
-		:return AwardResponse
+		:return: AwardResponse
 		"""
 		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'films/{film_id}/awards')),
 		                                       AwardResponse)
@@ -114,7 +114,7 @@ class KpFilms(NKPA):
 		<iframe is="x-frame-bypass" src="https://widgets.kinopoisk.ru/discovery/trailer/167560?onlyPlayer=1&autoplay=1&cover=1" width="500" height="500"></iframe>
 		/api/v2.2/films/{id}/videos
 		:param film_id: ID фильма.
-		:return VideoResponse
+		:return: VideoResponse
 		"""
 		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'films/{film_id}/videos')),
 		                                       VideoResponse)
@@ -124,7 +124,7 @@ class KpFilms(NKPA):
 		Данный эндпоинт возвращает похожие фильмы.
 		/api/v2.2/films/{id}/similars
 		:param film_id: ID фильма.
-		:return RelatedFilmResponse
+		:return: RelatedFilmResponse
 		"""
 		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'films/{film_id}/similars')),
 		                                       RelatedFilmResponse)
@@ -147,7 +147,7 @@ class KpFilms(NKPA):
 		:param film_id: ID фильма.
 		:param image_type: Тип изображения.
 		:param page: Номер страницы.
-		:return ImageResponse
+		:return: ImageResponse
 		"""
 		return ObjectController.json_to_object(
 				self.get_data(self.get_api_url(f'films/{film_id}/images', type=image_type.name, page=page)),
@@ -160,7 +160,7 @@ class KpFilms(NKPA):
 		:param film_id: ID фильма.
 		:param page: Номер страницы.
 		:param order: Сортировка.
-		:return ReviewResponse
+		:return: ReviewResponse
 		"""
 		return ObjectController.json_to_object(
 				self.get_data(self.get_api_url(f'films/{film_id}/reviews', page=page, order=order.name)),
@@ -172,7 +172,7 @@ class KpFilms(NKPA):
 		/api/v2.2/films/{id}/external_sources
 		:param film_id: ID фильма.
 		:param page: Номер страницы.
-		:return ExternalSourceResponse
+		:return: ExternalSourceResponse
 		"""
 		return ObjectController.json_to_object(
 				self.get_data(self.get_api_url(f'films/{film_id}/external_sources', page=page)), ExternalSourceResponse)

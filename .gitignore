@@ -105,5 +105,5 @@ dmypy.json
 .pytype/
 cython_debug/
 .idea
-.idea/!/NotKinoPoiskAPI/Data/Cache/
-NotKinoPoiskAPI/Data/Cache/
+.idea/!/NotKinoPoiskAPI/Data/**/
+NotKinoPoiskAPI/Data/**/
