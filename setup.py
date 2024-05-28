@@ -10,13 +10,12 @@ setup(
 	url="https://github.com/DevCraftClub/NotKinoPoiskAPI",
 	author="Maxim Harder",
 	author_email="dev@devcraft.club",
-	license=open("LICENSE", "r", encoding="utf8").read(),
 	install_requires=[
 		"requests",
 		"python-decouple",
 	],
 	classifiers=[
-		"License :: OSI Approved :: GNUv3 License"
+		"License :: OSI Approved :: GNUv3 License",
 		"Programming Language :: Python :: 3.8",
 		"Programming Language :: Python :: 3.9",
 		"Programming Language :: Python :: 3.10",
