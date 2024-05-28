@@ -24,7 +24,8 @@ class DigitalReleaseResponse:
 		"""
 		Добавление релиза
 
-		:param Union[DigitalReleaseItem, list[DigitalReleaseItem]] release: Релиз или список релизов
+		Args:
+			release (Union[DigitalReleaseItem, list[DigitalReleaseItem]]): Релиз или список релизов
 		"""
 		if isinstance(release, list):
 			self.releases.extend(release)

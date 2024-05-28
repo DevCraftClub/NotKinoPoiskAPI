@@ -26,7 +26,8 @@ class FilmSearchResponse:
 		"""
 		Добавление фильмов
 
-		:param Union[FilmSearchResponseFilm, list[FilmSearchResponseFilm]] films: Фильм или список фильмов
+		Args:
+			films (Union[FilmSearchResponseFilm, list[FilmSearchResponseFilm]]): Фильм или список фильмов
 		"""
 		if isinstance(films, list):
 			self.films.extend(films)

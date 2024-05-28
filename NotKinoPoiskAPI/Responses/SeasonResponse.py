@@ -21,7 +21,8 @@ class SeasonResponse(GeneralResponse):
 		"""
 		Добавление сезона
 
-		:param Union[Season, List[Season]] season: Сезон или список сезонов
+		Args:
+			season (Union[Season, List[Season]]): Сезон или список сезонов
 		"""
 		if isinstance(season, list):
 			self.items.extend(season)

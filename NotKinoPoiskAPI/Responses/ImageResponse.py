@@ -21,7 +21,8 @@ class ImageResponse(GeneralResponse):
 		"""
 		Добавление изображений
 
-		:param Union[ImageResponseItem, list[ImageResponseItem]] items: Изображение или список изображений
+		Args:
+			items (Union[ImageResponseItem, list[ImageResponseItem]]): Изображение или список изображений
 		"""
 		if isinstance(items, list):
 			self.items.extend(items)

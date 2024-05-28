@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>NotKinoPoiskAPI.Types.Film API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>NotKinoPoiskAPI.Types.Film</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from dataclasses import dataclass, field
+from datetime import datetime
+from typing import List, Optional, Union
+
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
+from NotKinoPoiskAPI.Enums.MovieType import MovieType
+from NotKinoPoiskAPI.Enums.ProductionStatus import ProductionStatus
+from NotKinoPoiskAPI.Types.Country import Country
+from NotKinoPoiskAPI.Types.Genre import Genre
+
+
+@dataclass
+class Film:
+        &#34;&#34;&#34;
+        Объект фильма или сериала
+        &#34;&#34;&#34;
+        kinopoiskId: int
+        &#34;&#34;&#34;Идентификатор фильма&#34;&#34;&#34;
+        kinopoiskHDId: Optional[str]
+        &#34;&#34;&#34;Идентификатор фильма в КиноПоиск Онлайн&#34;&#34;&#34;
+        imdbId: Optional[str]
+        &#34;&#34;&#34;Идентификатор фильма на IMDB&#34;&#34;&#34;
+        nameRu: Optional[str]
+        &#34;&#34;&#34;Название фильма&#34;&#34;&#34;
+        nameEn: Optional[str]
+        &#34;&#34;&#34;Название фильма на английском&#34;&#34;&#34;
+        nameOriginal: Optional[str]
+        &#34;&#34;&#34;Оригинальное название фильма&#34;&#34;&#34;
+        posterUrl: str
+        &#34;&#34;&#34;Ссылка на постер&#34;&#34;&#34;
+        posterUrlPreview: str
+        &#34;&#34;&#34;Ссылка на превью постера&#34;&#34;&#34;
+        coverUrl: Optional[str]
+        &#34;&#34;&#34;Ссылка на обложку&#34;&#34;&#34;
+        logoUrl: Optional[str]
+        &#34;&#34;&#34;Ссылка на логотип&#34;&#34;&#34;
+        ratingGoodReview: Optional[int]
+        &#34;&#34;&#34;Рейтинг отзывов&#34;&#34;&#34;
+        ratingGoodReviewVoteCount: Optional[int]
+        &#34;&#34;&#34;Количество хороших отзывов&#34;&#34;&#34;
+        ratingKinopoisk: Optional[float]
+        &#34;&#34;&#34;Рейтинг КиноПоиск&#34;&#34;&#34;
+        ratingKinopoiskVoteCount: Optional[int]
+        &#34;&#34;&#34;Количество голосов за рейтинг КиноПоиск&#34;&#34;&#34;
+        ratingImdb: Optional[float]
+        &#34;&#34;&#34;Рейтинг IMDB&#34;&#34;&#34;
+        ratingImdbVoteCount: Optional[int]
+        &#34;&#34;&#34;Количество голосов за рейтинг IMDB&#34;&#34;&#34;
+        ratingFilmCritics: Optional[float]
+        &#34;&#34;&#34;Рейтинг критиков&#34;&#34;&#34;
+        ratingFilmCriticsVoteCount: Optional[int]
+        &#34;&#34;&#34;Количество голосов за рейтинг критиков&#34;&#34;&#34;
+        ratingAwait: Optional[float]
+        &#34;&#34;&#34;Рейтинг ожидания&#34;&#34;&#34;
+        ratingAwaitCount: Optional[int]
+        &#34;&#34;&#34;Количество голосов за рейтинг ожидания&#34;&#34;&#34;
+        ratingRfCritics: Optional[float]
+        &#34;&#34;&#34;Рейтинг критиков России&#34;&#34;&#34;
+        ratingRfCriticsVoteCount: Optional[int]
+        &#34;&#34;&#34;Количество голосов за рейтинг критиков России&#34;&#34;&#34;
+        webUrl: str
+        &#34;&#34;&#34;Ссылка на страницу фильма&#34;&#34;&#34;
+        year: Optional[int]
+        &#34;&#34;&#34;Год выпуска&#34;&#34;&#34;
+        filmLength: Optional[int]
+        &#34;&#34;&#34;Длительность фильма&#34;&#34;&#34;
+        slogan: Optional[str]
+        &#34;&#34;&#34;Слоган&#34;&#34;&#34;
+        description: Optional[str]
+        &#34;&#34;&#34;Описание&#34;&#34;&#34;
+        shortDescription: Optional[str]
+        &#34;&#34;&#34;Краткое описание&#34;&#34;&#34;
+        editorAnnotation: Optional[str]
+        &#34;&#34;&#34;Аннотация режиссера&#34;&#34;&#34;
+        productionStatus: Optional[ProductionStatus]
+        &#34;&#34;&#34;Статус производства&#34;&#34;&#34;
+        type: Optional[MovieType]
+        &#34;&#34;&#34;Тип медиа&#34;&#34;&#34;
+        ratingMpaa: Optional[str]
+        &#34;&#34;&#34;Рейтинг MPAA&#34;&#34;&#34;
+        ratingAgeLimits: Optional[str]
+        &#34;&#34;&#34;Возрастные ограничения&#34;&#34;&#34;
+        hasImax: Optional[bool]
+        &#34;&#34;&#34;Есть ли в IMAX&#34;&#34;&#34;
+        has3D: Optional[bool]
+        &#34;&#34;&#34;Есть ли в 3D&#34;&#34;&#34;
+        lastSync: datetime
+        &#34;&#34;&#34;Дата последнего обновления&#34;&#34;&#34;
+        startYear: Optional[int]
+        &#34;&#34;&#34;Год начала выпуска&#34;&#34;&#34;
+        endYear: Optional[int]
+        &#34;&#34;&#34;Год окончания выпуска&#34;&#34;&#34;
+        serial: Optional[bool]
+        &#34;&#34;&#34;Сериал&#34;&#34;&#34;
+        shortFilm: Optional[bool]
+        &#34;&#34;&#34;Короткометражка&#34;&#34;&#34;
+        completed: Optional[bool]
+        &#34;&#34;&#34;Завершен&#34;&#34;&#34;
+        countries: List[Country] = field(default_factory=list)
+        &#34;&#34;&#34;Страны&#34;&#34;&#34;
+        genres: List[Genre] = field(default_factory=list)
+        &#34;&#34;&#34;Жанры&#34;&#34;&#34;
+        reviewsCount: int = 0
+        &#34;&#34;&#34;Количество отзывов&#34;&#34;&#34;
+        isTicketsAvailable: bool = False
+        &#34;&#34;&#34;Доступны ли билеты&#34;&#34;&#34;
+
+        def __post_init__(self):
+                if self.countries is None:
+                        self.countries = list()
+                else:
+                        self.countries = ObjectController.list_to_object(self.countries, Country)
+                if self.genres is None:
+                        self.genres = list()
+                else:
+                        self.genres = ObjectController.list_to_object(self.genres, Genre)
+                if self.type is not None and isinstance(self.type, str):
+                        self.type = ObjectController.find_enum(self.type, MovieType)
+                if self.productionStatus is not None and isinstance(self.productionStatus, str):
+                        self.productionStatus = ObjectController.find_enum(self.productionStatus, ProductionStatus)
+
+        def add_country(self, country: Union[Country, list[Country]]):
+                &#34;&#34;&#34;
+                Добавление страны производства
+
+                Args:
+                        country (Union[Country, list[Country]]): Страна или список стран
+                &#34;&#34;&#34;
+                if isinstance(country, list):
+                        self.countries.extend(country)
+                else:
+                        self.countries.append(country)
+
+        def add_genres(self, genres: Union[Genre, list[Genre]]):
+                &#34;&#34;&#34;
+                Добавление жанра
+
+                Args:
+                        genres (Union[Genre, list[Genre]]): Жанр или список жанров
+                &#34;&#34;&#34;
+                if isinstance(genres, list):
+                        self.genres.extend(genres)
+                else:
+                        self.genres.append(genres)
+
+        def __str__(self):
+                title = self.nameRu
+                title += f&#34; / {self.nameEn}&#34; if self.nameEn else &#34;&#34;
+                title += f&#34; / {self.nameOriginal}&#34; if self.nameOriginal else &#34;&#34;
+                title += f&#34; ({self.year})&#34; if self.year else &#34;&#34;
+
+                return title.strip()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="NotKinoPoiskAPI.Types.Film.Film"><code class="flex name class">
+<span>class <span class="ident">Film</span></span>
+<span>(</span><span>kinopoiskId: int, kinopoiskHDId: Optional[str], imdbId: Optional[str], nameRu: Optional[str], nameEn: Optional[str], nameOriginal: Optional[str], posterUrl: str, posterUrlPreview: str, coverUrl: Optional[str], logoUrl: Optional[str], ratingGoodReview: Optional[int], ratingGoodReviewVoteCount: Optional[int], ratingKinopoisk: Optional[float], ratingKinopoiskVoteCount: Optional[int], ratingImdb: Optional[float], ratingImdbVoteCount: Optional[int], ratingFilmCritics: Optional[float], ratingFilmCriticsVoteCount: Optional[int], ratingAwait: Optional[float], ratingAwaitCount: Optional[int], ratingRfCritics: Optional[float], ratingRfCriticsVoteCount: Optional[int], webUrl: str, year: Optional[int], filmLength: Optional[int], slogan: Optional[str], description: Optional[str], shortDescription: Optional[str], editorAnnotation: Optional[str], productionStatus: Optional[<a title="NotKinoPoiskAPI.Enums.ProductionStatus.ProductionStatus" href="../Enums/ProductionStatus.html#NotKinoPoiskAPI.Enums.ProductionStatus.ProductionStatus">ProductionStatus</a>], type: Optional[<a title="NotKinoPoiskAPI.Enums.MovieType.MovieType" href="../Enums/MovieType.html#NotKinoPoiskAPI.Enums.MovieType.MovieType">MovieType</a>], ratingMpaa: Optional[str], ratingAgeLimits: Optional[str], hasImax: Optional[bool], has3D: Optional[bool], lastSync: datetime.datetime, startYear: Optional[int], endYear: Optional[int], serial: Optional[bool], shortFilm: Optional[bool], completed: Optional[bool], countries: List[<a title="NotKinoPoiskAPI.Types.Country.Country" href="Country.html#NotKinoPoiskAPI.Types.Country.Country">Country</a>] = &lt;factory&gt;, genres: List[<a title="NotKinoPoiskAPI.Types.Genre.Genre" href="Genre.html#NotKinoPoiskAPI.Types.Genre.Genre">Genre</a>] = &lt;factory&gt;, reviewsCount: int = 0, isTicketsAvailable: bool = False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Объект фильма или сериала</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class Film:
+        &#34;&#34;&#34;
+        Объект фильма или сериала
+        &#34;&#34;&#34;
+        kinopoiskId: int
+        &#34;&#34;&#34;Идентификатор фильма&#34;&#34;&#34;
+        kinopoiskHDId: Optional[str]
+        &#34;&#34;&#34;Идентификатор фильма в КиноПоиск Онлайн&#34;&#34;&#34;
+        imdbId: Optional[str]
+        &#34;&#34;&#34;Идентификатор фильма на IMDB&#34;&#34;&#34;
+        nameRu: Optional[str]
+        &#34;&#34;&#34;Название фильма&#34;&#34;&#34;
+        nameEn: Optional[str]
+        &#34;&#34;&#34;Название фильма на английском&#34;&#34;&#34;
+        nameOriginal: Optional[str]
+        &#34;&#34;&#34;Оригинальное название фильма&#34;&#34;&#34;
+        posterUrl: str
+        &#34;&#34;&#34;Ссылка на постер&#34;&#34;&#34;
+        posterUrlPreview: str
+        &#34;&#34;&#34;Ссылка на превью постера&#34;&#34;&#34;
+        coverUrl: Optional[str]
+        &#34;&#34;&#34;Ссылка на обложку&#34;&#34;&#34;
+        logoUrl: Optional[str]
+        &#34;&#34;&#34;Ссылка на логотип&#34;&#34;&#34;
+        ratingGoodReview: Optional[int]
+        &#34;&#34;&#34;Рейтинг отзывов&#34;&#34;&#34;
+        ratingGoodReviewVoteCount: Optional[int]
+        &#34;&#34;&#34;Количество хороших отзывов&#34;&#34;&#34;
+        ratingKinopoisk: Optional[float]
+        &#34;&#34;&#34;Рейтинг КиноПоиск&#34;&#34;&#34;
+        ratingKinopoiskVoteCount: Optional[int]
+        &#34;&#34;&#34;Количество голосов за рейтинг КиноПоиск&#34;&#34;&#34;
+        ratingImdb: Optional[float]
+        &#34;&#34;&#34;Рейтинг IMDB&#34;&#34;&#34;
+        ratingImdbVoteCount: Optional[int]
+        &#34;&#34;&#34;Количество голосов за рейтинг IMDB&#34;&#34;&#34;
+        ratingFilmCritics: Optional[float]
+        &#34;&#34;&#34;Рейтинг критиков&#34;&#34;&#34;
+        ratingFilmCriticsVoteCount: Optional[int]
+        &#34;&#34;&#34;Количество голосов за рейтинг критиков&#34;&#34;&#34;
+        ratingAwait: Optional[float]
+        &#34;&#34;&#34;Рейтинг ожидания&#34;&#34;&#34;
+        ratingAwaitCount: Optional[int]
+        &#34;&#34;&#34;Количество голосов за рейтинг ожидания&#34;&#34;&#34;
+        ratingRfCritics: Optional[float]
+        &#34;&#34;&#34;Рейтинг критиков России&#34;&#34;&#34;
+        ratingRfCriticsVoteCount: Optional[int]
+        &#34;&#34;&#34;Количество голосов за рейтинг критиков России&#34;&#34;&#34;
+        webUrl: str
+        &#34;&#34;&#34;Ссылка на страницу фильма&#34;&#34;&#34;
+        year: Optional[int]
+        &#34;&#34;&#34;Год выпуска&#34;&#34;&#34;
+        filmLength: Optional[int]
+        &#34;&#34;&#34;Длительность фильма&#34;&#34;&#34;
+        slogan: Optional[str]
+        &#34;&#34;&#34;Слоган&#34;&#34;&#34;
+        description: Optional[str]
+        &#34;&#34;&#34;Описание&#34;&#34;&#34;
+        shortDescription: Optional[str]
+        &#34;&#34;&#34;Краткое описание&#34;&#34;&#34;
+        editorAnnotation: Optional[str]
+        &#34;&#34;&#34;Аннотация режиссера&#34;&#34;&#34;
+        productionStatus: Optional[ProductionStatus]
+        &#34;&#34;&#34;Статус производства&#34;&#34;&#34;
+        type: Optional[MovieType]
+        &#34;&#34;&#34;Тип медиа&#34;&#34;&#34;
+        ratingMpaa: Optional[str]
+        &#34;&#34;&#34;Рейтинг MPAA&#34;&#34;&#34;
+        ratingAgeLimits: Optional[str]
+        &#34;&#34;&#34;Возрастные ограничения&#34;&#34;&#34;
+        hasImax: Optional[bool]
+        &#34;&#34;&#34;Есть ли в IMAX&#34;&#34;&#34;
+        has3D: Optional[bool]
+        &#34;&#34;&#34;Есть ли в 3D&#34;&#34;&#34;
+        lastSync: datetime
+        &#34;&#34;&#34;Дата последнего обновления&#34;&#34;&#34;
+        startYear: Optional[int]
+        &#34;&#34;&#34;Год начала выпуска&#34;&#34;&#34;
+        endYear: Optional[int]
+        &#34;&#34;&#34;Год окончания выпуска&#34;&#34;&#34;
+        serial: Optional[bool]
+        &#34;&#34;&#34;Сериал&#34;&#34;&#34;
+        shortFilm: Optional[bool]
+        &#34;&#34;&#34;Короткометражка&#34;&#34;&#34;
+        completed: Optional[bool]
+        &#34;&#34;&#34;Завершен&#34;&#34;&#34;
+        countries: List[Country] = field(default_factory=list)
+        &#34;&#34;&#34;Страны&#34;&#34;&#34;
+        genres: List[Genre] = field(default_factory=list)
+        &#34;&#34;&#34;Жанры&#34;&#34;&#34;
+        reviewsCount: int = 0
+        &#34;&#34;&#34;Количество отзывов&#34;&#34;&#34;
+        isTicketsAvailable: bool = False
+        &#34;&#34;&#34;Доступны ли билеты&#34;&#34;&#34;
+
+        def __post_init__(self):
+                if self.countries is None:
+                        self.countries = list()
+                else:
+                        self.countries = ObjectController.list_to_object(self.countries, Country)
+                if self.genres is None:
+                        self.genres = list()
+                else:
+                        self.genres = ObjectController.list_to_object(self.genres, Genre)
+                if self.type is not None and isinstance(self.type, str):
+                        self.type = ObjectController.find_enum(self.type, MovieType)
+                if self.productionStatus is not None and isinstance(self.productionStatus, str):
+                        self.productionStatus = ObjectController.find_enum(self.productionStatus, ProductionStatus)
+
+        def add_country(self, country: Union[Country, list[Country]]):
+                &#34;&#34;&#34;
+                Добавление страны производства
+
+                Args:
+                        country (Union[Country, list[Country]]): Страна или список стран
+                &#34;&#34;&#34;
+                if isinstance(country, list):
+                        self.countries.extend(country)
+                else:
+                        self.countries.append(country)
+
+        def add_genres(self, genres: Union[Genre, list[Genre]]):
+                &#34;&#34;&#34;
+                Добавление жанра
+
+                Args:
+                        genres (Union[Genre, list[Genre]]): Жанр или список жанров
+                &#34;&#34;&#34;
+                if isinstance(genres, list):
+                        self.genres.extend(genres)
+                else:
+                        self.genres.append(genres)
+
+        def __str__(self):
+                title = self.nameRu
+                title += f&#34; / {self.nameEn}&#34; if self.nameEn else &#34;&#34;
+                title += f&#34; / {self.nameOriginal}&#34; if self.nameOriginal else &#34;&#34;
+                title += f&#34; ({self.year})&#34; if self.year else &#34;&#34;
+
+                return title.strip()</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.completed"><code class="name">var <span class="ident">completed</span> : Optional[bool]</code></dt>
+<dd>
+<div class="desc"><p>Завершен</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.countries"><code class="name">var <span class="ident">countries</span> : List[<a title="NotKinoPoiskAPI.Types.Country.Country" href="Country.html#NotKinoPoiskAPI.Types.Country.Country">Country</a>]</code></dt>
+<dd>
+<div class="desc"><p>Страны</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.coverUrl"><code class="name">var <span class="ident">coverUrl</span> : Optional[str]</code></dt>
+<dd>
+<div class="desc"><p>Ссылка на обложку</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.description"><code class="name">var <span class="ident">description</span> : Optional[str]</code></dt>
+<dd>
+<div class="desc"><p>Описание</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.editorAnnotation"><code class="name">var <span class="ident">editorAnnotation</span> : Optional[str]</code></dt>
+<dd>
+<div class="desc"><p>Аннотация режиссера</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.endYear"><code class="name">var <span class="ident">endYear</span> : Optional[int]</code></dt>
+<dd>
+<div class="desc"><p>Год окончания выпуска</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.filmLength"><code class="name">var <span class="ident">filmLength</span> : Optional[int]</code></dt>
+<dd>
+<div class="desc"><p>Длительность фильма</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.genres"><code class="name">var <span class="ident">genres</span> : List[<a title="NotKinoPoiskAPI.Types.Genre.Genre" href="Genre.html#NotKinoPoiskAPI.Types.Genre.Genre">Genre</a>]</code></dt>
+<dd>
+<div class="desc"><p>Жанры</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.has3D"><code class="name">var <span class="ident">has3D</span> : Optional[bool]</code></dt>
+<dd>
+<div class="desc"><p>Есть ли в 3D</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.hasImax"><code class="name">var <span class="ident">hasImax</span> : Optional[bool]</code></dt>
+<dd>
+<div class="desc"><p>Есть ли в IMAX</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.imdbId"><code class="name">var <span class="ident">imdbId</span> : Optional[str]</code></dt>
+<dd>
+<div class="desc"><p>Идентификатор фильма на IMDB</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.isTicketsAvailable"><code class="name">var <span class="ident">isTicketsAvailable</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Доступны ли билеты</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.kinopoiskHDId"><code class="name">var <span class="ident">kinopoiskHDId</span> : Optional[str]</code></dt>
+<dd>
+<div class="desc"><p>Идентификатор фильма в КиноПоиск Онлайн</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.kinopoiskId"><code class="name">var <span class="ident">kinopoiskId</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Идентификатор фильма</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.lastSync"><code class="name">var <span class="ident">lastSync</span> : datetime.datetime</code></dt>
+<dd>
+<div class="desc"><p>Дата последнего обновления</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.logoUrl"><code class="name">var <span class="ident">logoUrl</span> : Optional[str]</code></dt>
+<dd>
+<div class="desc"><p>Ссылка на логотип</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.nameEn"><code class="name">var <span class="ident">nameEn</span> : Optional[str]</code></dt>
+<dd>
+<div class="desc"><p>Название фильма на английском</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.nameOriginal"><code class="name">var <span class="ident">nameOriginal</span> : Optional[str]</code></dt>
+<dd>
+<div class="desc"><p>Оригинальное название фильма</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.nameRu"><code class="name">var <span class="ident">nameRu</span> : Optional[str]</code></dt>
+<dd>
+<div class="desc"><p>Название фильма</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.posterUrl"><code class="name">var <span class="ident">posterUrl</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Ссылка на постер</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.posterUrlPreview"><code class="name">var <span class="ident">posterUrlPreview</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Ссылка на превью постера</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.productionStatus"><code class="name">var <span class="ident">productionStatus</span> : Optional[<a title="NotKinoPoiskAPI.Enums.ProductionStatus.ProductionStatus" href="../Enums/ProductionStatus.html#NotKinoPoiskAPI.Enums.ProductionStatus.ProductionStatus">ProductionStatus</a>]</code></dt>
+<dd>
+<div class="desc"><p>Статус производства</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.ratingAgeLimits"><code class="name">var <span class="ident">ratingAgeLimits</span> : Optional[str]</code></dt>
+<dd>
+<div class="desc"><p>Возрастные ограничения</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.ratingAwait"><code class="name">var <span class="ident">ratingAwait</span> : Optional[float]</code></dt>
+<dd>
+<div class="desc"><p>Рейтинг ожидания</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.ratingAwaitCount"><code class="name">var <span class="ident">ratingAwaitCount</span> : Optional[int]</code></dt>
+<dd>
+<div class="desc"><p>Количество голосов за рейтинг ожидания</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.ratingFilmCritics"><code class="name">var <span class="ident">ratingFilmCritics</span> : Optional[float]</code></dt>
+<dd>
+<div class="desc"><p>Рейтинг критиков</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.ratingFilmCriticsVoteCount"><code class="name">var <span class="ident">ratingFilmCriticsVoteCount</span> : Optional[int]</code></dt>
+<dd>
+<div class="desc"><p>Количество голосов за рейтинг критиков</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.ratingGoodReview"><code class="name">var <span class="ident">ratingGoodReview</span> : Optional[int]</code></dt>
+<dd>
+<div class="desc"><p>Рейтинг отзывов</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.ratingGoodReviewVoteCount"><code class="name">var <span class="ident">ratingGoodReviewVoteCount</span> : Optional[int]</code></dt>
+<dd>
+<div class="desc"><p>Количество хороших отзывов</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.ratingImdb"><code class="name">var <span class="ident">ratingImdb</span> : Optional[float]</code></dt>
+<dd>
+<div class="desc"><p>Рейтинг IMDB</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.ratingImdbVoteCount"><code class="name">var <span class="ident">ratingImdbVoteCount</span> : Optional[int]</code></dt>
+<dd>
+<div class="desc"><p>Количество голосов за рейтинг IMDB</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.ratingKinopoisk"><code class="name">var <span class="ident">ratingKinopoisk</span> : Optional[float]</code></dt>
+<dd>
+<div class="desc"><p>Рейтинг КиноПоиск</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.ratingKinopoiskVoteCount"><code class="name">var <span class="ident">ratingKinopoiskVoteCount</span> : Optional[int]</code></dt>
+<dd>
+<div class="desc"><p>Количество голосов за рейтинг КиноПоиск</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.ratingMpaa"><code class="name">var <span class="ident">ratingMpaa</span> : Optional[str]</code></dt>
+<dd>
+<div class="desc"><p>Рейтинг MPAA</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.ratingRfCritics"><code class="name">var <span class="ident">ratingRfCritics</span> : Optional[float]</code></dt>
+<dd>
+<div class="desc"><p>Рейтинг критиков России</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.ratingRfCriticsVoteCount"><code class="name">var <span class="ident">ratingRfCriticsVoteCount</span> : Optional[int]</code></dt>
+<dd>
+<div class="desc"><p>Количество голосов за рейтинг критиков России</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.reviewsCount"><code class="name">var <span class="ident">reviewsCount</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Количество отзывов</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.serial"><code class="name">var <span class="ident">serial</span> : Optional[bool]</code></dt>
+<dd>
+<div class="desc"><p>Сериал</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.shortDescription"><code class="name">var <span class="ident">shortDescription</span> : Optional[str]</code></dt>
+<dd>
+<div class="desc"><p>Краткое описание</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.shortFilm"><code class="name">var <span class="ident">shortFilm</span> : Optional[bool]</code></dt>
+<dd>
+<div class="desc"><p>Короткометражка</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.slogan"><code class="name">var <span class="ident">slogan</span> : Optional[str]</code></dt>
+<dd>
+<div class="desc"><p>Слоган</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.startYear"><code class="name">var <span class="ident">startYear</span> : Optional[int]</code></dt>
+<dd>
+<div class="desc"><p>Год начала выпуска</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.type"><code class="name">var <span class="ident">type</span> : Optional[<a title="NotKinoPoiskAPI.Enums.MovieType.MovieType" href="../Enums/MovieType.html#NotKinoPoiskAPI.Enums.MovieType.MovieType">MovieType</a>]</code></dt>
+<dd>
+<div class="desc"><p>Тип медиа</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.webUrl"><code class="name">var <span class="ident">webUrl</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Ссылка на страницу фильма</p></div>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.year"><code class="name">var <span class="ident">year</span> : Optional[int]</code></dt>
+<dd>
+<div class="desc"><p>Год выпуска</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.add_country"><code class="name flex">
+<span>def <span class="ident">add_country</span></span>(<span>self, country: Union[<a title="NotKinoPoiskAPI.Types.Country.Country" href="Country.html#NotKinoPoiskAPI.Types.Country.Country">Country</a>, list[<a title="NotKinoPoiskAPI.Types.Country.Country" href="Country.html#NotKinoPoiskAPI.Types.Country.Country">Country</a>]])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Добавление страны производства</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>country</code></strong> :&ensp;<code>Union[Country, list[Country]]</code></dt>
+<dd>Страна или список стран</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_country(self, country: Union[Country, list[Country]]):
+        &#34;&#34;&#34;
+        Добавление страны производства
+
+        Args:
+                country (Union[Country, list[Country]]): Страна или список стран
+        &#34;&#34;&#34;
+        if isinstance(country, list):
+                self.countries.extend(country)
+        else:
+                self.countries.append(country)</code></pre>
+</details>
+</dd>
+<dt id="NotKinoPoiskAPI.Types.Film.Film.add_genres"><code class="name flex">
+<span>def <span class="ident">add_genres</span></span>(<span>self, genres: Union[<a title="NotKinoPoiskAPI.Types.Genre.Genre" href="Genre.html#NotKinoPoiskAPI.Types.Genre.Genre">Genre</a>, list[<a title="NotKinoPoiskAPI.Types.Genre.Genre" href="Genre.html#NotKinoPoiskAPI.Types.Genre.Genre">Genre</a>]])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Добавление жанра</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>genres</code></strong> :&ensp;<code>Union[Genre, list[Genre]]</code></dt>
+<dd>Жанр или список жанров</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_genres(self, genres: Union[Genre, list[Genre]]):
+        &#34;&#34;&#34;
+        Добавление жанра
+
+        Args:
+                genres (Union[Genre, list[Genre]]): Жанр или список жанров
+        &#34;&#34;&#34;
+        if isinstance(genres, list):
+                self.genres.extend(genres)
+        else:
+                self.genres.append(genres)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="NotKinoPoiskAPI.Types" href="index.html">NotKinoPoiskAPI.Types</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="NotKinoPoiskAPI.Types.Film.Film" href="#NotKinoPoiskAPI.Types.Film.Film">Film</a></code></h4>
+<ul class="">
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.add_country" href="#NotKinoPoiskAPI.Types.Film.Film.add_country">add_country</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.add_genres" href="#NotKinoPoiskAPI.Types.Film.Film.add_genres">add_genres</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.completed" href="#NotKinoPoiskAPI.Types.Film.Film.completed">completed</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.countries" href="#NotKinoPoiskAPI.Types.Film.Film.countries">countries</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.coverUrl" href="#NotKinoPoiskAPI.Types.Film.Film.coverUrl">coverUrl</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.description" href="#NotKinoPoiskAPI.Types.Film.Film.description">description</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.editorAnnotation" href="#NotKinoPoiskAPI.Types.Film.Film.editorAnnotation">editorAnnotation</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.endYear" href="#NotKinoPoiskAPI.Types.Film.Film.endYear">endYear</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.filmLength" href="#NotKinoPoiskAPI.Types.Film.Film.filmLength">filmLength</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.genres" href="#NotKinoPoiskAPI.Types.Film.Film.genres">genres</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.has3D" href="#NotKinoPoiskAPI.Types.Film.Film.has3D">has3D</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.hasImax" href="#NotKinoPoiskAPI.Types.Film.Film.hasImax">hasImax</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.imdbId" href="#NotKinoPoiskAPI.Types.Film.Film.imdbId">imdbId</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.isTicketsAvailable" href="#NotKinoPoiskAPI.Types.Film.Film.isTicketsAvailable">isTicketsAvailable</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.kinopoiskHDId" href="#NotKinoPoiskAPI.Types.Film.Film.kinopoiskHDId">kinopoiskHDId</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.kinopoiskId" href="#NotKinoPoiskAPI.Types.Film.Film.kinopoiskId">kinopoiskId</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.lastSync" href="#NotKinoPoiskAPI.Types.Film.Film.lastSync">lastSync</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.logoUrl" href="#NotKinoPoiskAPI.Types.Film.Film.logoUrl">logoUrl</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.nameEn" href="#NotKinoPoiskAPI.Types.Film.Film.nameEn">nameEn</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.nameOriginal" href="#NotKinoPoiskAPI.Types.Film.Film.nameOriginal">nameOriginal</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.nameRu" href="#NotKinoPoiskAPI.Types.Film.Film.nameRu">nameRu</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.posterUrl" href="#NotKinoPoiskAPI.Types.Film.Film.posterUrl">posterUrl</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.posterUrlPreview" href="#NotKinoPoiskAPI.Types.Film.Film.posterUrlPreview">posterUrlPreview</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.productionStatus" href="#NotKinoPoiskAPI.Types.Film.Film.productionStatus">productionStatus</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.ratingAgeLimits" href="#NotKinoPoiskAPI.Types.Film.Film.ratingAgeLimits">ratingAgeLimits</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.ratingAwait" href="#NotKinoPoiskAPI.Types.Film.Film.ratingAwait">ratingAwait</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.ratingAwaitCount" href="#NotKinoPoiskAPI.Types.Film.Film.ratingAwaitCount">ratingAwaitCount</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.ratingFilmCritics" href="#NotKinoPoiskAPI.Types.Film.Film.ratingFilmCritics">ratingFilmCritics</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.ratingFilmCriticsVoteCount" href="#NotKinoPoiskAPI.Types.Film.Film.ratingFilmCriticsVoteCount">ratingFilmCriticsVoteCount</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.ratingGoodReview" href="#NotKinoPoiskAPI.Types.Film.Film.ratingGoodReview">ratingGoodReview</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.ratingGoodReviewVoteCount" href="#NotKinoPoiskAPI.Types.Film.Film.ratingGoodReviewVoteCount">ratingGoodReviewVoteCount</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.ratingImdb" href="#NotKinoPoiskAPI.Types.Film.Film.ratingImdb">ratingImdb</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.ratingImdbVoteCount" href="#NotKinoPoiskAPI.Types.Film.Film.ratingImdbVoteCount">ratingImdbVoteCount</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.ratingKinopoisk" href="#NotKinoPoiskAPI.Types.Film.Film.ratingKinopoisk">ratingKinopoisk</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.ratingKinopoiskVoteCount" href="#NotKinoPoiskAPI.Types.Film.Film.ratingKinopoiskVoteCount">ratingKinopoiskVoteCount</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.ratingMpaa" href="#NotKinoPoiskAPI.Types.Film.Film.ratingMpaa">ratingMpaa</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.ratingRfCritics" href="#NotKinoPoiskAPI.Types.Film.Film.ratingRfCritics">ratingRfCritics</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.ratingRfCriticsVoteCount" href="#NotKinoPoiskAPI.Types.Film.Film.ratingRfCriticsVoteCount">ratingRfCriticsVoteCount</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.reviewsCount" href="#NotKinoPoiskAPI.Types.Film.Film.reviewsCount">reviewsCount</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.serial" href="#NotKinoPoiskAPI.Types.Film.Film.serial">serial</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.shortDescription" href="#NotKinoPoiskAPI.Types.Film.Film.shortDescription">shortDescription</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.shortFilm" href="#NotKinoPoiskAPI.Types.Film.Film.shortFilm">shortFilm</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.slogan" href="#NotKinoPoiskAPI.Types.Film.Film.slogan">slogan</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.startYear" href="#NotKinoPoiskAPI.Types.Film.Film.startYear">startYear</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.type" href="#NotKinoPoiskAPI.Types.Film.Film.type">type</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.webUrl" href="#NotKinoPoiskAPI.Types.Film.Film.webUrl">webUrl</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Types.Film.Film.year" href="#NotKinoPoiskAPI.Types.Film.Film.year">year</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

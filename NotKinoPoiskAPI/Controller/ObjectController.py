@@ -12,10 +12,12 @@ class ObjectController:
 		"""
 		Конвертация json в объект
 
-		:param Union[str, dict] json_data: Данные в формате json
-		:param Any object_type: Тип объекта
-		:return: Объект
-		:rtype: Any
+		Args:
+			json_data (Union[str, Dict]): Данные в формате json
+			object_type (Any): Тип объекта
+
+		Returns:
+			Any: Объект
 		"""
 		if json_data is None:
 			return None
@@ -28,10 +30,12 @@ class ObjectController:
 		"""
 		Конвертация списка json в список объектов
 
-		:param List items: Список данных в формате json
-		:param Any object_data: Тип объекта
-		:return: Список объектов
-		:rtype: List[Any]
+		Args:
+			items (List): Список данных в формате json
+			object_data (Any): Тип объекта
+
+		Returns:
+			List[Any]: Список объектов
 		"""
 		return [ObjectController.json_to_object(item, object_data) for item in items]
 
@@ -40,10 +44,12 @@ class ObjectController:
 		"""
 		Поиск элемента в Enum и возвращает объект Enum
 
-		:param str enum_data: Имя элемента
-		:param Any enum_obj: Enum
-		:return: Элемент Enum
-		:rtype: Any
+		Args:
+			enum_data (str): Имя элемента
+			enum_obj (Any): Enum
+
+		Returns:
+			Any: Элемент Enum
 		"""
 		for e in enum_obj:
 			if e.name == enum_data:

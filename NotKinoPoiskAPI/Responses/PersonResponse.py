@@ -57,7 +57,8 @@ class PersonResponse:
 		"""
 		Добавляет факт о сотруднике.
 
-		:param Union[str, list[str]] fact: Факт о сотруднике. Допустимы список или строка
+		Args:
+			fact (Union[str, list[str]]): Факт о сотруднике. Допустимы список или строка
 		"""
 		if isinstance(fact, str):
 			self.facts.append(fact)
@@ -68,7 +69,8 @@ class PersonResponse:
 		"""
 		Добавляет супругу сотрудника.
 
-		:param Union[PersonResponseSpouse, list[PersonResponseSpouse]] spouse: Супруга сотрудника. Допустимы список с объектами Spouse или сам объект Spouse
+		Args:
+			spouse (Union[PersonResponseSpouse, list[PersonResponseSpouse]]): Супруга сотрудника. Допустимы список с объектами Spouse или сам объект Spouse
 		"""
 		if isinstance(spouse, PersonResponseSpouse):
 			self.spouses.append(spouse)
@@ -79,7 +81,8 @@ class PersonResponse:
 		"""
 		Добавляет фильм сотрудника.
 
-		:param Union[PersonResponseFilms, list[PersonResponseFilms]] film: Фильм сотрудника. Допустимы список с объектами FilmShort или сам объект FilmShort
+		Args:
+			film (Union[PersonResponseFilms, list[PersonResponseFilms]]): Фильм сотрудника. Допустимы список с объектами FilmShort или сам объект FilmShort
 		"""
 		if isinstance(film, PersonResponseFilms):
 			self.films.append(film)

@@ -19,7 +19,8 @@ class ProxyController:
 		"""
 		Инициализация
 
-		:param Optional[Union[str, ProxyItem, list[ProxyItem]]] proxy_data: Данные для добавления прокси. Либо необработанной строкой, либо списком или самим объектом прокси
+		Args:
+			proxy_data (Optional[Union[str, ProxyItem, List[.ProxyItem]]]): Данные для добавления прокси. Либо необработанной строкой, либо списком или самим объектом прокси
 		"""
 		if proxy_data is None:
 			proxy_data = config('NKPA_PROXY', default=None, cast=str)
@@ -34,7 +35,9 @@ class ProxyController:
 	def add_proxy(self, proxy: Union[str, ProxyItem, list[ProxyItem]]):
 		"""
 		Добавление прокси
-		:param Union[str, ProxyItem, list[ProxyItem]] proxy: Строка, объект или список объектов прокси
+
+		Args:
+			proxy (Union[str, ProxyItem, List[ProxyItem]]): Строка, объект или список объектов прокси
 		"""
 		if isinstance(proxy, ProxyItem):
 			self.proxy_list.append(proxy)
@@ -45,8 +48,8 @@ class ProxyController:
 		"""
 		Получение списка прокси
 
-		:return: Возвращает список проски
-		:rtype: list[ProxyItem]
+		Returns:
+			List[ProxyItem]: Возвращает список прокси
 		"""
 		try:
 			return self.proxy_list
@@ -58,8 +61,8 @@ class ProxyController:
 		"""
 		Получение случайного прокси
 
-		:return: Получение случайного прокси
-		:rtype: ProxyItem | None
+		Returns:
+			ProxyItem or None: Получение случайного прокси
 		"""
 		if len(self.get_proxy_list()) == 0:
 			return None

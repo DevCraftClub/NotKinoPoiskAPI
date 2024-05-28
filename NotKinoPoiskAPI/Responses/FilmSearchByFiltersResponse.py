@@ -21,7 +21,8 @@ class FilmSearchByFiltersResponse(GeneralResponse):
 		"""
 		Добавление фильмов
 
-		:param Union[FilmSearchByFiltersResponseItem, list[FilmSearchByFiltersResponseItem]] items: Фильм или список фильмов
+		Args:
+			items (Union[FilmSearchByFiltersResponseItem, list[FilmSearchByFiltersResponseItem]]): Фильм или список фильмов
 		"""
 		if isinstance(items, list):
 			self.items.extend(items)

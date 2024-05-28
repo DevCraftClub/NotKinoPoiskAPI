@@ -1,0 +1,1686 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>NotKinoPoiskAPI.Endpoint.Films API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>NotKinoPoiskAPI.Endpoint.Films</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from typing import Optional, Union
+
+from requests import Session
+
+from NotKinoPoiskAPI.Endpoint.NKPA import NKPA
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
+from NotKinoPoiskAPI.Controller.ProxyController import ProxyController
+from NotKinoPoiskAPI.Enums.CollectionType import CollectionType
+from NotKinoPoiskAPI.Enums.FilmsFilterOrder import FilmFilterOrder
+from NotKinoPoiskAPI.Enums.ImageType import ImageType
+from NotKinoPoiskAPI.Enums.MovieType import MovieType
+from NotKinoPoiskAPI.Enums.KpMonth import KpMonth
+from NotKinoPoiskAPI.Enums.ReviewOrder import ReviewOrder
+from NotKinoPoiskAPI.Responses.AwardResponse import AwardResponse
+from NotKinoPoiskAPI.Responses.BoxOfficeResponse import BoxOfficeResponse
+from NotKinoPoiskAPI.Responses.DigitalReleaseResponse import DigitalReleaseResponse
+from NotKinoPoiskAPI.Responses.DistributionResponse import DistributionResponse
+from NotKinoPoiskAPI.Responses.ExternalSourceResponse import ExternalSourceResponse
+from NotKinoPoiskAPI.Responses.FactResponse import FactResponse
+from NotKinoPoiskAPI.Responses.FilmCollectionResponse import FilmCollectionResponse
+from NotKinoPoiskAPI.Responses.FilmSearchByFiltersResponse import FilmSearchByFiltersResponse
+from NotKinoPoiskAPI.Responses.FilmSearchResponse import FilmSearchResponse
+from NotKinoPoiskAPI.Responses.FilmSequelsAndPrequelsResponse import FilmSequelsAndPrequelsResponse
+from NotKinoPoiskAPI.Responses.FiltersResponse import FiltersResponse
+from NotKinoPoiskAPI.Responses.ImageResponse import ImageResponse
+from NotKinoPoiskAPI.Responses.PremiereResponse import PremiereResponse
+from NotKinoPoiskAPI.Responses.RelatedFilmResponse import RelatedFilmResponse
+from NotKinoPoiskAPI.Responses.ReviewResponse import ReviewResponse
+from NotKinoPoiskAPI.Responses.SeasonResponse import SeasonResponse
+from NotKinoPoiskAPI.Responses.VideoResponse import VideoResponse
+from NotKinoPoiskAPI.Types.Film import Film
+
+
+class KpFilms(NKPA):
+        &#34;&#34;&#34;
+        Класс для работы непосредственно с Endpoint /films с API неофициального кинопоиска
+        &#34;&#34;&#34;
+
+        def __init__(self, api_key: Optional[str] = None, proxy: Optional[ProxyController] = None,
+                     user_agent: Optional[str] = None,
+                     headers: Optional[dict] = None,
+                     session: Optional[Session] = None, cache_path: Optional[str] = None, timeout: int = 5):
+                &#34;&#34;&#34;
+                Конструктор класса
+
+                Args:
+                        api_key (str): API-Key для подключения.
+                        proxy (ProxyController): Прокси для подключения.
+                        session (Session): Сессия для запросов.
+                        user_agent (str): User-Agent для запросов.
+                        headers (Dict): Дополнительные заголовки.
+                        timeout (int): Время ожидания ответа.
+                        cache_path (str): Путь к папке кеша.
+                &#34;&#34;&#34;
+                super().__init__(api_key=api_key, proxy=proxy, user_agent=user_agent, headers=headers, session=session,
+                                 cache_path=cache_path, timeout=timeout)
+
+        def get_film(self, film_id: int) -&gt; Film:
+                &#34;&#34;&#34;
+                Метод для получения информации о фильме
+                Данный эндпоинт возвращает базовые данные о фильме. Поле lastSync показывает дату последнего обновления данных.
+
+                **Endpoint**: /api/v2.2/films/{id}
+
+                Args:
+                        film_id (int): ID фильма.
+
+                Returns:
+                        Film: Информация о фильме
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}&#39;)), Film)
+
+        def get_seasons(self, film_id: int) -&gt; SeasonResponse:
+                &#34;&#34;&#34;
+                Метод для получения информации о сезонах фильма
+
+                **Endpoint**: /api/v2.2/films/{id}/seasons
+
+                Args:
+                        film_id (int): ID фильма.
+
+                Returns:
+                        SeasonResponse: Информация о сезонах фильма
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/seasons&#39;)),
+                                                       SeasonResponse)
+
+        def get_film_facts(self, film_id: int) -&gt; FactResponse:
+                &#34;&#34;&#34;
+                Данный эндпоинт возвращает список фактов и ошибок в фильме.
+
+                **Endpoint**: /api/v2.2/films/{id}/facts
+
+                Args:
+                        film_id (int): ID фильма.
+
+                Returns:
+                        FactResponse:  Возвращает список фактов и ошибок в фильме
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/facts&#39;)), FactResponse)
+
+        def get_distributions(self, film_id: int) -&gt; DistributionResponse:
+                &#34;&#34;&#34;
+                Данный эндпоинт возвращает данные о прокате в разных странах.
+
+                **Endpoint**: /api/v2.2/films/{id}/distributions
+
+                Args:
+                        film_id (int): ID фильма.
+
+                Returns:
+                        DistributionResponse: Возвращает данные о прокате в разных странах
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/distributions&#39;)),
+                                                       DistributionResponse)
+
+        def get_box_office(self, film_id: int) -&gt; BoxOfficeResponse:
+                &#34;&#34;&#34;
+                Данный эндпоинт возвращает данные о кассовых сборах фильма.
+
+                **Endpoint**: /api/v2.2/films/{id}/box_office
+
+                Args:
+                        film_id (int): ID фильма.
+
+                Returns:
+                        BoxOfficeResponse: Возвращает данные о кассовых сборах фильма
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/box_office&#39;)),
+                                                       BoxOfficeResponse)
+
+        def get_film_awards(self, film_id: int) -&gt; AwardResponse:
+                &#34;&#34;&#34;
+                Данный эндпоинт возвращает данные о наградах и премиях фильма.
+
+                **Endpoint**: /api/v2.2/films/{id}/awards
+
+                Args:
+                        film_id (int): ID фильма.
+
+                Returns:
+                        AwardResponse: Возвращает данные о наградах и премиях фильма
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/awards&#39;)),
+                                                       AwardResponse)
+
+        def get_film_videos(self, film_id: int) -&gt; VideoResponse:
+                &#34;&#34;&#34;
+                Данный эндпоинт возвращает трейлеры, тизеры, видео для фильма по kinopoisk film id. В данный момент доступно три site:
+
+                - **YOUTUBE** - в этом случае url это просто ссылка на youtube видео.
+                - **YANDEX_DISK** - в этом случае url это ссылка на yandex disk.
+                - **KINOPOISK_WIDGET** - в этом случае url это ссылка на кинопоиск виджет. Например https://widgets.kinopoisk.ru/discovery/trailer/123573?onlyPlayer=1&amp;autoplay=1&amp;cover=1.
+
+                Если вы хотите вставить этот виджет на вашу страницу, вы можете сделать следующее:
+                        &lt;pre&gt;&lt;code&gt;
+                        ```
+                        &lt;script src=&#34;https://unpkg.com/@ungap/custom-elements-builtin&#34;&gt;&lt;/script&gt;
+                        &lt;script type=&#34;module&#34; src=&#34;https://unpkg.com/x-frame-bypass&#34;&gt;&lt;/script&gt;
+                        &lt;iframe is=&#34;x-frame-bypass&#34; src=&#34;https://widgets.kinopoisk.ru/discovery/trailer/167560?onlyPlayer=1&amp;autoplay=1&amp;cover=1&#34; width=&#34;500&#34; height=&#34;500&#34;&gt;&lt;/iframe&gt;
+                        ```
+                        &lt;/code&gt;&lt;/pre&gt;
+
+                **Endpoint**: /api/v2.2/films/{id}/videos
+
+                Args:
+                        film_id (int): ID фильма.
+
+                Returns:
+                        VideoResponse: Возвращает трейлеры, тизеры, видео для фильма
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/videos&#39;)),
+                                                       VideoResponse)
+
+        def get_similars(self, film_id: int) -&gt; RelatedFilmResponse:
+                &#34;&#34;&#34;
+                Данный эндпоинт возвращает похожие фильмы.
+
+                **Endpoint**: /api/v2.2/films/{id}/similars
+
+                Args:
+                        film_id (int): ID фильма.
+
+                Returns:
+                        RelatedFilmResponse: Возвращает похожие фильмы
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/similars&#39;)),
+                                                       RelatedFilmResponse)
+
+        def get_images(self, film_id: int, image_type: ImageType = ImageType.STILL, page: int = 1) -&gt; ImageResponse:
+                &#34;&#34;&#34;
+                Данный эндпоинт возвращает изображения связанные с фильмом с пагинацией. Каждая страница содержит не более чем 20 фильмов.
+
+                Доступные изображения:
+
+                * STILL - кадры
+                * SHOOTING - изображения со съемок
+                * POSTER - постеры
+                * FAN_ART - фан-арты
+                * PROMO - промо
+                * CONCEPT - концепт-арты
+                * WALLPAPER - обои
+                * COVER - обложки
+                * SCREENSHOT - скриншоты
+
+                **Endpoint**: /api/v2.2/films/{id}/images
+
+                Args:
+                        film_id (int): ID фильма.
+                        image_type (ImageType): Тип изображения.
+                        page (int): Номер страницы.
+
+                Returns:
+                        ImageResponse: Возвращает изображения связанные с фильмом с пагинацией
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(
+                        self.get_data(self.get_api_url(f&#39;films/{film_id}/images&#39;, type=image_type.name, page=page)),
+                        ImageResponse)
+
+        def get_reviews(self, film_id: int, page: int = 1, order: ReviewOrder = ReviewOrder.DATE_DESC) -&gt; ReviewResponse:
+                &#34;&#34;&#34;
+                Возвращает список рецензии зрителей с пагинацией. Каждая страница содержит не более чем 20 рецензий.
+
+                **Endpoint**: /api/v2.2/films/{id}/reviews
+
+                Args:
+                        film_id (int): ID фильма.
+                        page (int): Номер страницы.
+                        order (ReviewOrder): Сортировка.
+
+                Returns:
+                        ReviewResponse: Возвращает список рецензии зрителей с пагинацией
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(
+                        self.get_data(self.get_api_url(f&#39;films/{film_id}/reviews&#39;, page=page, order=order.name)),
+                        ReviewResponse)
+
+        def get_external_sources(self, film_id: int, page: int = 1) -&gt; ExternalSourceResponse:
+                &#34;&#34;&#34;
+                Возвращает список сайтов с пагинацией. Каждая страница содержит не более чем 20 рецензий.
+
+                **Endpoint**: /api/v2.2/films/{id}/external_sources
+
+                Args:
+                        film_id (int): ID фильма.
+                        page (int): Номер страницы.
+
+                Returns:
+                        ExternalSourceResponse: Возвращает список сайтов с пагинацией
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(
+                        self.get_data(self.get_api_url(f&#39;films/{film_id}/external_sources&#39;, page=page)), ExternalSourceResponse)
+
+        def get_collections(self, col_type: CollectionType = CollectionType.TOP_POPULAR_ALL,
+                            page: int = 1) -&gt; FilmCollectionResponse:
+                &#34;&#34;&#34;
+                Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов.
+
+                **Endpoint**: /api/v2.2/films/collections
+
+                Args:
+                        col_type (CollectionType): Тип коллекции.
+                        page (int): Номер страницы.
+
+                Returns:
+                        FilmCollectionResponse: Возвращает список фильмов с пагинацией
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(
+                        self.get_data(self.get_api_url(f&#39;films/collections&#39;, type=col_type.name, page=page)),
+                        FilmCollectionResponse)
+
+        def get_premieres(self, year: int, month: Union[KpMonth, int]) -&gt; PremiereResponse:
+                &#34;&#34;&#34;
+                Данный эндпоинт возвращает список кинопремьер. Например https://www.kinopoisk.ru/premiere/
+
+                **Endpoint**: /api/v2.2/films/premieres
+
+                Args:
+                        year (int): Год
+                        month (Union[KpMonth, int]): Месяц. Либо в виде объекта PremiereMonth. Либо цифра от 1 до 12
+
+                Returns:
+                        PremiereResponse: Возвращает список кинопремьер
+                &#34;&#34;&#34;
+                if isinstance(month, KpMonth):
+                        month = month.name
+                elif isinstance(month, int):
+                        if month &lt; 1 or month &gt; 12:
+                                raise ValueError(&#39;month must be in range 1 to 12&#39;)
+                        month = KpMonth(month).name
+                return ObjectController.json_to_object(
+                        self.get_data(self.get_api_url(f&#39;films/premieres&#39;, year=year, month=month)), PremiereResponse)
+
+        def get_filters(self) -&gt; FiltersResponse:
+                &#34;&#34;&#34;
+                Возвращает список id стран и жанров, которые могут быть использованы в /api/v2.2/films
+
+                **Endpoin**t: /api/v2.2/films/filters
+
+                Returns:
+                        FiltersResponse: Возвращает список id стран и жанров
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(self.get_data(self.get_api_url(&#39;films/filters&#39;)), FiltersResponse)
+
+        def get_films(self, countries: Optional[Union[int, list[int], str]] = None,
+                      genres: Optional[Union[int, list[int], str]] = None, imdbId: Optional[str] = None,
+                      keyword: Optional[str] = None, order: FilmFilterOrder = FilmFilterOrder.RATING,
+                      type: MovieType = MovieType.ALL, ratingFrom: float = 0, ratingTo: float = 10, yearFrom: int = 1000,
+                      yearTo: int = 3000, page: int = 1) -&gt; FilmSearchByFiltersResponse:
+                &#34;&#34;&#34;
+                Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов. Данный эндпоинт не возращает более 400 фильмов. Используй /api/v2.2/films/filters чтобы получить id стран и жанров.
+
+                !!! note
+
+                        На данный момент можно указать не более одной страны и жанра.
+
+                **Endpoint**: /api/v2.2/films
+
+                Args:
+                        countries (Union[int, List[int], str]): Список id стран разделенные запятой. Например countries=1,2,3. На данный момент можно указать не более одной страны.
+                        genres (Union[int, List[int], str]): Список id жанров разделенные запятой. Например genres=1,2,3. На данный момент можно указать не более одного жанра.
+                        imdbId (str): ID с IMDB
+                        keyword (str): Ключевое слово, которое встречается в названии фильма
+                        order (FilmFilterOrder): Сортировка (RATING, NUM_VOTE, YEAR), по умолчанию: RATING
+                        type (MovieType): Тип фильма (FILM, TV_SHOW, TV_SERIES, MINI_SERIES, ALL), по умолчанию: ALL
+                        ratingFrom (float): Минимальный рейтинг, по умолчанию: 0
+                        ratingTo (float): Максимальный рейтинг, по умолчанию: 10
+                        yearFrom (int): Минимальный год, по умолчанию: 1000
+                        yearTo (int): Максимальный год, по умолчанию: 3000
+                        page (int): Номер страницы, по умолчанию: 1
+
+                Returns:
+                        FilmSearchByFiltersResponse: Возвращает список фильмов с пагинацией
+                &#34;&#34;&#34;
+                countries = &#39;,&#39;.join(countries) if isinstance(countries, list) else str(countries) if isinstance(countries,
+                                                                                                                 int) else countries
+                genres = &#39;,&#39;.join(genres) if isinstance(genres, list) else str(genres) if isinstance(genres, int) else genres
+                return ObjectController.json_to_object(self.get_data(
+                        self.get_api_url(&#39;films&#39;, countries=countries, genres=genres, imdbId=imdbId, keyword=keyword,
+                                         order=order.name, type=type.name, ratingFrom=ratingFrom, ratingTo=ratingTo,
+                                         yearFrom=yearFrom, yearTo=yearTo, page=page)), FilmSearchByFiltersResponse)
+
+        def get_film_prequels_and_sequels(self, film_id: int) -&gt; FilmSequelsAndPrequelsResponse:
+                &#34;&#34;&#34;
+                Возвращает список частей, что связаны с фильмом
+
+                **Endpoint**: /api/v2.1/films/{id}/sequels_and_prequels
+
+                Args:
+                        film_id (int): ID фильма.
+
+                Returns:
+                        FilmSequelsAndPrequelsResponse: Возвращает список частей, что связаны с фильмом
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(
+                        self.get_data(self.get_api_url(f&#39;films/{film_id}/sequels_and_prequels&#39;, &#39;2.1&#39;)),
+                        FilmSequelsAndPrequelsResponse)
+
+        def search_by_keyword(self, keyword: str, page: int = 1) -&gt; FilmSearchResponse:
+                &#34;&#34;&#34;
+                Поиск фильмов и сериалов по ключевому слову. Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов.
+
+                **Endpoint**: /api/v2.1/films/search-by-keyword
+
+                Args:
+                        keyword (str): ключивые слова для поиска
+                        page (int): номер страницы
+
+                Returns:
+                        FilmSearchResponse: Возвращает список фильмов с пагинацией
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(
+                        self.get_data(self.get_api_url(&#39;films/search-by-keyword&#39;, &#39;2.1&#39;, keyword=keyword, page=page)),
+                        FilmSearchResponse)
+
+        def get_releases(self, year: int, month: Union[KpMonth, int], page: int = 1) -&gt; DigitalReleaseResponse:
+                &#34;&#34;&#34;
+                Данный эндпоинт возвращает список цифровых релизов. Например https://www.kinopoisk.ru/comingsoon/digital/
+
+                **Endpoint**: /api/v2.1/films/releases
+
+                Args:
+                        year (int): Год
+                        month (Union[KpMonth, int]): Месяц. Либо в виде объекта `KpMonth` (JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER). Либо цифра от 1 до 12
+                        page (int): номер страницы
+
+                Returns:
+                        DigitalReleaseResponse: Возвращает список цифровых релизов
+                &#34;&#34;&#34;
+                if isinstance(month, KpMonth):
+                        month = month.name
+                elif isinstance(month, int):
+                        if month &lt; 1 or month &gt; 12:
+                                raise ValueError(&#39;месяц должен быть в диапазоне от 1 до 12&#39;)
+                        month = ObjectController.find_enum(str(month), KpMonth).name
+                return ObjectController.json_to_object(
+                        self.get_data(self.get_api_url(&#39;films/releases&#39;, &#39;2.1&#39;, year=year, month=month, page=page)),
+                        DigitalReleaseResponse)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="NotKinoPoiskAPI.Endpoint.Films.KpFilms"><code class="flex name class">
+<span>class <span class="ident">KpFilms</span></span>
+<span>(</span><span>api_key: Optional[str] = None, proxy: Optional[<a title="NotKinoPoiskAPI.Controller.ProxyController.ProxyController" href="../Controller/ProxyController.html#NotKinoPoiskAPI.Controller.ProxyController.ProxyController">ProxyController</a>] = None, user_agent: Optional[str] = None, headers: Optional[dict] = None, session: Optional[requests.sessions.Session] = None, cache_path: Optional[str] = None, timeout: int = 5)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Класс для работы непосредственно с Endpoint /films с API неофициального кинопоиска</p>
+<p>Конструктор класса</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>api_key</code></strong> :&ensp;<code>str</code></dt>
+<dd>API-Key для подключения.</dd>
+<dt><strong><code>proxy</code></strong> :&ensp;<code>ProxyController</code></dt>
+<dd>Прокси для подключения.</dd>
+<dt><strong><code>session</code></strong> :&ensp;<code>Session</code></dt>
+<dd>Сессия для запросов.</dd>
+<dt><strong><code>user_agent</code></strong> :&ensp;<code>str</code></dt>
+<dd>User-Agent для запросов.</dd>
+<dt><strong><code>headers</code></strong> :&ensp;<code>Dict</code></dt>
+<dd>Дополнительные заголовки.</dd>
+<dt><strong><code>timeout</code></strong> :&ensp;<code>int</code></dt>
+<dd>Время ожидания ответа.</dd>
+<dt><strong><code>cache_path</code></strong> :&ensp;<code>str</code></dt>
+<dd>Путь к папке кеша.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class KpFilms(NKPA):
+        &#34;&#34;&#34;
+        Класс для работы непосредственно с Endpoint /films с API неофициального кинопоиска
+        &#34;&#34;&#34;
+
+        def __init__(self, api_key: Optional[str] = None, proxy: Optional[ProxyController] = None,
+                     user_agent: Optional[str] = None,
+                     headers: Optional[dict] = None,
+                     session: Optional[Session] = None, cache_path: Optional[str] = None, timeout: int = 5):
+                &#34;&#34;&#34;
+                Конструктор класса
+
+                Args:
+                        api_key (str): API-Key для подключения.
+                        proxy (ProxyController): Прокси для подключения.
+                        session (Session): Сессия для запросов.
+                        user_agent (str): User-Agent для запросов.
+                        headers (Dict): Дополнительные заголовки.
+                        timeout (int): Время ожидания ответа.
+                        cache_path (str): Путь к папке кеша.
+                &#34;&#34;&#34;
+                super().__init__(api_key=api_key, proxy=proxy, user_agent=user_agent, headers=headers, session=session,
+                                 cache_path=cache_path, timeout=timeout)
+
+        def get_film(self, film_id: int) -&gt; Film:
+                &#34;&#34;&#34;
+                Метод для получения информации о фильме
+                Данный эндпоинт возвращает базовые данные о фильме. Поле lastSync показывает дату последнего обновления данных.
+
+                **Endpoint**: /api/v2.2/films/{id}
+
+                Args:
+                        film_id (int): ID фильма.
+
+                Returns:
+                        Film: Информация о фильме
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}&#39;)), Film)
+
+        def get_seasons(self, film_id: int) -&gt; SeasonResponse:
+                &#34;&#34;&#34;
+                Метод для получения информации о сезонах фильма
+
+                **Endpoint**: /api/v2.2/films/{id}/seasons
+
+                Args:
+                        film_id (int): ID фильма.
+
+                Returns:
+                        SeasonResponse: Информация о сезонах фильма
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/seasons&#39;)),
+                                                       SeasonResponse)
+
+        def get_film_facts(self, film_id: int) -&gt; FactResponse:
+                &#34;&#34;&#34;
+                Данный эндпоинт возвращает список фактов и ошибок в фильме.
+
+                **Endpoint**: /api/v2.2/films/{id}/facts
+
+                Args:
+                        film_id (int): ID фильма.
+
+                Returns:
+                        FactResponse:  Возвращает список фактов и ошибок в фильме
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/facts&#39;)), FactResponse)
+
+        def get_distributions(self, film_id: int) -&gt; DistributionResponse:
+                &#34;&#34;&#34;
+                Данный эндпоинт возвращает данные о прокате в разных странах.
+
+                **Endpoint**: /api/v2.2/films/{id}/distributions
+
+                Args:
+                        film_id (int): ID фильма.
+
+                Returns:
+                        DistributionResponse: Возвращает данные о прокате в разных странах
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/distributions&#39;)),
+                                                       DistributionResponse)
+
+        def get_box_office(self, film_id: int) -&gt; BoxOfficeResponse:
+                &#34;&#34;&#34;
+                Данный эндпоинт возвращает данные о кассовых сборах фильма.
+
+                **Endpoint**: /api/v2.2/films/{id}/box_office
+
+                Args:
+                        film_id (int): ID фильма.
+
+                Returns:
+                        BoxOfficeResponse: Возвращает данные о кассовых сборах фильма
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/box_office&#39;)),
+                                                       BoxOfficeResponse)
+
+        def get_film_awards(self, film_id: int) -&gt; AwardResponse:
+                &#34;&#34;&#34;
+                Данный эндпоинт возвращает данные о наградах и премиях фильма.
+
+                **Endpoint**: /api/v2.2/films/{id}/awards
+
+                Args:
+                        film_id (int): ID фильма.
+
+                Returns:
+                        AwardResponse: Возвращает данные о наградах и премиях фильма
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/awards&#39;)),
+                                                       AwardResponse)
+
+        def get_film_videos(self, film_id: int) -&gt; VideoResponse:
+                &#34;&#34;&#34;
+                Данный эндпоинт возвращает трейлеры, тизеры, видео для фильма по kinopoisk film id. В данный момент доступно три site:
+
+                - **YOUTUBE** - в этом случае url это просто ссылка на youtube видео.
+                - **YANDEX_DISK** - в этом случае url это ссылка на yandex disk.
+                - **KINOPOISK_WIDGET** - в этом случае url это ссылка на кинопоиск виджет. Например https://widgets.kinopoisk.ru/discovery/trailer/123573?onlyPlayer=1&amp;autoplay=1&amp;cover=1.
+
+                Если вы хотите вставить этот виджет на вашу страницу, вы можете сделать следующее:
+                        &lt;pre&gt;&lt;code&gt;
+                        ```
+                        &lt;script src=&#34;https://unpkg.com/@ungap/custom-elements-builtin&#34;&gt;&lt;/script&gt;
+                        &lt;script type=&#34;module&#34; src=&#34;https://unpkg.com/x-frame-bypass&#34;&gt;&lt;/script&gt;
+                        &lt;iframe is=&#34;x-frame-bypass&#34; src=&#34;https://widgets.kinopoisk.ru/discovery/trailer/167560?onlyPlayer=1&amp;autoplay=1&amp;cover=1&#34; width=&#34;500&#34; height=&#34;500&#34;&gt;&lt;/iframe&gt;
+                        ```
+                        &lt;/code&gt;&lt;/pre&gt;
+
+                **Endpoint**: /api/v2.2/films/{id}/videos
+
+                Args:
+                        film_id (int): ID фильма.
+
+                Returns:
+                        VideoResponse: Возвращает трейлеры, тизеры, видео для фильма
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/videos&#39;)),
+                                                       VideoResponse)
+
+        def get_similars(self, film_id: int) -&gt; RelatedFilmResponse:
+                &#34;&#34;&#34;
+                Данный эндпоинт возвращает похожие фильмы.
+
+                **Endpoint**: /api/v2.2/films/{id}/similars
+
+                Args:
+                        film_id (int): ID фильма.
+
+                Returns:
+                        RelatedFilmResponse: Возвращает похожие фильмы
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/similars&#39;)),
+                                                       RelatedFilmResponse)
+
+        def get_images(self, film_id: int, image_type: ImageType = ImageType.STILL, page: int = 1) -&gt; ImageResponse:
+                &#34;&#34;&#34;
+                Данный эндпоинт возвращает изображения связанные с фильмом с пагинацией. Каждая страница содержит не более чем 20 фильмов.
+
+                Доступные изображения:
+
+                * STILL - кадры
+                * SHOOTING - изображения со съемок
+                * POSTER - постеры
+                * FAN_ART - фан-арты
+                * PROMO - промо
+                * CONCEPT - концепт-арты
+                * WALLPAPER - обои
+                * COVER - обложки
+                * SCREENSHOT - скриншоты
+
+                **Endpoint**: /api/v2.2/films/{id}/images
+
+                Args:
+                        film_id (int): ID фильма.
+                        image_type (ImageType): Тип изображения.
+                        page (int): Номер страницы.
+
+                Returns:
+                        ImageResponse: Возвращает изображения связанные с фильмом с пагинацией
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(
+                        self.get_data(self.get_api_url(f&#39;films/{film_id}/images&#39;, type=image_type.name, page=page)),
+                        ImageResponse)
+
+        def get_reviews(self, film_id: int, page: int = 1, order: ReviewOrder = ReviewOrder.DATE_DESC) -&gt; ReviewResponse:
+                &#34;&#34;&#34;
+                Возвращает список рецензии зрителей с пагинацией. Каждая страница содержит не более чем 20 рецензий.
+
+                **Endpoint**: /api/v2.2/films/{id}/reviews
+
+                Args:
+                        film_id (int): ID фильма.
+                        page (int): Номер страницы.
+                        order (ReviewOrder): Сортировка.
+
+                Returns:
+                        ReviewResponse: Возвращает список рецензии зрителей с пагинацией
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(
+                        self.get_data(self.get_api_url(f&#39;films/{film_id}/reviews&#39;, page=page, order=order.name)),
+                        ReviewResponse)
+
+        def get_external_sources(self, film_id: int, page: int = 1) -&gt; ExternalSourceResponse:
+                &#34;&#34;&#34;
+                Возвращает список сайтов с пагинацией. Каждая страница содержит не более чем 20 рецензий.
+
+                **Endpoint**: /api/v2.2/films/{id}/external_sources
+
+                Args:
+                        film_id (int): ID фильма.
+                        page (int): Номер страницы.
+
+                Returns:
+                        ExternalSourceResponse: Возвращает список сайтов с пагинацией
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(
+                        self.get_data(self.get_api_url(f&#39;films/{film_id}/external_sources&#39;, page=page)), ExternalSourceResponse)
+
+        def get_collections(self, col_type: CollectionType = CollectionType.TOP_POPULAR_ALL,
+                            page: int = 1) -&gt; FilmCollectionResponse:
+                &#34;&#34;&#34;
+                Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов.
+
+                **Endpoint**: /api/v2.2/films/collections
+
+                Args:
+                        col_type (CollectionType): Тип коллекции.
+                        page (int): Номер страницы.
+
+                Returns:
+                        FilmCollectionResponse: Возвращает список фильмов с пагинацией
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(
+                        self.get_data(self.get_api_url(f&#39;films/collections&#39;, type=col_type.name, page=page)),
+                        FilmCollectionResponse)
+
+        def get_premieres(self, year: int, month: Union[KpMonth, int]) -&gt; PremiereResponse:
+                &#34;&#34;&#34;
+                Данный эндпоинт возвращает список кинопремьер. Например https://www.kinopoisk.ru/premiere/
+
+                **Endpoint**: /api/v2.2/films/premieres
+
+                Args:
+                        year (int): Год
+                        month (Union[KpMonth, int]): Месяц. Либо в виде объекта PremiereMonth. Либо цифра от 1 до 12
+
+                Returns:
+                        PremiereResponse: Возвращает список кинопремьер
+                &#34;&#34;&#34;
+                if isinstance(month, KpMonth):
+                        month = month.name
+                elif isinstance(month, int):
+                        if month &lt; 1 or month &gt; 12:
+                                raise ValueError(&#39;month must be in range 1 to 12&#39;)
+                        month = KpMonth(month).name
+                return ObjectController.json_to_object(
+                        self.get_data(self.get_api_url(f&#39;films/premieres&#39;, year=year, month=month)), PremiereResponse)
+
+        def get_filters(self) -&gt; FiltersResponse:
+                &#34;&#34;&#34;
+                Возвращает список id стран и жанров, которые могут быть использованы в /api/v2.2/films
+
+                **Endpoin**t: /api/v2.2/films/filters
+
+                Returns:
+                        FiltersResponse: Возвращает список id стран и жанров
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(self.get_data(self.get_api_url(&#39;films/filters&#39;)), FiltersResponse)
+
+        def get_films(self, countries: Optional[Union[int, list[int], str]] = None,
+                      genres: Optional[Union[int, list[int], str]] = None, imdbId: Optional[str] = None,
+                      keyword: Optional[str] = None, order: FilmFilterOrder = FilmFilterOrder.RATING,
+                      type: MovieType = MovieType.ALL, ratingFrom: float = 0, ratingTo: float = 10, yearFrom: int = 1000,
+                      yearTo: int = 3000, page: int = 1) -&gt; FilmSearchByFiltersResponse:
+                &#34;&#34;&#34;
+                Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов. Данный эндпоинт не возращает более 400 фильмов. Используй /api/v2.2/films/filters чтобы получить id стран и жанров.
+
+                !!! note
+
+                        На данный момент можно указать не более одной страны и жанра.
+
+                **Endpoint**: /api/v2.2/films
+
+                Args:
+                        countries (Union[int, List[int], str]): Список id стран разделенные запятой. Например countries=1,2,3. На данный момент можно указать не более одной страны.
+                        genres (Union[int, List[int], str]): Список id жанров разделенные запятой. Например genres=1,2,3. На данный момент можно указать не более одного жанра.
+                        imdbId (str): ID с IMDB
+                        keyword (str): Ключевое слово, которое встречается в названии фильма
+                        order (FilmFilterOrder): Сортировка (RATING, NUM_VOTE, YEAR), по умолчанию: RATING
+                        type (MovieType): Тип фильма (FILM, TV_SHOW, TV_SERIES, MINI_SERIES, ALL), по умолчанию: ALL
+                        ratingFrom (float): Минимальный рейтинг, по умолчанию: 0
+                        ratingTo (float): Максимальный рейтинг, по умолчанию: 10
+                        yearFrom (int): Минимальный год, по умолчанию: 1000
+                        yearTo (int): Максимальный год, по умолчанию: 3000
+                        page (int): Номер страницы, по умолчанию: 1
+
+                Returns:
+                        FilmSearchByFiltersResponse: Возвращает список фильмов с пагинацией
+                &#34;&#34;&#34;
+                countries = &#39;,&#39;.join(countries) if isinstance(countries, list) else str(countries) if isinstance(countries,
+                                                                                                                 int) else countries
+                genres = &#39;,&#39;.join(genres) if isinstance(genres, list) else str(genres) if isinstance(genres, int) else genres
+                return ObjectController.json_to_object(self.get_data(
+                        self.get_api_url(&#39;films&#39;, countries=countries, genres=genres, imdbId=imdbId, keyword=keyword,
+                                         order=order.name, type=type.name, ratingFrom=ratingFrom, ratingTo=ratingTo,
+                                         yearFrom=yearFrom, yearTo=yearTo, page=page)), FilmSearchByFiltersResponse)
+
+        def get_film_prequels_and_sequels(self, film_id: int) -&gt; FilmSequelsAndPrequelsResponse:
+                &#34;&#34;&#34;
+                Возвращает список частей, что связаны с фильмом
+
+                **Endpoint**: /api/v2.1/films/{id}/sequels_and_prequels
+
+                Args:
+                        film_id (int): ID фильма.
+
+                Returns:
+                        FilmSequelsAndPrequelsResponse: Возвращает список частей, что связаны с фильмом
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(
+                        self.get_data(self.get_api_url(f&#39;films/{film_id}/sequels_and_prequels&#39;, &#39;2.1&#39;)),
+                        FilmSequelsAndPrequelsResponse)
+
+        def search_by_keyword(self, keyword: str, page: int = 1) -&gt; FilmSearchResponse:
+                &#34;&#34;&#34;
+                Поиск фильмов и сериалов по ключевому слову. Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов.
+
+                **Endpoint**: /api/v2.1/films/search-by-keyword
+
+                Args:
+                        keyword (str): ключивые слова для поиска
+                        page (int): номер страницы
+
+                Returns:
+                        FilmSearchResponse: Возвращает список фильмов с пагинацией
+                &#34;&#34;&#34;
+                return ObjectController.json_to_object(
+                        self.get_data(self.get_api_url(&#39;films/search-by-keyword&#39;, &#39;2.1&#39;, keyword=keyword, page=page)),
+                        FilmSearchResponse)
+
+        def get_releases(self, year: int, month: Union[KpMonth, int], page: int = 1) -&gt; DigitalReleaseResponse:
+                &#34;&#34;&#34;
+                Данный эндпоинт возвращает список цифровых релизов. Например https://www.kinopoisk.ru/comingsoon/digital/
+
+                **Endpoint**: /api/v2.1/films/releases
+
+                Args:
+                        year (int): Год
+                        month (Union[KpMonth, int]): Месяц. Либо в виде объекта `KpMonth` (JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER). Либо цифра от 1 до 12
+                        page (int): номер страницы
+
+                Returns:
+                        DigitalReleaseResponse: Возвращает список цифровых релизов
+                &#34;&#34;&#34;
+                if isinstance(month, KpMonth):
+                        month = month.name
+                elif isinstance(month, int):
+                        if month &lt; 1 or month &gt; 12:
+                                raise ValueError(&#39;месяц должен быть в диапазоне от 1 до 12&#39;)
+                        month = ObjectController.find_enum(str(month), KpMonth).name
+                return ObjectController.json_to_object(
+                        self.get_data(self.get_api_url(&#39;films/releases&#39;, &#39;2.1&#39;, year=year, month=month, page=page)),
+                        DigitalReleaseResponse)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="NotKinoPoiskAPI.Endpoint.NKPA.NKPA" href="NKPA.html#NotKinoPoiskAPI.Endpoint.NKPA.NKPA">NKPA</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_box_office"><code class="name flex">
+<span>def <span class="ident">get_box_office</span></span>(<span>self, film_id: int) ‑> <a title="NotKinoPoiskAPI.Responses.BoxOfficeResponse.BoxOfficeResponse" href="../Responses/BoxOfficeResponse.html#NotKinoPoiskAPI.Responses.BoxOfficeResponse.BoxOfficeResponse">BoxOfficeResponse</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Данный эндпоинт возвращает данные о кассовых сборах фильма.</p>
+<p><strong>Endpoint</strong>: /api/v2.2/films/{id}/box_office</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>film_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID фильма.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>BoxOfficeResponse</code></dt>
+<dd>Возвращает данные о кассовых сборах фильма</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_box_office(self, film_id: int) -&gt; BoxOfficeResponse:
+        &#34;&#34;&#34;
+        Данный эндпоинт возвращает данные о кассовых сборах фильма.
+
+        **Endpoint**: /api/v2.2/films/{id}/box_office
+
+        Args:
+                film_id (int): ID фильма.
+
+        Returns:
+                BoxOfficeResponse: Возвращает данные о кассовых сборах фильма
+        &#34;&#34;&#34;
+        return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/box_office&#39;)),
+                                               BoxOfficeResponse)</code></pre>
+</details>
+</dd>
+<dt id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_collections"><code class="name flex">
+<span>def <span class="ident">get_collections</span></span>(<span>self, col_type: <a title="NotKinoPoiskAPI.Enums.CollectionType.CollectionType" href="../Enums/CollectionType.html#NotKinoPoiskAPI.Enums.CollectionType.CollectionType">CollectionType</a> = CollectionType.TOP_POPULAR_ALL, page: int = 1) ‑> <a title="NotKinoPoiskAPI.Responses.FilmCollectionResponse.FilmCollectionResponse" href="../Responses/FilmCollectionResponse.html#NotKinoPoiskAPI.Responses.FilmCollectionResponse.FilmCollectionResponse">FilmCollectionResponse</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов.</p>
+<p><strong>Endpoint</strong>: /api/v2.2/films/collections</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>col_type</code></strong> :&ensp;<code>CollectionType</code></dt>
+<dd>Тип коллекции.</dd>
+<dt><strong><code>page</code></strong> :&ensp;<code>int</code></dt>
+<dd>Номер страницы.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>FilmCollectionResponse</code></dt>
+<dd>Возвращает список фильмов с пагинацией</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_collections(self, col_type: CollectionType = CollectionType.TOP_POPULAR_ALL,
+                    page: int = 1) -&gt; FilmCollectionResponse:
+        &#34;&#34;&#34;
+        Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов.
+
+        **Endpoint**: /api/v2.2/films/collections
+
+        Args:
+                col_type (CollectionType): Тип коллекции.
+                page (int): Номер страницы.
+
+        Returns:
+                FilmCollectionResponse: Возвращает список фильмов с пагинацией
+        &#34;&#34;&#34;
+        return ObjectController.json_to_object(
+                self.get_data(self.get_api_url(f&#39;films/collections&#39;, type=col_type.name, page=page)),
+                FilmCollectionResponse)</code></pre>
+</details>
+</dd>
+<dt id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_distributions"><code class="name flex">
+<span>def <span class="ident">get_distributions</span></span>(<span>self, film_id: int) ‑> <a title="NotKinoPoiskAPI.Responses.DistributionResponse.DistributionResponse" href="../Responses/DistributionResponse.html#NotKinoPoiskAPI.Responses.DistributionResponse.DistributionResponse">DistributionResponse</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Данный эндпоинт возвращает данные о прокате в разных странах.</p>
+<p><strong>Endpoint</strong>: /api/v2.2/films/{id}/distributions</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>film_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID фильма.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>DistributionResponse</code></dt>
+<dd>Возвращает данные о прокате в разных странах</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_distributions(self, film_id: int) -&gt; DistributionResponse:
+        &#34;&#34;&#34;
+        Данный эндпоинт возвращает данные о прокате в разных странах.
+
+        **Endpoint**: /api/v2.2/films/{id}/distributions
+
+        Args:
+                film_id (int): ID фильма.
+
+        Returns:
+                DistributionResponse: Возвращает данные о прокате в разных странах
+        &#34;&#34;&#34;
+        return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/distributions&#39;)),
+                                               DistributionResponse)</code></pre>
+</details>
+</dd>
+<dt id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_external_sources"><code class="name flex">
+<span>def <span class="ident">get_external_sources</span></span>(<span>self, film_id: int, page: int = 1) ‑> <a title="NotKinoPoiskAPI.Responses.ExternalSourceResponse.ExternalSourceResponse" href="../Responses/ExternalSourceResponse.html#NotKinoPoiskAPI.Responses.ExternalSourceResponse.ExternalSourceResponse">ExternalSourceResponse</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Возвращает список сайтов с пагинацией. Каждая страница содержит не более чем 20 рецензий.</p>
+<p><strong>Endpoint</strong>: /api/v2.2/films/{id}/external_sources</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>film_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID фильма.</dd>
+<dt><strong><code>page</code></strong> :&ensp;<code>int</code></dt>
+<dd>Номер страницы.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ExternalSourceResponse</code></dt>
+<dd>Возвращает список сайтов с пагинацией</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_external_sources(self, film_id: int, page: int = 1) -&gt; ExternalSourceResponse:
+        &#34;&#34;&#34;
+        Возвращает список сайтов с пагинацией. Каждая страница содержит не более чем 20 рецензий.
+
+        **Endpoint**: /api/v2.2/films/{id}/external_sources
+
+        Args:
+                film_id (int): ID фильма.
+                page (int): Номер страницы.
+
+        Returns:
+                ExternalSourceResponse: Возвращает список сайтов с пагинацией
+        &#34;&#34;&#34;
+        return ObjectController.json_to_object(
+                self.get_data(self.get_api_url(f&#39;films/{film_id}/external_sources&#39;, page=page)), ExternalSourceResponse)</code></pre>
+</details>
+</dd>
+<dt id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film"><code class="name flex">
+<span>def <span class="ident">get_film</span></span>(<span>self, film_id: int) ‑> <a title="NotKinoPoiskAPI.Types.Film.Film" href="../Types/Film.html#NotKinoPoiskAPI.Types.Film.Film">Film</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Метод для получения информации о фильме
+Данный эндпоинт возвращает базовые данные о фильме. Поле lastSync показывает дату последнего обновления данных.</p>
+<p><strong>Endpoint</strong>: /api/v2.2/films/{id}</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>film_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID фильма.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Film</code></dt>
+<dd>Информация о фильме</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_film(self, film_id: int) -&gt; Film:
+        &#34;&#34;&#34;
+        Метод для получения информации о фильме
+        Данный эндпоинт возвращает базовые данные о фильме. Поле lastSync показывает дату последнего обновления данных.
+
+        **Endpoint**: /api/v2.2/films/{id}
+
+        Args:
+                film_id (int): ID фильма.
+
+        Returns:
+                Film: Информация о фильме
+        &#34;&#34;&#34;
+        return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}&#39;)), Film)</code></pre>
+</details>
+</dd>
+<dt id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_awards"><code class="name flex">
+<span>def <span class="ident">get_film_awards</span></span>(<span>self, film_id: int) ‑> <a title="NotKinoPoiskAPI.Responses.AwardResponse.AwardResponse" href="../Responses/AwardResponse.html#NotKinoPoiskAPI.Responses.AwardResponse.AwardResponse">AwardResponse</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Данный эндпоинт возвращает данные о наградах и премиях фильма.</p>
+<p><strong>Endpoint</strong>: /api/v2.2/films/{id}/awards</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>film_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID фильма.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>AwardResponse</code></dt>
+<dd>Возвращает данные о наградах и премиях фильма</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_film_awards(self, film_id: int) -&gt; AwardResponse:
+        &#34;&#34;&#34;
+        Данный эндпоинт возвращает данные о наградах и премиях фильма.
+
+        **Endpoint**: /api/v2.2/films/{id}/awards
+
+        Args:
+                film_id (int): ID фильма.
+
+        Returns:
+                AwardResponse: Возвращает данные о наградах и премиях фильма
+        &#34;&#34;&#34;
+        return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/awards&#39;)),
+                                               AwardResponse)</code></pre>
+</details>
+</dd>
+<dt id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_facts"><code class="name flex">
+<span>def <span class="ident">get_film_facts</span></span>(<span>self, film_id: int) ‑> <a title="NotKinoPoiskAPI.Responses.FactResponse.FactResponse" href="../Responses/FactResponse.html#NotKinoPoiskAPI.Responses.FactResponse.FactResponse">FactResponse</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Данный эндпоинт возвращает список фактов и ошибок в фильме.</p>
+<p><strong>Endpoint</strong>: /api/v2.2/films/{id}/facts</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>film_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID фильма.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>FactResponse</code></dt>
+<dd>Возвращает список фактов и ошибок в фильме</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_film_facts(self, film_id: int) -&gt; FactResponse:
+        &#34;&#34;&#34;
+        Данный эндпоинт возвращает список фактов и ошибок в фильме.
+
+        **Endpoint**: /api/v2.2/films/{id}/facts
+
+        Args:
+                film_id (int): ID фильма.
+
+        Returns:
+                FactResponse:  Возвращает список фактов и ошибок в фильме
+        &#34;&#34;&#34;
+        return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/facts&#39;)), FactResponse)</code></pre>
+</details>
+</dd>
+<dt id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_prequels_and_sequels"><code class="name flex">
+<span>def <span class="ident">get_film_prequels_and_sequels</span></span>(<span>self, film_id: int) ‑> <a title="NotKinoPoiskAPI.Responses.FilmSequelsAndPrequelsResponse.FilmSequelsAndPrequelsResponse" href="../Responses/FilmSequelsAndPrequelsResponse.html#NotKinoPoiskAPI.Responses.FilmSequelsAndPrequelsResponse.FilmSequelsAndPrequelsResponse">FilmSequelsAndPrequelsResponse</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Возвращает список частей, что связаны с фильмом</p>
+<p><strong>Endpoint</strong>: /api/v2.1/films/{id}/sequels_and_prequels</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>film_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID фильма.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>FilmSequelsAndPrequelsResponse</code></dt>
+<dd>Возвращает список частей, что связаны с фильмом</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_film_prequels_and_sequels(self, film_id: int) -&gt; FilmSequelsAndPrequelsResponse:
+        &#34;&#34;&#34;
+        Возвращает список частей, что связаны с фильмом
+
+        **Endpoint**: /api/v2.1/films/{id}/sequels_and_prequels
+
+        Args:
+                film_id (int): ID фильма.
+
+        Returns:
+                FilmSequelsAndPrequelsResponse: Возвращает список частей, что связаны с фильмом
+        &#34;&#34;&#34;
+        return ObjectController.json_to_object(
+                self.get_data(self.get_api_url(f&#39;films/{film_id}/sequels_and_prequels&#39;, &#39;2.1&#39;)),
+                FilmSequelsAndPrequelsResponse)</code></pre>
+</details>
+</dd>
+<dt id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_videos"><code class="name flex">
+<span>def <span class="ident">get_film_videos</span></span>(<span>self, film_id: int) ‑> <a title="NotKinoPoiskAPI.Responses.VideoResponse.VideoResponse" href="../Responses/VideoResponse.html#NotKinoPoiskAPI.Responses.VideoResponse.VideoResponse">VideoResponse</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Данный эндпоинт возвращает трейлеры, тизеры, видео для фильма по kinopoisk film id. В данный момент доступно три site:</p>
+<ul>
+<li><strong>YOUTUBE</strong> - в этом случае url это просто ссылка на youtube видео.</li>
+<li><strong>YANDEX_DISK</strong> - в этом случае url это ссылка на yandex disk.</li>
+<li><strong>KINOPOISK_WIDGET</strong> - в этом случае url это ссылка на кинопоиск виджет. Например <a href="https://widgets.kinopoisk.ru/discovery/trailer/123573?onlyPlayer=1&amp;autoplay=1&amp;cover=1.">https://widgets.kinopoisk.ru/discovery/trailer/123573?onlyPlayer=1&amp;autoplay=1&amp;cover=1.</a></li>
+</ul>
+<p>Если вы хотите вставить этот виджет на вашу страницу, вы можете сделать следующее:
+<pre><code>
+        <code>&lt;script src="https://unpkg.com/@ungap/custom-elements-builtin"&gt;&lt;/script&gt;
+        &lt;script type="module" src="https://unpkg.com/x-frame-bypass"&gt;&lt;/script&gt;
+        &lt;iframe is="x-frame-bypass" src="https://widgets.kinopoisk.ru/discovery/trailer/167560?onlyPlayer=1&amp;autoplay=1&amp;cover=1" width="500" height="500"&gt;&lt;/iframe&gt;</code>
+        </code></pre></p>
+<p><strong>Endpoint</strong>: /api/v2.2/films/{id}/videos</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>film_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID фильма.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>VideoResponse</code></dt>
+<dd>Возвращает трейлеры, тизеры, видео для фильма</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_film_videos(self, film_id: int) -&gt; VideoResponse:
+        &#34;&#34;&#34;
+        Данный эндпоинт возвращает трейлеры, тизеры, видео для фильма по kinopoisk film id. В данный момент доступно три site:
+
+        - **YOUTUBE** - в этом случае url это просто ссылка на youtube видео.
+        - **YANDEX_DISK** - в этом случае url это ссылка на yandex disk.
+        - **KINOPOISK_WIDGET** - в этом случае url это ссылка на кинопоиск виджет. Например https://widgets.kinopoisk.ru/discovery/trailer/123573?onlyPlayer=1&amp;autoplay=1&amp;cover=1.
+
+        Если вы хотите вставить этот виджет на вашу страницу, вы можете сделать следующее:
+                &lt;pre&gt;&lt;code&gt;
+                ```
+                &lt;script src=&#34;https://unpkg.com/@ungap/custom-elements-builtin&#34;&gt;&lt;/script&gt;
+                &lt;script type=&#34;module&#34; src=&#34;https://unpkg.com/x-frame-bypass&#34;&gt;&lt;/script&gt;
+                &lt;iframe is=&#34;x-frame-bypass&#34; src=&#34;https://widgets.kinopoisk.ru/discovery/trailer/167560?onlyPlayer=1&amp;autoplay=1&amp;cover=1&#34; width=&#34;500&#34; height=&#34;500&#34;&gt;&lt;/iframe&gt;
+                ```
+                &lt;/code&gt;&lt;/pre&gt;
+
+        **Endpoint**: /api/v2.2/films/{id}/videos
+
+        Args:
+                film_id (int): ID фильма.
+
+        Returns:
+                VideoResponse: Возвращает трейлеры, тизеры, видео для фильма
+        &#34;&#34;&#34;
+        return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/videos&#39;)),
+                                               VideoResponse)</code></pre>
+</details>
+</dd>
+<dt id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_films"><code class="name flex">
+<span>def <span class="ident">get_films</span></span>(<span>self, countries: Union[int, list[int], str, ForwardRef(None)] = None, genres: Union[int, list[int], str, ForwardRef(None)] = None, imdbId: Optional[str] = None, keyword: Optional[str] = None, order: <a title="NotKinoPoiskAPI.Enums.FilmsFilterOrder.FilmFilterOrder" href="../Enums/FilmsFilterOrder.html#NotKinoPoiskAPI.Enums.FilmsFilterOrder.FilmFilterOrder">FilmFilterOrder</a> = FilmFilterOrder.RATING, type: <a title="NotKinoPoiskAPI.Enums.MovieType.MovieType" href="../Enums/MovieType.html#NotKinoPoiskAPI.Enums.MovieType.MovieType">MovieType</a> = MovieType.ALL, ratingFrom: float = 0, ratingTo: float = 10, yearFrom: int = 1000, yearTo: int = 3000, page: int = 1) ‑> <a title="NotKinoPoiskAPI.Responses.FilmSearchByFiltersResponse.FilmSearchByFiltersResponse" href="../Responses/FilmSearchByFiltersResponse.html#NotKinoPoiskAPI.Responses.FilmSearchByFiltersResponse.FilmSearchByFiltersResponse">FilmSearchByFiltersResponse</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов. Данный эндпоинт не возращает более 400 фильмов. Используй /api/v2.2/films/filters чтобы получить id стран и жанров.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<pre><code>На данный момент можно указать не более одной страны и жанра.
+</code></pre>
+</div>
+<p><strong>Endpoint</strong>: /api/v2.2/films</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>countries</code></strong> :&ensp;<code>Union[int, List[int], str]</code></dt>
+<dd>Список id стран разделенные запятой. Например countries=1,2,3. На данный момент можно указать не более одной страны.</dd>
+<dt><strong><code>genres</code></strong> :&ensp;<code>Union[int, List[int], str]</code></dt>
+<dd>Список id жанров разделенные запятой. Например genres=1,2,3. На данный момент можно указать не более одного жанра.</dd>
+<dt><strong><code>imdbId</code></strong> :&ensp;<code>str</code></dt>
+<dd>ID с IMDB</dd>
+<dt><strong><code>keyword</code></strong> :&ensp;<code>str</code></dt>
+<dd>Ключевое слово, которое встречается в названии фильма</dd>
+<dt><strong><code>order</code></strong> :&ensp;<code>FilmFilterOrder</code></dt>
+<dd>Сортировка (RATING, NUM_VOTE, YEAR), по умолчанию: RATING</dd>
+<dt><strong><code>type</code></strong> :&ensp;<code>MovieType</code></dt>
+<dd>Тип фильма (FILM, TV_SHOW, TV_SERIES, MINI_SERIES, ALL), по умолчанию: ALL</dd>
+<dt><strong><code>ratingFrom</code></strong> :&ensp;<code>float</code></dt>
+<dd>Минимальный рейтинг, по умолчанию: 0</dd>
+<dt><strong><code>ratingTo</code></strong> :&ensp;<code>float</code></dt>
+<dd>Максимальный рейтинг, по умолчанию: 10</dd>
+<dt><strong><code>yearFrom</code></strong> :&ensp;<code>int</code></dt>
+<dd>Минимальный год, по умолчанию: 1000</dd>
+<dt><strong><code>yearTo</code></strong> :&ensp;<code>int</code></dt>
+<dd>Максимальный год, по умолчанию: 3000</dd>
+<dt><strong><code>page</code></strong> :&ensp;<code>int</code></dt>
+<dd>Номер страницы, по умолчанию: 1</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>FilmSearchByFiltersResponse</code></dt>
+<dd>Возвращает список фильмов с пагинацией</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_films(self, countries: Optional[Union[int, list[int], str]] = None,
+              genres: Optional[Union[int, list[int], str]] = None, imdbId: Optional[str] = None,
+              keyword: Optional[str] = None, order: FilmFilterOrder = FilmFilterOrder.RATING,
+              type: MovieType = MovieType.ALL, ratingFrom: float = 0, ratingTo: float = 10, yearFrom: int = 1000,
+              yearTo: int = 3000, page: int = 1) -&gt; FilmSearchByFiltersResponse:
+        &#34;&#34;&#34;
+        Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов. Данный эндпоинт не возращает более 400 фильмов. Используй /api/v2.2/films/filters чтобы получить id стран и жанров.
+
+        !!! note
+
+                На данный момент можно указать не более одной страны и жанра.
+
+        **Endpoint**: /api/v2.2/films
+
+        Args:
+                countries (Union[int, List[int], str]): Список id стран разделенные запятой. Например countries=1,2,3. На данный момент можно указать не более одной страны.
+                genres (Union[int, List[int], str]): Список id жанров разделенные запятой. Например genres=1,2,3. На данный момент можно указать не более одного жанра.
+                imdbId (str): ID с IMDB
+                keyword (str): Ключевое слово, которое встречается в названии фильма
+                order (FilmFilterOrder): Сортировка (RATING, NUM_VOTE, YEAR), по умолчанию: RATING
+                type (MovieType): Тип фильма (FILM, TV_SHOW, TV_SERIES, MINI_SERIES, ALL), по умолчанию: ALL
+                ratingFrom (float): Минимальный рейтинг, по умолчанию: 0
+                ratingTo (float): Максимальный рейтинг, по умолчанию: 10
+                yearFrom (int): Минимальный год, по умолчанию: 1000
+                yearTo (int): Максимальный год, по умолчанию: 3000
+                page (int): Номер страницы, по умолчанию: 1
+
+        Returns:
+                FilmSearchByFiltersResponse: Возвращает список фильмов с пагинацией
+        &#34;&#34;&#34;
+        countries = &#39;,&#39;.join(countries) if isinstance(countries, list) else str(countries) if isinstance(countries,
+                                                                                                         int) else countries
+        genres = &#39;,&#39;.join(genres) if isinstance(genres, list) else str(genres) if isinstance(genres, int) else genres
+        return ObjectController.json_to_object(self.get_data(
+                self.get_api_url(&#39;films&#39;, countries=countries, genres=genres, imdbId=imdbId, keyword=keyword,
+                                 order=order.name, type=type.name, ratingFrom=ratingFrom, ratingTo=ratingTo,
+                                 yearFrom=yearFrom, yearTo=yearTo, page=page)), FilmSearchByFiltersResponse)</code></pre>
+</details>
+</dd>
+<dt id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_filters"><code class="name flex">
+<span>def <span class="ident">get_filters</span></span>(<span>self) ‑> <a title="NotKinoPoiskAPI.Responses.FiltersResponse.FiltersResponse" href="../Responses/FiltersResponse.html#NotKinoPoiskAPI.Responses.FiltersResponse.FiltersResponse">FiltersResponse</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Возвращает список id стран и жанров, которые могут быть использованы в /api/v2.2/films</p>
+<p><strong>Endpoin</strong>t: /api/v2.2/films/filters</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>FiltersResponse</code></dt>
+<dd>Возвращает список id стран и жанров</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_filters(self) -&gt; FiltersResponse:
+        &#34;&#34;&#34;
+        Возвращает список id стран и жанров, которые могут быть использованы в /api/v2.2/films
+
+        **Endpoin**t: /api/v2.2/films/filters
+
+        Returns:
+                FiltersResponse: Возвращает список id стран и жанров
+        &#34;&#34;&#34;
+        return ObjectController.json_to_object(self.get_data(self.get_api_url(&#39;films/filters&#39;)), FiltersResponse)</code></pre>
+</details>
+</dd>
+<dt id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_images"><code class="name flex">
+<span>def <span class="ident">get_images</span></span>(<span>self, film_id: int, image_type: <a title="NotKinoPoiskAPI.Enums.ImageType.ImageType" href="../Enums/ImageType.html#NotKinoPoiskAPI.Enums.ImageType.ImageType">ImageType</a> = ImageType.STILL, page: int = 1) ‑> <a title="NotKinoPoiskAPI.Responses.ImageResponse.ImageResponse" href="../Responses/ImageResponse.html#NotKinoPoiskAPI.Responses.ImageResponse.ImageResponse">ImageResponse</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Данный эндпоинт возвращает изображения связанные с фильмом с пагинацией. Каждая страница содержит не более чем 20 фильмов.</p>
+<p>Доступные изображения:</p>
+<ul>
+<li>STILL - кадры</li>
+<li>SHOOTING - изображения со съемок</li>
+<li>POSTER - постеры</li>
+<li>FAN_ART - фан-арты</li>
+<li>PROMO - промо</li>
+<li>CONCEPT - концепт-арты</li>
+<li>WALLPAPER - обои</li>
+<li>COVER - обложки</li>
+<li>SCREENSHOT - скриншоты</li>
+</ul>
+<p><strong>Endpoint</strong>: /api/v2.2/films/{id}/images</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>film_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID фильма.</dd>
+<dt><strong><code>image_type</code></strong> :&ensp;<code>ImageType</code></dt>
+<dd>Тип изображения.</dd>
+<dt><strong><code>page</code></strong> :&ensp;<code>int</code></dt>
+<dd>Номер страницы.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ImageResponse</code></dt>
+<dd>Возвращает изображения связанные с фильмом с пагинацией</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_images(self, film_id: int, image_type: ImageType = ImageType.STILL, page: int = 1) -&gt; ImageResponse:
+        &#34;&#34;&#34;
+        Данный эндпоинт возвращает изображения связанные с фильмом с пагинацией. Каждая страница содержит не более чем 20 фильмов.
+
+        Доступные изображения:
+
+        * STILL - кадры
+        * SHOOTING - изображения со съемок
+        * POSTER - постеры
+        * FAN_ART - фан-арты
+        * PROMO - промо
+        * CONCEPT - концепт-арты
+        * WALLPAPER - обои
+        * COVER - обложки
+        * SCREENSHOT - скриншоты
+
+        **Endpoint**: /api/v2.2/films/{id}/images
+
+        Args:
+                film_id (int): ID фильма.
+                image_type (ImageType): Тип изображения.
+                page (int): Номер страницы.
+
+        Returns:
+                ImageResponse: Возвращает изображения связанные с фильмом с пагинацией
+        &#34;&#34;&#34;
+        return ObjectController.json_to_object(
+                self.get_data(self.get_api_url(f&#39;films/{film_id}/images&#39;, type=image_type.name, page=page)),
+                ImageResponse)</code></pre>
+</details>
+</dd>
+<dt id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_premieres"><code class="name flex">
+<span>def <span class="ident">get_premieres</span></span>(<span>self, year: int, month: Union[<a title="NotKinoPoiskAPI.Enums.KpMonth.KpMonth" href="../Enums/KpMonth.html#NotKinoPoiskAPI.Enums.KpMonth.KpMonth">KpMonth</a>, int]) ‑> <a title="NotKinoPoiskAPI.Responses.PremiereResponse.PremiereResponse" href="../Responses/PremiereResponse.html#NotKinoPoiskAPI.Responses.PremiereResponse.PremiereResponse">PremiereResponse</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Данный эндпоинт возвращает список кинопремьер. Например <a href="https://www.kinopoisk.ru/premiere/">https://www.kinopoisk.ru/premiere/</a></p>
+<p><strong>Endpoint</strong>: /api/v2.2/films/premieres</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>year</code></strong> :&ensp;<code>int</code></dt>
+<dd>Год</dd>
+<dt><strong><code>month</code></strong> :&ensp;<code>Union[KpMonth, int]</code></dt>
+<dd>Месяц. Либо в виде объекта PremiereMonth. Либо цифра от 1 до 12</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>PremiereResponse</code></dt>
+<dd>Возвращает список кинопремьер</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_premieres(self, year: int, month: Union[KpMonth, int]) -&gt; PremiereResponse:
+        &#34;&#34;&#34;
+        Данный эндпоинт возвращает список кинопремьер. Например https://www.kinopoisk.ru/premiere/
+
+        **Endpoint**: /api/v2.2/films/premieres
+
+        Args:
+                year (int): Год
+                month (Union[KpMonth, int]): Месяц. Либо в виде объекта PremiereMonth. Либо цифра от 1 до 12
+
+        Returns:
+                PremiereResponse: Возвращает список кинопремьер
+        &#34;&#34;&#34;
+        if isinstance(month, KpMonth):
+                month = month.name
+        elif isinstance(month, int):
+                if month &lt; 1 or month &gt; 12:
+                        raise ValueError(&#39;month must be in range 1 to 12&#39;)
+                month = KpMonth(month).name
+        return ObjectController.json_to_object(
+                self.get_data(self.get_api_url(f&#39;films/premieres&#39;, year=year, month=month)), PremiereResponse)</code></pre>
+</details>
+</dd>
+<dt id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_releases"><code class="name flex">
+<span>def <span class="ident">get_releases</span></span>(<span>self, year: int, month: Union[<a title="NotKinoPoiskAPI.Enums.KpMonth.KpMonth" href="../Enums/KpMonth.html#NotKinoPoiskAPI.Enums.KpMonth.KpMonth">KpMonth</a>, int], page: int = 1) ‑> <a title="NotKinoPoiskAPI.Responses.DigitalReleaseResponse.DigitalReleaseResponse" href="../Responses/DigitalReleaseResponse.html#NotKinoPoiskAPI.Responses.DigitalReleaseResponse.DigitalReleaseResponse">DigitalReleaseResponse</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Данный эндпоинт возвращает список цифровых релизов. Например <a href="https://www.kinopoisk.ru/comingsoon/digital/">https://www.kinopoisk.ru/comingsoon/digital/</a></p>
+<p><strong>Endpoint</strong>: /api/v2.1/films/releases</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>year</code></strong> :&ensp;<code>int</code></dt>
+<dd>Год</dd>
+<dt><strong><code>month</code></strong> :&ensp;<code>Union[KpMonth, int]</code></dt>
+<dd>Месяц. Либо в виде объекта <code>KpMonth</code> (JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER). Либо цифра от 1 до 12</dd>
+<dt><strong><code>page</code></strong> :&ensp;<code>int</code></dt>
+<dd>номер страницы</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>DigitalReleaseResponse</code></dt>
+<dd>Возвращает список цифровых релизов</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_releases(self, year: int, month: Union[KpMonth, int], page: int = 1) -&gt; DigitalReleaseResponse:
+        &#34;&#34;&#34;
+        Данный эндпоинт возвращает список цифровых релизов. Например https://www.kinopoisk.ru/comingsoon/digital/
+
+        **Endpoint**: /api/v2.1/films/releases
+
+        Args:
+                year (int): Год
+                month (Union[KpMonth, int]): Месяц. Либо в виде объекта `KpMonth` (JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER). Либо цифра от 1 до 12
+                page (int): номер страницы
+
+        Returns:
+                DigitalReleaseResponse: Возвращает список цифровых релизов
+        &#34;&#34;&#34;
+        if isinstance(month, KpMonth):
+                month = month.name
+        elif isinstance(month, int):
+                if month &lt; 1 or month &gt; 12:
+                        raise ValueError(&#39;месяц должен быть в диапазоне от 1 до 12&#39;)
+                month = ObjectController.find_enum(str(month), KpMonth).name
+        return ObjectController.json_to_object(
+                self.get_data(self.get_api_url(&#39;films/releases&#39;, &#39;2.1&#39;, year=year, month=month, page=page)),
+                DigitalReleaseResponse)</code></pre>
+</details>
+</dd>
+<dt id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_reviews"><code class="name flex">
+<span>def <span class="ident">get_reviews</span></span>(<span>self, film_id: int, page: int = 1, order: <a title="NotKinoPoiskAPI.Enums.ReviewOrder.ReviewOrder" href="../Enums/ReviewOrder.html#NotKinoPoiskAPI.Enums.ReviewOrder.ReviewOrder">ReviewOrder</a> = ReviewOrder.DATE_DESC) ‑> <a title="NotKinoPoiskAPI.Responses.ReviewResponse.ReviewResponse" href="../Responses/ReviewResponse.html#NotKinoPoiskAPI.Responses.ReviewResponse.ReviewResponse">ReviewResponse</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Возвращает список рецензии зрителей с пагинацией. Каждая страница содержит не более чем 20 рецензий.</p>
+<p><strong>Endpoint</strong>: /api/v2.2/films/{id}/reviews</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>film_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID фильма.</dd>
+<dt><strong><code>page</code></strong> :&ensp;<code>int</code></dt>
+<dd>Номер страницы.</dd>
+<dt><strong><code>order</code></strong> :&ensp;<code>ReviewOrder</code></dt>
+<dd>Сортировка.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ReviewResponse</code></dt>
+<dd>Возвращает список рецензии зрителей с пагинацией</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_reviews(self, film_id: int, page: int = 1, order: ReviewOrder = ReviewOrder.DATE_DESC) -&gt; ReviewResponse:
+        &#34;&#34;&#34;
+        Возвращает список рецензии зрителей с пагинацией. Каждая страница содержит не более чем 20 рецензий.
+
+        **Endpoint**: /api/v2.2/films/{id}/reviews
+
+        Args:
+                film_id (int): ID фильма.
+                page (int): Номер страницы.
+                order (ReviewOrder): Сортировка.
+
+        Returns:
+                ReviewResponse: Возвращает список рецензии зрителей с пагинацией
+        &#34;&#34;&#34;
+        return ObjectController.json_to_object(
+                self.get_data(self.get_api_url(f&#39;films/{film_id}/reviews&#39;, page=page, order=order.name)),
+                ReviewResponse)</code></pre>
+</details>
+</dd>
+<dt id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_seasons"><code class="name flex">
+<span>def <span class="ident">get_seasons</span></span>(<span>self, film_id: int) ‑> <a title="NotKinoPoiskAPI.Responses.SeasonResponse.SeasonResponse" href="../Responses/SeasonResponse.html#NotKinoPoiskAPI.Responses.SeasonResponse.SeasonResponse">SeasonResponse</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Метод для получения информации о сезонах фильма</p>
+<p><strong>Endpoint</strong>: /api/v2.2/films/{id}/seasons</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>film_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID фильма.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>SeasonResponse</code></dt>
+<dd>Информация о сезонах фильма</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_seasons(self, film_id: int) -&gt; SeasonResponse:
+        &#34;&#34;&#34;
+        Метод для получения информации о сезонах фильма
+
+        **Endpoint**: /api/v2.2/films/{id}/seasons
+
+        Args:
+                film_id (int): ID фильма.
+
+        Returns:
+                SeasonResponse: Информация о сезонах фильма
+        &#34;&#34;&#34;
+        return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/seasons&#39;)),
+                                               SeasonResponse)</code></pre>
+</details>
+</dd>
+<dt id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_similars"><code class="name flex">
+<span>def <span class="ident">get_similars</span></span>(<span>self, film_id: int) ‑> <a title="NotKinoPoiskAPI.Responses.RelatedFilmResponse.RelatedFilmResponse" href="../Responses/RelatedFilmResponse.html#NotKinoPoiskAPI.Responses.RelatedFilmResponse.RelatedFilmResponse">RelatedFilmResponse</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Данный эндпоинт возвращает похожие фильмы.</p>
+<p><strong>Endpoint</strong>: /api/v2.2/films/{id}/similars</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>film_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID фильма.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>RelatedFilmResponse</code></dt>
+<dd>Возвращает похожие фильмы</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_similars(self, film_id: int) -&gt; RelatedFilmResponse:
+        &#34;&#34;&#34;
+        Данный эндпоинт возвращает похожие фильмы.
+
+        **Endpoint**: /api/v2.2/films/{id}/similars
+
+        Args:
+                film_id (int): ID фильма.
+
+        Returns:
+                RelatedFilmResponse: Возвращает похожие фильмы
+        &#34;&#34;&#34;
+        return ObjectController.json_to_object(self.get_data(self.get_api_url(f&#39;films/{film_id}/similars&#39;)),
+                                               RelatedFilmResponse)</code></pre>
+</details>
+</dd>
+<dt id="NotKinoPoiskAPI.Endpoint.Films.KpFilms.search_by_keyword"><code class="name flex">
+<span>def <span class="ident">search_by_keyword</span></span>(<span>self, keyword: str, page: int = 1) ‑> <a title="NotKinoPoiskAPI.Responses.FilmSearchResponse.FilmSearchResponse" href="../Responses/FilmSearchResponse.html#NotKinoPoiskAPI.Responses.FilmSearchResponse.FilmSearchResponse">FilmSearchResponse</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Поиск фильмов и сериалов по ключевому слову. Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов.</p>
+<p><strong>Endpoint</strong>: /api/v2.1/films/search-by-keyword</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>keyword</code></strong> :&ensp;<code>str</code></dt>
+<dd>ключивые слова для поиска</dd>
+<dt><strong><code>page</code></strong> :&ensp;<code>int</code></dt>
+<dd>номер страницы</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>FilmSearchResponse</code></dt>
+<dd>Возвращает список фильмов с пагинацией</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def search_by_keyword(self, keyword: str, page: int = 1) -&gt; FilmSearchResponse:
+        &#34;&#34;&#34;
+        Поиск фильмов и сериалов по ключевому слову. Возвращает список фильмов с пагинацией. Каждая страница содержит не более чем 20 фильмов.
+
+        **Endpoint**: /api/v2.1/films/search-by-keyword
+
+        Args:
+                keyword (str): ключивые слова для поиска
+                page (int): номер страницы
+
+        Returns:
+                FilmSearchResponse: Возвращает список фильмов с пагинацией
+        &#34;&#34;&#34;
+        return ObjectController.json_to_object(
+                self.get_data(self.get_api_url(&#39;films/search-by-keyword&#39;, &#39;2.1&#39;, keyword=keyword, page=page)),
+                FilmSearchResponse)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="NotKinoPoiskAPI.Endpoint.NKPA.NKPA" href="NKPA.html#NotKinoPoiskAPI.Endpoint.NKPA.NKPA">NKPA</a></b></code>:
+<ul class="hlist">
+<li><code><a title="NotKinoPoiskAPI.Endpoint.NKPA.NKPA.api_key" href="NKPA.html#NotKinoPoiskAPI.Endpoint.NKPA.NKPA.api_key">api_key</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.NKPA.NKPA.api_link" href="NKPA.html#NotKinoPoiskAPI.Endpoint.NKPA.NKPA.api_link">api_link</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.NKPA.NKPA.cache" href="NKPA.html#NotKinoPoiskAPI.Endpoint.NKPA.NKPA.cache">cache</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.NKPA.NKPA.get_api_info" href="NKPA.html#NotKinoPoiskAPI.Endpoint.NKPA.NKPA.get_api_info">get_api_info</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.NKPA.NKPA.get_api_url" href="NKPA.html#NotKinoPoiskAPI.Endpoint.NKPA.NKPA.get_api_url">get_api_url</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.NKPA.NKPA.get_data" href="NKPA.html#NotKinoPoiskAPI.Endpoint.NKPA.NKPA.get_data">get_data</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.NKPA.NKPA.session" href="NKPA.html#NotKinoPoiskAPI.Endpoint.NKPA.NKPA.session">session</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="NotKinoPoiskAPI.Endpoint" href="index.html">NotKinoPoiskAPI.Endpoint</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="NotKinoPoiskAPI.Endpoint.Films.KpFilms" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms">KpFilms</a></code></h4>
+<ul class="">
+<li><code><a title="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_box_office" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_box_office">get_box_office</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_collections" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_collections">get_collections</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_distributions" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_distributions">get_distributions</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_external_sources" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_external_sources">get_external_sources</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film">get_film</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_awards" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_awards">get_film_awards</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_facts" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_facts">get_film_facts</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_prequels_and_sequels" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_prequels_and_sequels">get_film_prequels_and_sequels</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_videos" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_film_videos">get_film_videos</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_films" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_films">get_films</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_filters" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_filters">get_filters</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_images" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_images">get_images</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_premieres" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_premieres">get_premieres</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_releases" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_releases">get_releases</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_reviews" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_reviews">get_reviews</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_seasons" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_seasons">get_seasons</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_similars" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.get_similars">get_similars</a></code></li>
+<li><code><a title="NotKinoPoiskAPI.Endpoint.Films.KpFilms.search_by_keyword" href="#NotKinoPoiskAPI.Endpoint.Films.KpFilms.search_by_keyword">search_by_keyword</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

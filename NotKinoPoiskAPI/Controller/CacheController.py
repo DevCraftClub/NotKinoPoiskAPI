@@ -12,9 +12,6 @@ from decouple import config
 class CacheController:
 	"""
 	Класс по управлению за кешем.
-
-	:param Path cache_path: Путь до папки с кешем
-	:param int cache_lifetime: Время жизни кеша
 	"""
 	cache_path: Path
 	"""Путь до папки с кешем"""
@@ -25,8 +22,9 @@ class CacheController:
 		"""
 		Инициализация кеша
 
-		:param Union[Path, str] cache_path: Путь до папки с кешем
-		:param int lifetime: Время жизни кеша
+		Args:
+			cache_path (Union[Path, str]): Путь до папки с кешем
+			lifetime (int): Время жизни кеша
 		"""
 		if cache_path is None:
 			ROOT = Path(__file__).parent.parent
@@ -36,21 +34,23 @@ class CacheController:
 
 	def set_cache_path(self, path: Union[Path, str]):
 		"""
-		Установка пути до папки с кешем
-		Создаёт папки на пути
+		Установка пути до папки с кешем. Создаёт папки на пути
 
-		:param Union[Path, str] path: Путь до папки с кешем
+		Args:
+			path (Union[Path, str]): Устанавливает путь до папки с кешем
 		"""
 		self.cache_path = Path(path) if isinstance(path, str) else path
 		self.cache_path.mkdir(parents=True, exist_ok=True)
 
 	def get_cache_file(self, file_name: str):
 		"""
-		Получить путь до файла с кешем
+		Получить путь до файла с кешем. Создаёт из ссылки хеш, что используется как уникальное название для файла кеша
 
-		:param str file_name: Данные для хэширования
-		:return: Путь до файла с кешем
-		:rtype: str
+		Args:
+			file_name (str): Данные для хэширования
+
+		Returns:
+			str: Путь до файла с кешем
 		"""
 		data_hash = hashlib.md5(file_name.encode(encoding='UTF-8')).hexdigest()
 		return self.cache_path / f'{data_hash.__str__()}.pickle'
@@ -59,21 +59,24 @@ class CacheController:
 		"""
 		Запись в кеш
 
-		:param str name: Имя кеша
-		:param Any data: Данные для кеша
+		Args:
+			name (str): Имя кеша
+			data (Any): Данные для кеша
 		"""
 		cache_file = self.get_cache_file(name)
 		with open(cache_file, 'wb') as f:
 			pickle.dump(data, f)
 
-	def get_cache(self, name:str):
+	def get_cache(self, name: str):
 		"""
 		Получить данные из кеша
 		Если кеш не существует или время жизни кеша истекло, то возвращает None
 
-		:param str name: Имя кеша
-		:return: Данные из кеша, либо None (если данные отсутствуют или устарели)
-		:rtype: dict | None
+		Args:
+			name (str): Имя кеша
+
+		Returns:
+			Dict or None: Данные из кеша, либо None (если данные отсутствуют или устарели)
 		"""
 		cache_file = self.get_cache_file(name)
 		if Path(cache_file).exists():
@@ -95,13 +98,13 @@ class CacheController:
 		"""
 		Возвращает дату создания файла
 
-		:ref: https://stackoverflow.com/a/39501288/1709587
+		**Источник**: https://stackoverflow.com/a/39501288/1709587
 
-		:param str path_to_file: Путь до файла
+		Args:
+			path_to_file (str): Путь до файла
 
-		:return: Дата создания файла
-
-		:rtype: float
+		Returns:
+			Float: Дата создания файла в миллисекундах
 		"""
 		if platform.system() == 'Windows':
 			return os.path.getctime(path_to_file)

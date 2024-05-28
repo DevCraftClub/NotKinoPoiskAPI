@@ -21,7 +21,8 @@ class RelatedFilmResponse(GeneralResponse):
 		"""
 		Добавление фильмов
 
-		:param Union[FilmResponseFilm, List[FilmResponseFilm]] items: Фильм или список фильмов
+		Args:
+			items (Union[FilmResponseFilm, List[FilmResponseFilm]]): Фильм или список фильмов
 		"""
 		if isinstance(items, list):
 			self.items.extend(items)

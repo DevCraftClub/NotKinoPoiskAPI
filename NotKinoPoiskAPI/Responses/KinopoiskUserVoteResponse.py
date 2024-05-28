@@ -23,7 +23,8 @@ class KinopoiskUserVoteResponse(GeneralResponse):
 		"""
 		Добавление голоса
 
-		:param Union[KinopoiskUserVoteResponseItem, list[KinopoiskUserVoteResponseItem]] item: Голос или список голосов
+		Args:
+			item (Union[KinopoiskUserVoteResponseItem, list[KinopoiskUserVoteResponseItem]]): Голос или список голосов
 		"""
 		if isinstance(item, list):
 			self.items.extend(item)

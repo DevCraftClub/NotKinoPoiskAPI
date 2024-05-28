@@ -41,7 +41,8 @@ class Distribution:
 		"""
 		Добавление компании
 
-		:param Union[Company, list[Company]] company: Компания или список компаний
+		Args:
+			company (Union[Company, list[Company]]): Компания или список компаний
 		"""
 		if isinstance(company, list):
 			self.companies.extend(company)

@@ -1,6 +1,9 @@
 from dataclasses import dataclass
 from typing import Optional
 
+from NotKinoPoiskAPI.Controller.ObjectController import ObjectController
+from NotKinoPoiskAPI.Enums.ErrorCode import ErrorCode
+
 
 @dataclass
 class ApiError:
@@ -15,15 +18,16 @@ class ApiError:
 		"""
 		Метод для получения описания ошибки по коду.
 
-		:param int code: Код ошибки
-		:return: Описание ошибки
-		:rtype: str
-		"""
-		error_codes = {
-				401: "Пустой или неправильный токен",
-				402: "Превышен лимит запросов(или дневной, или общий)",
-				404: "Фильм не найден",
-				429: "Слишком много запросов. Общий лимит - 20 запросов в секунду",
-		}
+		Args:
+			code (int): Код ошибки
 
-		return error_codes.get(code, "Неизвестная ошибка")
+		Returns:
+			str: Описание ошибки
+		"""
+		error_code = f'E{code}'
+		if error_code in ErrorCode.get_names():
+			code_descr = ObjectController.find_enum(error_code, ErrorCode)
+		else:
+			code_descr = "Неизвестная ошибка"
+
+		return code_descr

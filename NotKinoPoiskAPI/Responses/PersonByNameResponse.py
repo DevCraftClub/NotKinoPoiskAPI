@@ -21,7 +21,8 @@ class PersonByNameResponse(GeneralResponse):
 		"""
 		Добавление персон
 
-		:param Union[PersonByNameResponseItem, list[PersonByNameResponseItem]] items: Персона или список персон
+		Args:
+			items (Union[PersonByNameResponseItem, list[PersonByNameResponseItem]]): Персона или список персон
 		"""
 		if isinstance(items, list):
 			self.items.extend(items)

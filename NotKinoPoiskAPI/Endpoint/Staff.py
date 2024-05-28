@@ -22,13 +22,14 @@ class KpStaff(NKPA):
 		"""
 		Конструктор класса
 
-		:param str api_key: API-Key для подключения.
-		:param ProxyController proxy: Прокси для подключения.
-		:param Session session: Сессия для запросов.
-		:param str user_agent: User-Agent для запросов.
-		:param dict headers: Дополнительные заголовки.
-		:param int timeout: Время ожидания ответа.
-		:param str cache_path: Путь к папке кеша.
+		Args:
+			api_key (Optional[str]): API-Key для подключения
+			proxy (Optional[ProxyController]): Прокси для подключения
+			session (Optional[Session]): Сессия для запросов
+			user_agent (Optional[str]): User-Agent для запросов
+			headers (Optional[dict]): Дополнительные заголовки
+			timeout (int): Время ожидания ответа
+			cache_path (Optional[str]): Путь к папке кеша
 		"""
 		super().__init__(api_key=api_key, proxy=proxy, user_agent=user_agent, headers=headers, session=session,
 		                 cache_path=cache_path, timeout=timeout)
@@ -37,10 +38,13 @@ class KpStaff(NKPA):
 		"""
 		Метод для получения информации о сотрудниках фильма
 
-		:Endpoint: /api/v1/staff
-		:param int film_id: ID фильма.
-		:return: Информация о сотрудниках фильма
-		:rtype: List[StaffResponse]
+		**Endpoint**: /api/v1/staff
+
+		Args:
+			film_id (int): ID фильма
+
+		Returns:
+			List[StaffResponse]: Информация о сотрудниках фильма
 		"""
 		return ObjectController.list_to_object(self.get_data(self.get_api_url('staff', '1', filmId=film_id)),
 		                                       StaffResponse)
@@ -49,10 +53,13 @@ class KpStaff(NKPA):
 		"""
 		Метод для получения информации о сотруднике
 
-		:Endpoint: /api/v1/staff/{id}
-		:param int person_id: ID сотрудника.
-		:return: Информация о сотруднике
-		:rtype: PersonResponse
+		**Endpoint**: /api/v1/staff/{id}
+
+		Args:
+			person_id (int): ID сотрудника
+
+		Returns:
+			PersonResponse: Информация о сотруднике
 		"""
 		return ObjectController.json_to_object(self.get_data(self.get_api_url(f'staff/{person_id}', '1')), PersonResponse)
 
@@ -60,10 +67,13 @@ class KpStaff(NKPA):
 		"""
 		Метод для поиска сотрудника по имени
 
-		:Endpoint: /api/v1/persons
-		:param str name: Имя сотрудника.
-		:return: Результат поиска
-		:rtype: PersonByNameResponse
+		**Endpoint**: /api/v1/persons
+
+		Args:
+			name (str): Имя сотрудника.
+
+		Returns:
+			PersonByNameResponse: Результат поиска
 		"""
 		return ObjectController.json_to_object(self.get_data(self.get_api_url('persons', '1', name=name)),
 		                                       PersonByNameResponse)

@@ -14,13 +14,6 @@ from NotKinoPoiskAPI.Errors.ApiError import ApiError
 class Connector:
 	"""
 	Класс для подключения к API.
-
-	:param str api_key: API-Key для подключения.
-	:param ProxyController proxy: Прокси для подключения.
-	:param Session session: Сессия для запросов.
-	:param str user_agent: User-Agent для запросов.
-	:param dict headers: Дополнительные заголовки.
-	:param int timeout: Время ожидания ответа.
 	"""
 	api_key: str
 	"""API-Key для подключения"""
@@ -64,7 +57,8 @@ class Connector:
 		"""
 		Установка прокси.
 
-		:raise Exception: Если прокси недоступны.
+		Raises:
+			Exception: Если прокси недоступны.
 		"""
 		proxy = self.proxy if self.proxy else ProxyController()
 		if proxy and len(proxy.get_proxy_list()) > 0:
@@ -90,17 +84,18 @@ class Connector:
 		"""
 		Отправка запроса.
 
-		:param str url: URL запроса.
-		:param dict params: Параметры запроса.
-		:param dict data: Данные запроса.
-		:param dict json: JSON данные запроса.
-		:param str method: Метод запроса.
+		Args:
+			url (str): URL запроса.
+			params (Dict): Параметры запроса.
+			data (Dict): Данные запроса.
+			json (Dict): JSON данные запроса.
+			method (str): Метод запроса.
 
-		:return: Возвращает JSON объект в случае удачи. При ошибке выбрасывает её и останавливает скрипт
+		Returns:
+			Dict: Возвращает JSON объект в случае удачи. При ошибке выбрасывает её и останавливает скрипт.
 
-		:raise Exception: Если подключение к API произошло неуспешно
-
-		:rtype: dict
+		Raises:
+			Exception: Если подключение к API произошло неуспешно
 		"""
 
 		try:

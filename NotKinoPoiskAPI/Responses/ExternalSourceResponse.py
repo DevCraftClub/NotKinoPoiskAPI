@@ -21,7 +21,8 @@ class ExternalSourceResponse(GeneralResponse):
 		"""
 		Добавление источников
 
-		:param Union[ExternalSourceResponseItem, list[ExternalSourceResponseItem]] items: Источник или список источников
+		Args:
+			items (Union[ExternalSourceResponseItem, list[ExternalSourceResponseItem]]): Источник или список источников
 		"""
 		if isinstance(items, list):
 			self.items.extend(items)

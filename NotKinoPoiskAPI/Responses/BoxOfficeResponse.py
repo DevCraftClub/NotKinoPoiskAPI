@@ -21,7 +21,8 @@ class BoxOfficeResponse(GeneralResponse):
 		"""
 		Добавление кассовых сборов
 
-		:param Union[BoxOffice, list[BoxOffice]] box_office: Кассовые сборы или список кассовых сборов
+		Args:
+			box_office (Union[BoxOffice, list[BoxOffice]]): Кассовые сборы или список кассовых сборов
 		"""
 		if isinstance(box_office, list):
 			self.items.extend(box_office)

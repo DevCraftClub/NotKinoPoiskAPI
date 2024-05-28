@@ -49,7 +49,8 @@ class FilmSearchByFiltersResponseItem:
 		"""
 		Добавление страны производства
 
-		:param Union[Country, list[Country]] country: Страна или список стран
+		Args:
+			country (Union[Country, list[Country]]): Страна или список стран
 		"""
 		if isinstance(country, list):
 			self.countries.extend(country)
@@ -60,7 +61,8 @@ class FilmSearchByFiltersResponseItem:
 		"""
 		Добавление жанра
 
-		:param Union[Genre, list[Genre]] genres: Жанр или список жанров
+		Args:
+			genres (Union[Genre, list[Genre]]): Жанр или список жанров
 		"""
 		if isinstance(genres, list):
 			self.genres.extend(genres)
