@@ -1,14 +1,24 @@
-[tool.poetry]
+[project]
 name = "notkinopoiskapi"
 version = "1.0.0"
 description = "Неофициальная библиотека для Kinopoisk API Unofficial"
-authors = ["Maxim Harder <dev@devcraft.club>"]
-license = "GPL-3.0-or-later"
+authors = [
+    { "name" = "Maxim Harder", "email" = "dev@devcraft.club"}
+]
+license = { file = "LICENSE" }
 readme = "readme.md"
+classifiers = [
+    "License :: OSI Approved :: GNUv3 License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "requests",
+    "python-decouple"
+]
+keywords = ['api', 'kinopoisk', 'python']
+
+[project.urls]
 homepage = "https://github.com/DevCraftClub/NotKinoPoiskAPI"
 repository = "https://github.com/DevCraftClub/NotKinoPoiskAPI"
-
-[tool.poetry.dependencies]
-python = "^3.8"
-requests = "^2.31.0"
-python-decouple = "^3.8"

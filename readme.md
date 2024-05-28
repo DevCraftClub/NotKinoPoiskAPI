@@ -1,7 +1,7 @@
 # Неофициальная библиотека для Kinopoisk API Unofficial
 
 Простая библиотека для взаимодействия с Kinopoisk API Unofficial. Полная документация для работы с библиотекой по этому
-адресу:
+адресу: [NotKinoPoiskAPI (GitHub)](https://devcraftclub.github.io/NotKinoPoiskAPI/NotKinoPoiskAPI/)
 
 ## Установка
 
