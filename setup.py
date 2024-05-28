@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-	name="notkionpoiskapi",
+	name="notkinopoiskapi",
 	version="1.0.0",
 	description="Неофициальная библиотека для Kinopoisk API Unofficial",
 	long_description=open("readme.md", "r", encoding="utf8").read(),
