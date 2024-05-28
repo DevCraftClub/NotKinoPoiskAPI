@@ -20,5 +20,5 @@ dependencies = [
 keywords = ['api', 'kinopoisk', 'python']
 
 [project.urls]
-homepage = "https://github.com/DevCraftClub/NotKinoPoiskAPI"
+homepage = "https://devcraft.club/downloads/notkinopoiskapi.28/"
 repository = "https://github.com/DevCraftClub/NotKinoPoiskAPI"

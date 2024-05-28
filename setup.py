@@ -7,7 +7,8 @@ setup(
 	long_description=open("readme.md", "r", encoding="utf8").read(),
 	long_description_content_type="text/markdown",
 	keywords="api kinopoisk python",
-	url="https://github.com/DevCraftClub/NotKinoPoiskAPI",
+	url="https://devcraft.club/downloads/notkinopoiskapi.28/",
+	repository="https://github.com/DevCraftClub/NotKinoPoiskAPI",
 	author="Maxim Harder",
 	author_email="dev@devcraft.club",
 	install_requires=[
