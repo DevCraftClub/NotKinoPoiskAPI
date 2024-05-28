@@ -23,7 +23,8 @@ class AwardResponse(GeneralResponse):
 		"""
 		Добавление награды
 
-		:param Union[Award, list[Award]] award: Награда или список наград
+		Args:
+			award (Union[Award, list[Award]]): Награда или список наград
 		"""
 		if isinstance(award, Award):
 			self.items.append(award)

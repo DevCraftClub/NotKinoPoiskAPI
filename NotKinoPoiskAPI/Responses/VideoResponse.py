@@ -21,7 +21,8 @@ class VideoResponse(GeneralResponse):
 		"""
 		Добавление видео
 
-		:param Union[VideoResponseItem, list[VideoResponseItem]] item: Видео или список видео
+		Args:
+			item (Union[VideoResponseItem, list[VideoResponseItem]]): Видео или список видео
 		"""
 		if isinstance(item, list):
 			self.items.extend(item)

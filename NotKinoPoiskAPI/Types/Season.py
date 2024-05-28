@@ -22,7 +22,8 @@ class Season:
 		"""
 		Добавление серии
 
-		:param Union[Episode, list[Episode]] episode: Серия или список серий
+		Args:
+			episode (Union[Episode, list[Episode]]): Серия или список серий
 		"""
 		if isinstance(episode, list):
 			self.episodes.extend(episode)

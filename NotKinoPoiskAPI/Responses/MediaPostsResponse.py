@@ -23,7 +23,8 @@ class MediaPostsResponse(GeneralResponse):
 		"""
 		Добавление поста
 
-		:param Union[MediaPostsResponseItem, list[MediaPostsResponseItem]] item: Пост или список постов
+		Args:
+			item (Union[MediaPostsResponseItem, list[MediaPostsResponseItem]]): Пост или список постов
 		"""
 		if isinstance(item, list):
 			self.items.extend(item)

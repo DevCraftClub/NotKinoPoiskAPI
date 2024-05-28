@@ -35,14 +35,17 @@ class NKPA:
 		"""
 		Конструктор класса
 
-		:param str api_key: API-Key для подключения.
-		:param ProxyController proxy: Прокси для подключения.
-		:param Session session: Сессия для запросов.
-		:param str user_agent: User-Agent для запросов.
-		:param dict headers: Дополнительные заголовки.
-		:param int timeout: Время ожидания ответа.
-		:param str cache_path: Путь к папке кеша.
-		:raise ValueError: Если API ключ не указан.
+		Args:
+			api_key (Optional[str]): API-Key для подключения
+			proxy (Optional[ProxyController]): Прокси для подключения
+			session (Optional[Session]): Сессия для запросов
+			user_agent (Optional[str]): User-Agent для запросов
+			headers (Optional[dict]): Дополнительные заголовки
+			timeout (int): Время ожидания ответа
+			cache_path (Optional[str]): Путь к папке кеша
+
+		Raises:
+			ValueError: Если API ключ не указан.
 		"""
 		if api_key is None:
 			api_keys_config = config('NKPA_API_KEY', default=None, cast=str)
@@ -58,11 +61,13 @@ class NKPA:
 		"""
 		Метод для получения ссылки на метод API. Фильтрует пустые (`None`) данные
 
-		:param str version: Версия API.
-		:param str method: Метод API.
-		:param dict query: Параметры запроса.
-		:return: Ссылка на метод API.
-		:rtype: str
+		Args:
+			version (str): Версия API
+			method (str): Метод API
+			query (dict): Параметры запроса
+
+		Returns:
+			str: Ссылка на метод API
 		"""
 		filtered_query = {k: v for k, v in query.items() if v is not None}
 		query.clear()
@@ -74,9 +79,11 @@ class NKPA:
 		"""
 		Запрашивает данные по эндпойнту, проверяя предварительно данные в кеше
 
-		:param str link: Ссылка на метод API.
-		:return: Данные по эндпойнту
-		:rtype: dict
+		Args:
+			link (str): Ссылка на метод API
+
+		Returns:
+			dict: Данные по эндпойнту
 		"""
 		if self.get_api_info():
 			cache = self.cache.get_cache(link)
@@ -92,10 +99,13 @@ class NKPA:
 		"""
 		Метод для получения информации о ключе
 
-		:Endpoint: /api/v1/api_keys/{apiKey}
-		:return: Возвращает либо утвердительный ответ, либо вызывает ошибку
-		:rtype: bool
-		:raise ValueError: Если превышен лимит запросов
+		**Endpoint**: /api/v1/api_keys/{apiKey}
+
+		Returns:
+			bool: Возвращает либо утвердительный ответ, либо вызывает ошибку
+
+		Raises:
+			ValueError: Если превышен лимит запросов
 		"""
 		url = self.get_api_url(f'api_keys/{self.api_key}', '1')
 		data = ObjectController.json_to_object(self.session.send(url), ApiKeyResponse)

@@ -24,7 +24,8 @@ class FiltersResponse:
 		"""
 		Добавление жанра
 
-		:param Union[FiltersResponseGenre, list[FiltersResponseGenre]] genre: Жанр или список жанров
+		Args:
+			genre (Union[FiltersResponseGenre, list[FiltersResponseGenre]]): Жанр или список жанров
 		"""
 		if isinstance(genre, list):
 			self.genres.extend(genre)

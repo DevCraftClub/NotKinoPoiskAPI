@@ -30,7 +30,8 @@ class ReviewResponse:
 		"""
 		Добавление рецензий
 
-		:param Union[ReviewResponseItem, List[ReviewResponseItem]] items: Рецензия или список рецензий
+		Args:
+			items (Union[ReviewResponseItem, List[ReviewResponseItem]]): Рецензия или список рецензий
 		"""
 		if isinstance(items, list):
 			self.items.extend(items)

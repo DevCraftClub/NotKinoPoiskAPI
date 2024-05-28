@@ -21,6 +21,12 @@ class ProxyItem:
 	"""Установлен ли прокси"""
 
 	def __init__(self, proxy_string: Optional[str] = None):
+		"""
+		Инициализация прокси
+
+		Args:
+			proxy_string (Optional[str], optional): Строка прокси. Если параметр пуст, то скрипт берёт данные из .env. По умолчанию None.
+		"""
 		if proxy_string is not None:
 			proxy_type, proxy_address = proxy_string.split('|')
 			self.type = ProxyType(proxy_type.upper())

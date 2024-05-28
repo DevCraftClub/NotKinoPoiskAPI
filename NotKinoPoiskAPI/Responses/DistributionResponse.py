@@ -21,7 +21,8 @@ class DistributionResponse(GeneralResponse):
 		"""
 		Добавление дистрибьютора
 
-		:param Union[Distribution, list[Distribution]] distribution: Дистрибьютор или список дистрибьюторов
+		Args:
+			distribution (Union[Distribution, list[Distribution]]): Дистрибьютор или список дистрибьюторов
 		"""
 		if isinstance(distribution, list):
 			self.items.extend(distribution)

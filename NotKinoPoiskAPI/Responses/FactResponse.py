@@ -21,7 +21,8 @@ class FactResponse(GeneralResponse):
 		"""
 		Добавление факта
 
-		:param Union[Fact, list[Fact]] fact: Факт или список фактов
+		Args:
+			fact (Union[Fact, list[Fact]]): Факт или список фактов
 		"""
 		if isinstance(fact, Fact):
 			self.items.append(fact)

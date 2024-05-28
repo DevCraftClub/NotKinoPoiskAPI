@@ -30,7 +30,8 @@ class Award:
 		"""
 		Добавление награжденного
 
-		:param Union[AwardPerson, List[AwardPerson]] person: Награжденный или список награжденных
+		Args:
+			person (Union[AwardPerson, List[AwardPerson]]): Награжденный или список награжденных
 		"""
 		if isinstance(person, list):
 			self.persons.extend(person)
